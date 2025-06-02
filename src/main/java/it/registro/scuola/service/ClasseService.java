@@ -10,9 +10,10 @@ import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.model.Classe;
 import it.registro.scuola.model.Scuola;
 import it.registro.scuola.repository.ClasseRepository;
-
+import jakarta.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,12 +23,20 @@ public class ClasseService {
 	@Autowired
 	private ClasseRepository classeRepository;
 	
-	public List<Classe> getClassi() {
+	private List<Classe> getClassi() {
 		return classeRepository.findAll();
 	}
 	
 	public List<ClasseDTO> getClassiDTO() {
 		return getClassi().stream().map(s -> toDTO(s)).collect(Collectors.toCollection(ArrayList::new));
+	}
+	
+	private Optional<Classe> getClasse(int id) {
+		return classeRepository.findById(id);
+	}
+	
+	public ClasseDTO getClasseDTO(int id) {
+		return toDTO(getClasse(id).orElseThrow(() -> new EntityNotFoundException("Classe con id "+ id + " non travata")));
 	}
 	
 	

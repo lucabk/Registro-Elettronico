@@ -25,7 +25,6 @@ public class ScuolaController {
 	
 	@GetMapping("/scuole/{id}")
 	public ResponseEntity<ScuolaDTO> getScuola(@PathVariable("id") int idScuola) {
-		ScuolaDTO s = scuolaService.getScuolaDTO(idScuola);
-		return ResponseEntity.ok(s);
+		return ResponseEntity.ok(scuolaService.getScuolaDTO(idScuola));
 	}
 }

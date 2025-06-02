@@ -34,8 +34,7 @@ public class ScuolaService {
 	}
 	
 	public ScuolaDTO getScuolaDTO(int id){
-		Scuola s = getScuola(id).orElseThrow(() -> new EntityNotFoundException("Scuola con id "+ id + " non travata"));
-		return toDTO(s);
+		return toDTO(getScuola(id).orElseThrow(() -> new EntityNotFoundException("Scuola con id "+ id + " non travata")));
 	}
 	
 	//DTO helper methods
