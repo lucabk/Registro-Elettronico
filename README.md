@@ -9,6 +9,13 @@ Tabelle "scuola" e "classe" riempite tramite SQL e/o SOAP.
 ## Librerie usate
 - lombok per la generazione del costruttore e dei getter/setter. Su Eclipse bisogna scaricare ed installare il jar: https://projectlombok.org/download e successivamente chiudere ed riaprire l'IDE.
 
+## Prossimi passi:
+-metodi HTTP per scuola e classe
+-casi d'uso per utente "amministratore"
+-Spring Security JWT per amministratore
+-React con login e gestione tabelle scuola e classe per amministratore
+
+
 ### TODO
 - mapperDTO
 - creare utente meno privilegiato per connessione a db da spring boot
