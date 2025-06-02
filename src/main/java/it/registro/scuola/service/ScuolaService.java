@@ -7,9 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.model.Scuola;
 import it.registro.scuola.repository.ScuolaRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,7 +21,7 @@ public class ScuolaService {
 	@Autowired
 	private ScuolaRepository scuolaRepository;
 	
-	public List<Scuola> getScuole() {
+	private List<Scuola> getScuole() {
 		return scuolaRepository.findAll();
 	}
 	
@@ -27,6 +29,14 @@ public class ScuolaService {
 		return getScuole().stream().map(s -> toDTO(s)).collect(Collectors.toCollection(ArrayList::new));
 	}
 	
+	private Optional<Scuola> getScuola(int id) {
+		return scuolaRepository.findById(id);
+	}
+	
+	public ScuolaDTO getScuolaDTO(int id){
+		Scuola s = getScuola(id).orElseThrow(() -> new EntityNotFoundException("Scuola con id "+ id + " non travata"));
+		return toDTO(s);
+	}
 	
 	//DTO helper methods
 	private ScuolaDTO toDTO(Scuola s) {

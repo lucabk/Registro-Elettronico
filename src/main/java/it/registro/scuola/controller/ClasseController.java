@@ -16,18 +16,10 @@ public class ClasseController {
 
 	@Autowired
 	private ClasseService classeService;
-	
+
 	@GetMapping("/classi")
 	public ResponseEntity<List<ClasseDTO>> getClassi() {
-		try {
-			List<ClasseDTO> classi = new ArrayList<>();
-			classeService.getClassiDTO().forEach(classi::add);
-			if(classi.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-			return new ResponseEntity<>(classi, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		List<ClasseDTO> classi = classeService.getClassiDTO();
+		return ResponseEntity.ok(classi);
 	}
 }
