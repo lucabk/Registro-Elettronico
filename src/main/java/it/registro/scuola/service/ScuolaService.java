@@ -27,7 +27,9 @@ public class ScuolaService {
 		return getScuole().stream().map(s -> toDTO(s)).collect(Collectors.toCollection(ArrayList::new));
 	}
 	
+	
+	//DTO helper methods
 	private ScuolaDTO toDTO(Scuola s) {
-		return new ScuolaDTO(s.getId_scuola(), s.getNome(), s.getTipo(), s.getIndirizzo(), s.getCitta(), s.getProvincia(), s.getCap(), s.getRegione());
+		return new ScuolaDTO(s.getId(), s.getNome(), s.getTipo(), s.getIndirizzo(), s.getCitta(), s.getProvincia(), s.getCap(), s.getRegione());
 	}
 }

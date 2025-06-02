@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import it.registro.scuola.dto.ClasseDTO;
-import it.registro.scuola.model.Classe;
 import it.registro.scuola.service.ClasseService;
 
 @RestController
