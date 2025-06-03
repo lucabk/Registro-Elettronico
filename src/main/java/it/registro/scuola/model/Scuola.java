@@ -50,7 +50,7 @@ public class Scuola {
 	private Set<Classe> classi;
 
 	public Scuola(String nome, String tipo, String indirizzo, String citta, String provincia, String cap,
-			String regione, Date dataInserimento, Date dataAggiornamento) {
+			String regione) {
 		super();
 		this.nome = nome;
 		this.tipo = tipo;
@@ -59,8 +59,6 @@ public class Scuola {
 		this.provincia = provincia;
 		this.cap = cap;
 		this.regione = regione;
-		this.dataInserimento = dataInserimento;
-		this.dataAggiornamento = dataAggiornamento;
 	}
 
 }
