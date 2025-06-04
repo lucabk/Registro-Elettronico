@@ -7,9 +7,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import it.registro.scuola.model.soap.Scuola;
+import it.registro.scuola.service.impl.ScuolaServiceImpl;
 import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.model.soap.*;
-import it.registro.scuola.service.ScuolaService;
 
 @Endpoint
 public class ScuolaEndpoint {
@@ -17,7 +17,7 @@ public class ScuolaEndpoint {
 	private static final String NAMESPACE_URI = "http://scuola.registro.it/scuola";
 	
 	@Autowired 
-	private ScuolaService scuolaService;
+	private ScuolaServiceImpl scuolaService;
 	
 	// Gestisce la richiesta SOAP <getScuolaRequest> per ottenere un impasto per ID
 	// @PayloadRoot associa questa richiesta al namespace e al nome dell'elemento XML
