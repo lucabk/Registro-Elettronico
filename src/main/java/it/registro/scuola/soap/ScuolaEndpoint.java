@@ -6,9 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import it.registro.scuola.model.soap.Scuola;
 import it.registro.scuola.service.impl.ScuolaServiceImpl;
 import it.registro.scuola.dto.ScuolaDTO;
+import it.registro.scuola.mapper.SoapScuolaMapper;
 import it.registro.scuola.model.soap.*;
 
 @Endpoint
@@ -27,7 +27,7 @@ public class ScuolaEndpoint {
 	public GetScuolaResponse getScuola(@RequestPayload GetScuolaRequest req) {
 		GetScuolaResponse res = new GetScuolaResponse();
 		ScuolaDTO s = scuolaService.getScuolaDTO(req.getId());
-		res.setScuola(toSoap(s));
+		res.setScuola(SoapScuolaMapper.toSoap(s));
 		return res;
 	}
 	
@@ -37,7 +37,7 @@ public class ScuolaEndpoint {
 		GetScuoleResponse res = new GetScuoleResponse();
 		List<ScuolaDTO> scuole = scuolaService.getScuoleDTO();
 		for(ScuolaDTO s : scuole) {
-			res.getScuola().add(toSoap(s));
+			res.getScuola().add(SoapScuolaMapper.toSoap(s));
 		}
 		return res;
 	}
@@ -46,8 +46,8 @@ public class ScuolaEndpoint {
 	@ResponsePayload
 	public AddScuolaResponse addScuola(@RequestPayload AddScuolaRequest req) {
 		AddScuolaResponse res = new AddScuolaResponse();
-		ScuolaDTO s = scuolaService.addScuolaDTO(toDTO(req.getScuola()));
-		res.setScuola(toSoap(s));
+		ScuolaDTO s = scuolaService.addScuolaDTO(SoapScuolaMapper.toDTO(req.getScuola()));
+		res.setScuola(SoapScuolaMapper.toSoap(s));
 		return res;
 	}
 	
@@ -55,7 +55,7 @@ public class ScuolaEndpoint {
 	@ResponsePayload
 	public UpdateScuolaResponse updateScuola(@RequestPayload UpdateScuolaRequest req) {
 		UpdateScuolaResponse res = new UpdateScuolaResponse();
-		res.setScuola(toSoapUp(scuolaService.updateScuolaDTO(toDTOfromUp(req.getScuola()))));
+		res.setScuola(SoapScuolaMapper.toSoapUp(scuolaService.updateScuolaDTO(SoapScuolaMapper.toDTOfromUp(req.getScuola()))));
 		return res;
 	}
 	
@@ -66,55 +66,5 @@ public class ScuolaEndpoint {
 		res.setCancellato(scuolaService.deleteScuola(req.getId()));
 		return res;
 	}
-	
-	private Scuola toSoap(ScuolaDTO s) {
-		Scuola sSoap = new Scuola();
-		sSoap.setId(s.getId());
-		sSoap.setNome(s.getNome());
-		sSoap.setTipo(s.getTipo());
-		sSoap.setIndirizzo(s.getIndirizzo());
-		sSoap.setCitta(s.getCitta());
-		sSoap.setProvincia(s.getProvincia());
-		sSoap.setCap(s.getCap());
-		sSoap.setRegione(s.getRegione());
-		return sSoap;
-	}
-	
-	private ScuolaUpdate toSoapUp(ScuolaDTO s) {
-		ScuolaUpdate sSoap = new ScuolaUpdate();
-		sSoap.setId(s.getId());
-		sSoap.setNome(s.getNome());
-		sSoap.setTipo(s.getTipo());
-		sSoap.setIndirizzo(s.getIndirizzo());
-		sSoap.setCitta(s.getCitta());
-		sSoap.setProvincia(s.getProvincia());
-		sSoap.setCap(s.getCap());
-		sSoap.setRegione(s.getRegione());
-		return sSoap;
-	}
-	
-	private ScuolaDTO toDTO(Scuola s) {
-		ScuolaDTO dto = new ScuolaDTO();
-		dto.setNome(s.getNome());
-		dto.setTipo(s.getTipo());
-		dto.setIndirizzo(s.getIndirizzo());
-		dto.setCitta(s.getCitta());
-		dto.setProvincia(s.getProvincia());
-		dto.setCap(s.getCap());
-		dto.setRegione(s.getRegione());
-		return dto;
-	}
-	
-	private ScuolaDTO toDTOfromUp(ScuolaUpdate s) {
-		ScuolaDTO dto = new ScuolaDTO();
-		dto.setId(s.getId());
-		dto.setNome(s.getNome());
-		dto.setTipo(s.getTipo());
-		dto.setIndirizzo(s.getIndirizzo());
-		dto.setCitta(s.getCitta());
-		dto.setProvincia(s.getProvincia());
-		dto.setCap(s.getCap());
-		dto.setRegione(s.getRegione());
-		return dto;
-	}
+		
 }
