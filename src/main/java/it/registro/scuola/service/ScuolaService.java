@@ -23,7 +23,7 @@ public class ScuolaService {
 	}
 	
 	public List<ScuolaDTO> getScuoleDTO() {
-		return getScuole().stream().map(s -> toDTO(s)).collect(Collectors.toCollection(ArrayList::new));
+		return toListDTO(getScuole());
 	}
 	
 	private Scuola getScuola(int id) {
@@ -67,11 +67,64 @@ public class ScuolaService {
 		return true;
 	}
 	
+	//filtri per cercare scuole
+	private List<Scuola> getScuoleByRegione(String r) {
+		return scuolaRepository.findByRegione(r);
+	}
+	
+	public List<ScuolaDTO> getScuoleByRegioneDTO(String r) {
+		return toListDTO(getScuoleByRegione(r));
+	}
+	
+	private List<Scuola> getScuoleByProvincia(String p) {
+		return scuolaRepository.findByProvincia(p);
+	}
+	
+	public List<ScuolaDTO> getScuoleByProvinciaDTO(String p) {
+		return toListDTO(getScuoleByProvincia(p));
+	}
+	
+	private List<Scuola> getScuoleByCitta(String c) {
+		return scuolaRepository.findByCitta(c);
+	}
+	
+	public List<ScuolaDTO> getScuoleByCittaDTO(String c) {
+		return toListDTO(getScuoleByCitta(c));
+	}
+	
+	private List<Scuola> getScuoleByRegioneAndProvincia(String r, String p) {
+		return scuolaRepository.findByRegioneAndProvincia(r, p);
+	}
+	
+	public List<ScuolaDTO> getScuoleByRegioneAndProvinciaDTO(String r, String p) {
+		return toListDTO(getScuoleByRegioneAndProvincia(r, p));
+	}
+	
+	private List<Scuola> getScuoleByRegioneAndCitta(String r, String c) {
+		return scuolaRepository.findByRegioneAndCitta(r, c);
+	}
+	
+	public List<ScuolaDTO> getScuoleByRegioneAndCittaDTO(String r, String c) {
+		return toListDTO(getScuoleByRegioneAndCitta(r, c));
+	}
+	
+	private List<Scuola> getScuoleByProvinciaAndCitta(String p, String c) {
+		return scuolaRepository.findByProvinciaAndCitta(p, c);
+	}
+	
+	public List<ScuolaDTO> getScuoleByProvinciaAndCittaDTO(String p, String c) {
+		return toListDTO(getScuoleByProvinciaAndCitta(p, c));
+	}
+	
+		
 	//DTO helper methods
 	private ScuolaDTO toDTO(Scuola s) {
 		return new ScuolaDTO(s.getId(), s.getNome(), s.getTipo(), s.getIndirizzo(), s.getCitta(), s.getProvincia(), s.getCap(), s.getRegione());
 	}
 	private Scuola toEntity(ScuolaDTO s) {
 		return new Scuola(s.getNome(), s.getTipo(), s.getIndirizzo(), s.getCitta(), s.getProvincia(), s.getCap(), s.getRegione());
+	}
+	private List<ScuolaDTO> toListDTO(List<Scuola> listScuole) {
+		return listScuole.stream().map(s -> toDTO(s)).collect(Collectors.toCollection(ArrayList::new));
 	}
 }
