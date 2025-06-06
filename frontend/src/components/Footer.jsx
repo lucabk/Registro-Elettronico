@@ -1,8 +1,7 @@
 const Footer = () => {
     return(
-        <footer>
-            <p>progetto Registro Elettronico</p>
-            <p>sviluppato da Luca Liberatore</p>
+        <footer className="p-2">
+            <p>progetto Registro Elettronico, sviluppato da Luca Liberatore</p>
         </footer>
     )
 }

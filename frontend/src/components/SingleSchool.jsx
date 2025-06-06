@@ -1,10 +1,13 @@
 const SingleSchool = ({ school }) => {
     return(
         <>
-            <p>nome scuola: {school.nome}</p>
-            <p>tipo: {school.tipo}</p>
-            <p>citta: {school.citta}</p>
-            <br/>
+            <td>{school.nome}</td>
+            <td>{school.tipo}</td>
+            <td>{school.indirizzo}</td>
+            <td>{school.citta}</td>
+            <td>{school.provincia}</td>
+            <td>{school.cap}</td>
+            <td>{school.regione}</td>
         </>
     )
 }

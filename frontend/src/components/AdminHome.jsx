@@ -5,10 +5,11 @@ import Schools from "./Schools"
 const AdminHome = () => {
 
     return(
-        <>
-            <h1>Home page dell'amministratore</h1>
+        <>  
+            <div className="container-fluid p-5 sfondo-titolo">
+                <h1 className="titolo">Home page</h1>
+            </div>
             <Schools />
-            <SchoolForm />
         </>
     )
 }
