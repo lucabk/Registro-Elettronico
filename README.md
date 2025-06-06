@@ -15,6 +15,9 @@ Si aggiungno le dipendenze per JAXB, WSDL e spring-boot-starter-web-services; ov
 ## REST
 Metodi GET per scuola (+ request param) 
 
+### Sviluppo
+Procedimento: model, repository, dto, mapper, interfaccia, service, controller
+
 ## Prossimi passi:
 -Spring Security JWT per amministratore
 -validazione DTO

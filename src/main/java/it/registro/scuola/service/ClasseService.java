@@ -7,6 +7,8 @@ import it.registro.scuola.dto.ClasseDTO;
 public interface ClasseService {
 
 	List<ClasseDTO> getClassiDTO();
+	
+	List<ClasseDTO> getClassiByIdScuolaDTO(int idScuola);
 
 	ClasseDTO getClasseDTO(int id);
 

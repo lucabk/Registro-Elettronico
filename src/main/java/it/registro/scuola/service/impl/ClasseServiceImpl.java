@@ -27,7 +27,7 @@ public class ClasseServiceImpl implements ClasseService {
 	
 	@Override
 	public List<ClasseDTO> getClassiDTO() {
-		return getClassi().stream().map(s -> ClasseMapper.toDTO(s)).collect(Collectors.toCollection(ArrayList::new));
+		return ClasseMapper.toListDTO(getClassi());
 	}
 	
 	private Optional<Classe> getClasse(int id) {
@@ -37,6 +37,15 @@ public class ClasseServiceImpl implements ClasseService {
 	@Override
 	public ClasseDTO getClasseDTO(int id) {
 		return ClasseMapper.toDTO(getClasse(id).orElseThrow(() -> new EntityNotFoundException("Classe con id "+ id + " non travata")));
+	}
+
+	private List<Classe> getClassiByIdScuola(int idScuola) {
+		return classeRepository.findByScuolaId(idScuola);	
+	}
+	
+	@Override
+	public List<ClasseDTO> getClassiByIdScuolaDTO(int idScuola) {
+		return ClasseMapper.toListDTO(getClassiByIdScuola(idScuola));
 	}
 	
 
