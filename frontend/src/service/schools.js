@@ -1,8 +1,13 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:8080/api/scuole'
+const API_BASE = 'http://localhost:8080/api/scuole'
 
-export const getSchools = async () =>{
-    const res = await axios.get(baseUrl)
+// Axios costruirà automaticamente la query string solo con i parametri che non sono undefined o null
+export const getSchools = async ({ regione, provincia, citta }) =>{
+    const params = {}
+    if (regione) params.regione = regione
+    if (provincia) params.provincia = provincia
+    if (citta) params.citta = citta
+    const res = await axios.get(API_BASE, { params })
     return res.data
 }
