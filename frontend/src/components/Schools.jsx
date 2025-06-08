@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react"
 import * as schoolService from "../service/schools"
 import SingleSchool from "./SingleSchool"
+import { useQuery } from '@tanstack/react-query'
 
 const Schools = () => {
-    const [schools, setSchools] = useState([])
-
-    useEffect(()=>{
-        schoolService.getSchools()
-            .then(res =>  setSchools(res))
-            .catch(error => console.error("Error fetching schools:", error))
-        },[])
-        
-        console.log("GET all schools result: ", schools)
-
+    const { isPending, isError, data = [] } = useQuery({
+        queryKey: ['shools'],
+        queryFn: schoolService.getSchools
+    })
+    
+    if(isPending){
+        return <div>Loading schools...</div>
+    }
+    if(isError){
+        return <div>Error loading schools!</div>
+    }
 
     return(
-        <div className="container-fluid sezione-scuole p-5 m-0">
+        <div className="container-fluid p-5 m-0">
             <section>
-                <h2 className="titolo mt-5">Scuole disponibili nel database</h2>
+                <h2 className="mt-5 text-center fs-3">Scuole disponibili nel database</h2>
                 <table className="table p-3 mt-5 table-dark table-striped">
                     <caption>scuole</caption>
                     <thead>
@@ -32,7 +33,7 @@ const Schools = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {schools.map(s => 
+                    {data && data.map(s => 
                         <tr key={s.id}>
                             <SingleSchool school={s} />
                         </tr>
