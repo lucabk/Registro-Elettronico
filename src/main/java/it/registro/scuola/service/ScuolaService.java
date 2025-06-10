@@ -12,8 +12,12 @@ public interface ScuolaService {
 	ScuolaDTO addScuolaDTO(ScuolaDTO s);
 
 	ScuolaDTO updateScuolaDTO(ScuolaDTO s);
+	
+	ScuolaDTO updateScuolaDTO(int scuolaId, ScuolaDTO s);
 
 	boolean deleteScuola(int id);
+	
+	void deleteByIdScuola(int id);
 
 	List<ScuolaDTO> getScuoleByRegioneDTO(String r);
 

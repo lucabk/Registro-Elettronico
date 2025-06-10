@@ -46,20 +46,32 @@ public class ScuolaServiceImpl implements ScuolaService {
 		return ScuolaMapper.toDTO(addScuola(ScuolaMapper.toEntity(s)));
 	}
 
-	public Scuola updateScuola(Scuola s) {
+	private Scuola updateScuola(Scuola s) {
 		return scuolaRepository.save(s);
 	}
 
-	@Override
+	@Override // SOAP
 	public ScuolaDTO updateScuolaDTO(ScuolaDTO s) {
 		Scuola originalEntity = getScuola(s.getId());
 		return ScuolaMapper.toDTO(updateScuola(ScuolaMapper.entityToUp(originalEntity, s)));
 	}
 
-	@Override
+	@Override // REST
+	public ScuolaDTO updateScuolaDTO(int scuolaId, ScuolaDTO s) {
+		Scuola originalEntity = getScuola(scuolaId);
+		return ScuolaMapper.toDTO(updateScuola(ScuolaMapper.entityToUp(originalEntity, s)));
+	}
+
+	@Override // SOAP
 	public boolean deleteScuola(int id) {
 		scuolaRepository.delete(getScuola(id));
 		return true;
+	}
+
+	@Override
+	public void deleteByIdScuola(int id) {
+		getScuola(id);
+		scuolaRepository.deleteById(id);
 	}
 
 	// filtri per cercare scuole

@@ -54,6 +54,12 @@
 			<scope>test</scope>
 		</dependency>
 		
+		 <!-- Validation -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+		
 	 	<!-- SOAP -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
