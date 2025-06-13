@@ -1,9 +1,9 @@
-import Schools from "./Schools"
+import Schools from "./School/Schools"
 import { Routes, Route, useMatch } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import * as schoolService from "../service/schools"
-import SchoolInfo from "./SchoolInfo"
-import SchoolForm from "./SchoolForm"
+import SchoolInfo from "./School/SchoolInfo"
+import SchoolForm from "./School/SchoolForm"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -31,7 +31,7 @@ const AdminHome = () => {
                     /> } 
                 />
                 <Route path='/schools/:id' element={ <SchoolInfo school={school}/>} />
-                <Route path='/addSchool' element= { <SchoolForm />} />
+                <Route path='/addSchool' element= { <SchoolForm schools={schools} setSchools={setSchools}/>} />
             </Routes>
         </>
     )

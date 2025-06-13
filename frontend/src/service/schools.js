@@ -11,3 +11,8 @@ export const getSchools = async ({ regione, provincia, citta }) =>{
     const res = await axios.get(API_BASE, { params })
     return res.data
 }
+
+export const addSchool = async (school) => {
+    const res = await axios.post(API_BASE, school)
+    return res.data
+}
