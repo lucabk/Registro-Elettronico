@@ -1,0 +1,14 @@
+.school-link {
+  color: #A9A9A9;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.school-link:hover {
+  color: #757575; 
+}
+
+.add-school:hover {
+  color: #757575; 
+}
