@@ -2,8 +2,9 @@ import Footer from "../Footer"
 import TopScetion from "../TopSection"
 import * as schoolService from "../../service/schools"
 import { useNavigate } from 'react-router-dom'
+import notification from "../util/notificaion"
 
-const SchoolForm = ({ schools, setSchools }) => {
+const SchoolForm = ({ schools, setSchools, setNotification }) => {
     const navigate = useNavigate()
 
     const capitalize = (str) => {
@@ -24,6 +25,7 @@ const SchoolForm = ({ schools, setSchools }) => {
         try{
             const savedSchool = await schoolService.addSchool(newSchool)
             setSchools(schools.concat(savedSchool))
+            notification(setNotification, `Scuola ${savedSchool.nome} salvata correttamente`, 'success')
             console.log('School saved: ', savedSchool)
         } catch(e){
             console.error("POST Error: ", e)
@@ -33,9 +35,9 @@ const SchoolForm = ({ schools, setSchools }) => {
 
     return(
         <>
-            <TopScetion text={'Admin Panel'} />
+            <TopScetion text={'Scuola Form'} />
             <div className="container p-3 mb-5 mt-5 bg-light text-dark p-5">
-                <h2 className="text-center fs-2">Salva una nuova scuola</h2>
+                <h2 className="text-center fs-2 mb-4">Aggiungi una nuova scuola</h2>
                 <form action={handleSubmit} className="row needs-validation">
                     <div className="mt-3 col-6">
                         <label htmlFor="nome" className="form-label">Nome della scuola</label>
