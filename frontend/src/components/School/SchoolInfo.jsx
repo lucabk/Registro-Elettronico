@@ -24,32 +24,38 @@ const SchoolInfo = ({ school, setSchools, schools }) => {
         }
     }
 
+    const handleUpdate = () => {
+        console.log("update school..")
+    }
+
     return(
         <>
             <TopScetion text={"Scuola info"} />
             { school ? (
-
-                <div className="container-fluid m-3 p-3">
-                    <div className="container bg-light d-flex justify-content-center ">
-                        <div className="card bg-dark text-white m-5 fs-5" style={{width: "18rem"}}>
-                            <div className="card-header">
-                                {school.nome}
+                <div className="container bg-light d-flex justify-content-center ">
+                    <div className="card m-5 fs-5" style={{width: "18rem"}}>
+                        <div className="card-header bg-dark text-white">
+                            {school.nome}
+                        </div>
+                        <ul className="list-group list-group-flush ">
+                            <li className="list-group-item">Indirizzo di studi: {school.tipo}</li>
+                            <li className="list-group-item">CAP: {school.cap}</li>
+                            <li className="list-group-item">Regione: {school.regione}</li>
+                        </ul>
+                        <div className="card-body">
+                            <div className="d-grid gap-3">
+                                <button type="button" className="btn btn-outline-warning" onClick={handleUpdate}>
+                                    Aggiorna 
+                                </button>
+                                <button type="button" className="btn btn-outline-danger" onClick={handleDelete}>
+                                    Elimina
+                                </button>
                             </div>
-                            <ul className="list-group list-group-flush ">
-                                <li className="list-group-item">{school.tipo}</li>
-                                <li className="list-group-item">{school.indirizzo}</li>
-                                <li className="list-group-item">{school.citta}</li>
-                                <li className="list-group-item">{school.provincia}</li>
-                                <li className="list-group-item">{school.cap}</li>
-                                <li className="list-group-item">{school.regione}</li>
-                            </ul>
+                        </div>
+                        <div className="card-footer text-body-secondary">
+                            {school.indirizzo}, {school.citta} ({school.provincia})
                         </div>
                     </div>
-                        <div className="container-fluid p-3 mb-2 bg-light d-flex justify-content-center">
-                            <button type="button" className="btn btn-outline-danger" onClick={handleDelete}>
-                                Elimina scuola
-                            </button>
-                        </div>
                 </div>
             )  : (
                null

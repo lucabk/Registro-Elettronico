@@ -27,9 +27,9 @@ const Schools = ({ schools, filter, setFilter }) => {
             <div className="container-fluid p-5 m-0">
                 <section>
                     <h2 className="mt-3 text-center fs-2">Scuole disponibili nel database</h2>
-                    <div className="container mt-3 p-2 bg-light text-dark">
+                    <div>
                         {(filter.regione || filter.provincia || filter.citta) && (
-                            <>
+                            <div className="container mt-3 p-2 bg-light text-dark">
                                 <div className="row">
                                     <div className="col-2">
                                         <p className="text-secondary fw-semibold fst-italic">Filtro utilizzato:</p>   
@@ -47,7 +47,7 @@ const Schools = ({ schools, filter, setFilter }) => {
                                         {<ul><li>Città: {filter.citta} </li></ul>}
                                     </div>)}
                                 </div>
-                            </>
+                            </div>
                         )}
                     </div>
 
