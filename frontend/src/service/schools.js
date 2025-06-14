@@ -16,3 +16,7 @@ export const addSchool = async (school) => {
     const res = await axios.post(API_BASE, school)
     return res.data
 }
+
+export const deleteSchool = async (schoolId) => {
+    await axios.delete(`${API_BASE}/${schoolId}`)
+}

@@ -23,14 +23,16 @@ const AdminHome = () => {
     return(
         <>  
             <Routes>
-                <Route path='/' element={ 
-                    <Schools 
-                        filter={filter} 
-                        schools={schools} 
-                        setFilter={setFilter}
-                    /> } 
+                <Route path='/' element={ <Schools 
+                    filter={filter} 
+                    schools={schools} 
+                    setFilter={setFilter} /> } 
                 />
-                <Route path='/schools/:id' element={ <SchoolInfo school={school}/>} />
+                <Route path='/schools/:id' element={ <SchoolInfo 
+                    school={school} 
+                    setSchools={setSchools}
+                    schools={schools} /> } 
+                />
                 <Route path='/addSchool' element= { <SchoolForm 
                     schools={schools} 
                     setSchools={setSchools}
