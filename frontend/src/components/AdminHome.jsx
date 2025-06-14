@@ -8,7 +8,6 @@ import SchoolForm from "./School/SchoolForm"
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
     const [filter, setFilter] = useState({ regione:"", provincia:"", citta:"" })
-    const [notification, setNotification] = useState({ msg:null, type:null })
     
     useEffect(()=>{
     schoolService.getSchools(filter)
@@ -29,14 +28,12 @@ const AdminHome = () => {
                         filter={filter} 
                         schools={schools} 
                         setFilter={setFilter}
-                        notification={notification}
                     /> } 
                 />
                 <Route path='/schools/:id' element={ <SchoolInfo school={school}/>} />
                 <Route path='/addSchool' element= { <SchoolForm 
                     schools={schools} 
                     setSchools={setSchools}
-                    setNotification={setNotification}
                     /> } 
                 />
             </Routes>

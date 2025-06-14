@@ -2,9 +2,9 @@ import Footer from "../Footer"
 import TopScetion from "../TopSection"
 import * as schoolService from "../../service/schools"
 import { useNavigate } from 'react-router-dom'
-import notification from "../util/notificaion"
+import { toast } from "react-toastify"
 
-const SchoolForm = ({ schools, setSchools, setNotification }) => {
+const SchoolForm = ({ schools, setSchools }) => {
     const navigate = useNavigate()
 
     const capitalize = (str) => {
@@ -25,9 +25,10 @@ const SchoolForm = ({ schools, setSchools, setNotification }) => {
         try{
             const savedSchool = await schoolService.addSchool(newSchool)
             setSchools(schools.concat(savedSchool))
-            notification(setNotification, `Scuola ${savedSchool.nome} salvata correttamente`, 'success')
+            toast.success(`Scuola ${savedSchool.nome} salvata correttamente`)
             console.log('School saved: ', savedSchool)
         } catch(e){
+            toast.error("Errore durante il salvataggio!")
             console.error("POST Error: ", e)
         }
         navigate('/')

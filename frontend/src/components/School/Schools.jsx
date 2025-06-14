@@ -3,9 +3,8 @@ import { useState } from "react"
 import TopScetion from "../TopSection"
 import Footer from "../Footer"
 import { Link } from "react-router-dom"
-import Notification from "../util/Notification"
 
-const Schools = ({ schools, filter, setFilter, notification }) => {
+const Schools = ({ schools, filter, setFilter }) => {
     const [regione, setRegione] = useState("")
     const [provincia, setProvincia] = useState("")
     const [citta, setCitta] = useState("")
@@ -24,8 +23,6 @@ const Schools = ({ schools, filter, setFilter, notification }) => {
     return(
         <>
             <TopScetion text={"Home page"} />
-
-            <Notification msg={notification.msg} type={notification.type} />
 
             <div className="container-fluid p-5 m-0">
                 <section>
