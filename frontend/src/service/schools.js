@@ -20,3 +20,8 @@ export const addSchool = async (school) => {
 export const deleteSchool = async (schoolId) => {
     await axios.delete(`${API_BASE}/${schoolId}`)
 }
+
+export const updateSchool = async (newSchool, schoolId) => {
+    const res = await axios.put(`${API_BASE}/${schoolId}`, newSchool)
+    return res.data
+}

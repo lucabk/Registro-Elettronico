@@ -1,8 +1,9 @@
 import Footer from "../Footer"
 import TopScetion from "../TopSection"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import * as schoolService from "../../service/schools"
 import { toast } from "react-toastify"
+
 
 const SchoolInfo = ({ school, setSchools, schools }) => {
     const navigate = useNavigate()
@@ -24,10 +25,6 @@ const SchoolInfo = ({ school, setSchools, schools }) => {
         }
     }
 
-    const handleUpdate = () => {
-        console.log("update school..")
-    }
-
     return(
         <>
             <TopScetion text={"Scuola info"} />
@@ -44,9 +41,11 @@ const SchoolInfo = ({ school, setSchools, schools }) => {
                         </ul>
                         <div className="card-body">
                             <div className="d-grid gap-3">
-                                <button type="button" className="btn btn-outline-warning" onClick={handleUpdate}>
+                            <Link to='update'>
+                                <button type="button" className="btn btn-outline-warning" >
                                     Aggiorna 
                                 </button>
+                            </Link>
                                 <button type="button" className="btn btn-outline-danger" onClick={handleDelete}>
                                     Elimina
                                 </button>

@@ -101,7 +101,7 @@ const Schools = ({ schools, filter, setFilter }) => {
                 </section>
 
                 <h2 className="mt-3 mb-4 text-center fs-2">Aggiungi scuola nel database</h2>
-                <Link to='addSchool'>
+                <Link to='/addSchool'>
                     <div className="d-grid col-2 mx-auto">
                         <button className="btn btn-dark p-3">
                             <h4 className='add-school'>Clicca qui</h4> 

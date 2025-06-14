@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import * as schoolService from "../service/schools"
 import SchoolInfo from "./School/SchoolInfo"
 import SchoolForm from "./School/SchoolForm"
+import UpdateSchool from "./School/updateSchool"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -17,7 +18,7 @@ const AdminHome = () => {
 
     const match = useMatch('/schools/:id')
     const school = match 
-        ? schools.find( s => s.id === Number(match.params.id)) 
+        ? schools.find(s => s.id === Number(match.params.id)) 
         : null
 
     return(
@@ -38,6 +39,11 @@ const AdminHome = () => {
                     setSchools={setSchools}
                     /> } 
                 />
+                <Route path='/schools/:id/update' element= { <UpdateSchool 
+                                schools={schools}
+                                setSchools={setSchools}
+                                /> }
+                            /> 
             </Routes>
         </>
     )
