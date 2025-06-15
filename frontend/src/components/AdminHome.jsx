@@ -11,9 +11,9 @@ const AdminHome = () => {
     const [filter, setFilter] = useState({ regione:"", provincia:"", citta:"" })
     
     useEffect(()=>{
-    schoolService.getSchools(filter)
-        .then(res =>  setSchools(res))
-        .catch(error => console.error("Error fetching schools:", error))
+        schoolService.getSchools(filter)
+            .then(res =>  setSchools(res))
+            .catch(error => console.error("Error fetching schools:", error))
     },[filter])
 
     const match = useMatch('/schools/:id')
