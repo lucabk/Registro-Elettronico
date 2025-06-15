@@ -40,10 +40,10 @@ public class Scuola {
 	@Column(name = "regione")
 	private String regione;
 
-	@Column(name = "data_inserimento")
+	@Column(name = "data_inserimento", insertable = false, updatable = false)
 	private Date dataInserimento;
 
-	@Column(name = "data_aggiornamento")
+	@Column(name = "data_aggiornamento", insertable = false, updatable = false)
 	private Date dataAggiornamento;
 
 	@OneToMany(mappedBy = "scuola")

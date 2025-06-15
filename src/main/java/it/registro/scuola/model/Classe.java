@@ -27,10 +27,10 @@ public class Classe {
 	@Column(name = "anno_scolastico")
 	private String annoScolastico;
 
-	@Column(name = "data_inserimento")
+	@Column(name = "data_inserimento", insertable = false, updatable = false)
 	private Date dataInserimento;
 
-	@Column(name = "data_aggiornamento")
+	@Column(name = "data_aggiornamento", insertable = false, updatable = false)
 	private Date dataAggiornamento;
 
 	@ManyToOne(fetch = FetchType.EAGER)
