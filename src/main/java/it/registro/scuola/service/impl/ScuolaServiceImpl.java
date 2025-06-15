@@ -27,7 +27,7 @@ public class ScuolaServiceImpl implements ScuolaService {
 		return ScuolaMapper.toListDTO(getScuole());
 	}
 
-	private Scuola getScuola(int id) {
+	protected Scuola getScuola(int id) {
 		return scuolaRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Scuola con id " + id + " non travata"));
 	}

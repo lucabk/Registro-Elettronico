@@ -5,22 +5,22 @@ import org.springframework.transaction.annotation.Transactional;
 import it.registro.scuola.dto.ClasseDTO;
 import it.registro.scuola.mapper.ClasseMapper;
 import it.registro.scuola.model.Classe;
+import it.registro.scuola.model.Scuola;
 import it.registro.scuola.repository.ClasseRepository;
 import it.registro.scuola.service.ClasseService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @AllArgsConstructor
 @Service
 @Transactional
 public class ClasseServiceImpl implements ClasseService {
-	
+
 	private ClasseRepository classeRepository;
-	
+	private ScuolaServiceImpl scuolaService;  
+
 	private List<Classe> getClassi() {
 		return classeRepository.findAll();
 	}
@@ -30,13 +30,14 @@ public class ClasseServiceImpl implements ClasseService {
 		return ClasseMapper.toListDTO(getClassi());
 	}
 	
-	private Optional<Classe> getClasse(int id) {
-		return classeRepository.findById(id);
+	private Classe getClasse(int id) {
+		return classeRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Classe con id " + id + " non travata"));
 	}
 	
 	@Override
 	public ClasseDTO getClasseDTO(int id) {
-		return ClasseMapper.toDTO(getClasse(id).orElseThrow(() -> new EntityNotFoundException("Classe con id "+ id + " non travata")));
+		return ClasseMapper.toDTO(getClasse(id));
 	}
 
 	private List<Classe> getClassiByIdScuola(int idScuola) {
@@ -46,6 +47,37 @@ public class ClasseServiceImpl implements ClasseService {
 	@Override
 	public List<ClasseDTO> getClassiByIdScuolaDTO(int idScuola) {
 		return ClasseMapper.toListDTO(getClassiByIdScuola(idScuola));
+	}
+
+	private Classe addClasse(Classe c) {
+		return classeRepository.save(c);
+	}
+	
+	@Override
+	public ClasseDTO addClasseDTO(ClasseDTO c) {
+		if(c.getScuolaDTO() == null) {
+			throw new IllegalArgumentException("E' obbliglatorio specificare la scuola a cui aggiungere la classe");
+		}
+		Scuola scuola = scuolaService.getScuola(c.getScuolaDTO().getId());
+		Classe classeDaSalvare = ClasseMapper.toEntity(c);
+		classeDaSalvare.setScuola(scuola); 
+		return ClasseMapper.toDTO(addClasse(classeDaSalvare));
+	}
+
+	private Classe updateClasse(Classe c) {
+		return classeRepository.save(c);
+	}
+	
+	@Override
+	public ClasseDTO updateClasseDTO(ClasseDTO c, int classeId) {
+		Classe originalEntity = getClasse(classeId);
+		return ClasseMapper.toDTO(updateClasse(ClasseMapper.entityToUp(originalEntity, c)));
+	}
+
+	@Override
+	public void deleteClasseById(int idClasse) {
+		getClasse(idClasse);
+		classeRepository.deleteById(idClasse);
 	}
 	
 

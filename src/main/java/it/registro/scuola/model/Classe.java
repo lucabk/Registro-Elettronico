@@ -37,13 +37,11 @@ public class Classe {
 	@JoinColumn(name = "id_scuola", nullable = false)
 	private Scuola scuola;
 
-	public Classe(int grado, String lettera, String annoScolastico, Date dataInserimento, Date dataAggiornamento) {
+	public Classe(int grado, String lettera, String annoScolastico) {
 		super();
 		this.grado = grado;
 		this.lettera = lettera;
 		this.annoScolastico = annoScolastico;
-		this.dataInserimento = dataInserimento;
-		this.dataAggiornamento = dataAggiornamento;
 	}
 
 }

@@ -11,5 +11,11 @@ public interface ClasseService {
 	List<ClasseDTO> getClassiByIdScuolaDTO(int idScuola);
 
 	ClasseDTO getClasseDTO(int id);
+	
+	ClasseDTO addClasseDTO(ClasseDTO c);
+	
+	ClasseDTO updateClasseDTO(ClasseDTO c, int classeId);
+	
+	void deleteClasseById(int idClasse);
 
 }

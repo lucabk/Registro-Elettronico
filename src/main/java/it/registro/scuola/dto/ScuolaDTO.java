@@ -1,11 +1,13 @@
 package it.registro.scuola.dto;
 
 import java.io.Serializable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.validation.constraints.*;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -43,17 +45,5 @@ public class ScuolaDTO implements Serializable {
 	@Size(min=2, max=50)
 	private String regione;
 
-	public ScuolaDTO(int id, String nome, String tipo, String indirizzo, String citta, String provincia, String cap,
-			String regione) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.tipo = tipo;
-		this.indirizzo = indirizzo;
-		this.citta = citta;
-		this.provincia = provincia;
-		this.cap = cap;
-		this.regione = regione;
-	}
 
 }
