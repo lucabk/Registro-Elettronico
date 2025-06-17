@@ -1,6 +1,5 @@
 package it.registro.scuola.dto;
 
-
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,15 +10,13 @@ import jakarta.validation.constraints.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class GestoreDTO {
+public class SegreteriaDTO {
 	
 	private int id;
 	
 	@NotBlank
-	@Size(min=1, max=50)
-	private String username;
+	@Size(min=5, max=100)
+	private String nome;
 	
-	@NotBlank
-	@Size(min=6, max=255)
-	private String psw;
+	private ScuolaDTO scuolaDTO;
 }

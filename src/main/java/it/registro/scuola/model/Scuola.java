@@ -48,6 +48,9 @@ public class Scuola {
 
 	@OneToMany(mappedBy = "scuola")
 	private Set<Classe> classi;
+	
+	@OneToMany(mappedBy = "scuola")
+	private Set<Segreteria> segreterie;
 
 	public Scuola(String nome, String tipo, String indirizzo, String citta, String provincia, String cap,
 			String regione) {

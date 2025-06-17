@@ -7,23 +7,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="gestore")
+@Table(name = "segreteria")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Gestore {
-	
+public class Segreteria {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_gestore")
+	@Column(name = "id_segreteria")
 	private int id;
-	
-	@Column(name = "username")
-	private String username;
-	
-	@Column(name = "psw")
-	private String psw;
-	
+
+	@Column(name = "nome")
+	private String nome;
 
 	@Column(name = "data_inserimento", insertable = false, updatable = false)
 	private Date dataInserimento;
@@ -31,5 +27,13 @@ public class Gestore {
 	@Column(name = "data_aggiornamento", insertable = false, updatable = false)
 	private Date dataAggiornamento;
 
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_scuola", nullable = false)
+	private Scuola scuola;
+
+	public Segreteria(String nome) {
+		super();
+		this.nome = nome;
+	}
+
 }
