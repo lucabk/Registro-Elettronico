@@ -15,7 +15,7 @@ const ClassiScuola = ({ schoolId }) => {
 
     return (
         <div>
-            <h3 className="mt-3 text-center fs-3">Classi disponibili nella scuola</h3>
+            <h3 className="mt-5 text-center fs-3">Classi disponibili nella scuola</h3>
             <table className="container table p-3 mt-5 table-dark table-striped table-bordered bg-secondary">
                 <caption>Tabella Classi</caption>
                 <thead className="table-light">
