@@ -3,7 +3,6 @@ package it.registro.scuola.service.impl;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import it.registro.scuola.dto.SegreteriaDTO;
-import it.registro.scuola.mapper.ScuolaMapper;
 import it.registro.scuola.mapper.SegreteriaMapper;
 import it.registro.scuola.model.Scuola;
 import it.registro.scuola.model.Segreteria;
@@ -50,7 +49,7 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 	public void updateSegreteria(SegreteriaDTO s, int id) {
 		Segreteria originalEntity = segreteriaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Segreteria con id "+id+" non trovata"));
 		Segreteria sToUp = SegreteriaMapper.entityToUp(originalEntity, s);
-		if(s.getScuolaDTO() != null && ScuolaMapper.toDTO(originalEntity.getScuola()) != s.getScuolaDTO()) {
+		if(s.getScuolaDTO() != null && originalEntity.getScuola().getId() != s.getScuolaDTO().getId()) {
 			Scuola scuola = scuolaService.getScuola(s.getScuolaDTO().getId());
 			sToUp.setScuola(scuola);
 		}

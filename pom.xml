@@ -82,11 +82,11 @@
             <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
 
-	<!-- Spring Security -->
+	<!-- Spring Security 
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 	
 
@@ -133,7 +133,6 @@
                             <generatePackage>it.registro.scuola.model.soap</generatePackage>
                             <schemaIncludes>
                                 <include>scuola.xsd</include>
-                                <!--<include>ingrediente.xsd</include>-->
                             </schemaIncludes>
                             <forceRegenerate>true</forceRegenerate>
                         </configuration>
