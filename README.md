@@ -1,4 +1,4 @@
-# Registro-Elettronico
+# Registro-Elettronico (IN SVILUPPO...)
 Emulazione di un registro elettronico per le scuole superiori. 
 
 Le tecnologie usate sono: 
@@ -7,7 +7,7 @@ Le tecnologie usate sono:
 - Frontend: React.js
 
 ## Casi d'uso
-Il sistema prevde 4 utenti descritti da una tabella "utente" che ha un riferimento alla tabella dello specifico utente gestito a livello applicativo. Si hanno 4 ruoli che si riflettono nella gestione JWT di Spring Security.
+Il sistema prevde 4 tipi di utenti. La tabella "utente" ha un riferimento ad ogni tabella dello specifico utente; la gestione delle relazioni e del ruolo è svolta a livello applicativo. 
 
 ### Gestore
 
@@ -18,7 +18,7 @@ Il sistema prevde 4 utenti descritti da una tabella "utente" che ha un riferimen
 ### Studente
 
 ## SQL
-cartella sql dedicata contenente i file per la creazione, gestione e ottimizzazione della base dati in MySQL.
+Vi è una cartella sql dedicata contenente i file per la creazione, gestione e ottimizzazione della base dati in MySQL.
 
 ### Relazioni
 
