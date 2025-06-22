@@ -1,6 +1,25 @@
 # Registro-Elettronico (IN SVILUPPO...)
 Emulazione di un registro elettronico per le scuole superiori. 
 
+Il file /src/main/application.properties non è riportato su Github. La struttura è la seguente:
+```yaml
+spring.application.name=registro-elettronico
+
+server.port=8080
+
+# Configurazione del datasource
+spring.datasource.url=jdbc:mysql://localhost:PORT_NUMBER/re?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=USERNAME
+spring.datasource.password=PASSWORD
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Configurazione JPA/Hibernate
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+spring.jpa.show-sql=true
+
+```
+
 Le tecnologie usate sono: 
 - DBMS: MySQL
 - Backend: Java Spring Boot
