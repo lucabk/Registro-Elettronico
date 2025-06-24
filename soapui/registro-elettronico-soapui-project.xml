@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="d4b7e0e5-a30e-4424-a1c6-bad65ecb7f01" activeEnvironment="Default" name="registro-elettronico" resourceRoot="" soapui-version="5.8.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="5bbe86ec-238e-4ec1-a04d-5b7d1bb9b1db" wsaVersion="NONE" name="ScuolaServicePortTypeSoap11" type="wsdl" bindingName="{http://scuola.registro.it/scuola}ScuolaServicePortTypeSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/soap/scuola.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/soap/scuola.wsdl"><con:part><con:url>http://localhost:8080/soap/scuola.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://scuola.registro.it/scuola" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://scuola.registro.it/scuola" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://scuola.registro.it/scuola">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://scuola.registro.it/scuola" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:complexType name="scuola">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="id" type="xsd:int"/>
+          <xsd:element name="nome" type="xsd:string"/>
+          <xsd:element name="tipo" type="xsd:string"/>
+          <xsd:element name="indirizzo" type="xsd:string"/>
+          <xsd:element name="citta" type="xsd:string"/>
+          <xsd:element name="provincia" type="xsd:string"/>
+          <xsd:element name="cap" type="xsd:string"/>
+          <xsd:element name="regione" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="scuolaUpdate">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="nome" type="xsd:string"/>
+          <xsd:element name="tipo" type="xsd:string"/>
+          <xsd:element name="indirizzo" type="xsd:string"/>
+          <xsd:element name="citta" type="xsd:string"/>
+          <xsd:element name="provincia" type="xsd:string"/>
+          <xsd:element name="cap" type="xsd:string"/>
+          <xsd:element name="regione" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getScuolaRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getScuolaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="scuola" type="tns:scuola"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getScuoleRequest">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element name="getScuoleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="scuola" type="tns:scuola"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addScuolaRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="scuola" type="tns:scuola"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addScuolaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="scuola" type="tns:scuola"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateScuolaRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="scuola" type="tns:scuolaUpdate"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateScuolaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="scuola" type="tns:scuolaUpdate"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteScuolaRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteScuolaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="cancellato" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteScuolaResponse">
+    <wsdl:part element="tns:deleteScuolaResponse" name="deleteScuolaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getScuolaResponse">
+    <wsdl:part element="tns:getScuolaResponse" name="getScuolaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getScuolaRequest">
+    <wsdl:part element="tns:getScuolaRequest" name="getScuolaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addScuolaRequest">
+    <wsdl:part element="tns:addScuolaRequest" name="addScuolaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getScuoleRequest">
+    <wsdl:part element="tns:getScuoleRequest" name="getScuoleRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getScuoleResponse">
+    <wsdl:part element="tns:getScuoleResponse" name="getScuoleResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateScuolaResponse">
+    <wsdl:part element="tns:updateScuolaResponse" name="updateScuolaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateScuolaRequest">
+    <wsdl:part element="tns:updateScuolaRequest" name="updateScuolaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteScuolaRequest">
+    <wsdl:part element="tns:deleteScuolaRequest" name="deleteScuolaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addScuolaResponse">
+    <wsdl:part element="tns:addScuolaResponse" name="addScuolaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ScuolaServicePortType">
+    <wsdl:operation name="deleteScuola">
+      <wsdl:input message="tns:deleteScuolaRequest" name="deleteScuolaRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteScuolaResponse" name="deleteScuolaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScuola">
+      <wsdl:input message="tns:getScuolaRequest" name="getScuolaRequest"></wsdl:input>
+      <wsdl:output message="tns:getScuolaResponse" name="getScuolaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addScuola">
+      <wsdl:input message="tns:addScuolaRequest" name="addScuolaRequest"></wsdl:input>
+      <wsdl:output message="tns:addScuolaResponse" name="addScuolaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScuole">
+      <wsdl:input message="tns:getScuoleRequest" name="getScuoleRequest"></wsdl:input>
+      <wsdl:output message="tns:getScuoleResponse" name="getScuoleResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateScuola">
+      <wsdl:input message="tns:updateScuolaRequest" name="updateScuolaRequest"></wsdl:input>
+      <wsdl:output message="tns:updateScuolaResponse" name="updateScuolaResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ScuolaServicePortTypeSoap11" type="tns:ScuolaServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="deleteScuola">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteScuolaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteScuolaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScuola">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getScuolaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getScuolaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addScuola">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addScuolaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addScuolaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScuole">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getScuoleRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getScuoleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateScuola">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateScuolaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateScuolaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ScuolaServicePortTypeService">
+    <wsdl:port binding="tns:ScuolaServicePortTypeSoap11" name="ScuolaServicePortTypeSoap11">
+      <soap:address location="http://localhost:8080/soap/scuola"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/soap/scuola</con:endpoint></con:endpoints><con:operation id="91c6abae-ec15-4cb2-8f05-82fda8df31fa" isOneWay="false" action="" name="addScuola" bindingOperationName="addScuola" type="Request-Response" outputName="addScuolaResponse" inputName="addScuolaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9b229684-1fad-442a-aab3-1becc49557bc" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/scuola</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scu="http://scuola.registro.it/scuola">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <scu:addScuolaRequest>\r
+         <scu:scuola>\r
+            <!--Optional:-->\r
+            <scu:id>?</scu:id>\r
+            <scu:nome>Liceo Scientifico Galielo Galilei</scu:nome>\r
+            <scu:tipo>Liceo Scientifico</scu:tipo>\r
+            <scu:indirizzo>Via Tiburtina 4</scu:indirizzo>\r
+            <scu:citta>Pescara</scu:citta>\r
+            <scu:provincia>PE</scu:provincia>\r
+            <scu:cap>65017</scu:cap>\r
+            <scu:regione>Abruzzo</scu:regione>\r
+         </scu:scuola>\r
+      </scu:addScuolaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://scuola.registro.it/scuola/ScuolaServicePortType/addScuolaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8e0d3e7d-c8dd-4848-9b23-941259493586" isOneWay="false" action="" name="deleteScuola" bindingOperationName="deleteScuola" type="Request-Response" outputName="deleteScuolaResponse" inputName="deleteScuolaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d736f0e0-6a21-4833-9b13-bbed481f2af1" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/scuola</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scu="http://scuola.registro.it/scuola">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <scu:deleteScuolaRequest>\r
+         <scu:id>12</scu:id>\r
+      </scu:deleteScuolaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://scuola.registro.it/scuola/ScuolaServicePortType/deleteScuolaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="71b8ee42-b193-4e43-9ba6-90e0a14b21d3" isOneWay="false" action="" name="getScuola" bindingOperationName="getScuola" type="Request-Response" outputName="getScuolaResponse" inputName="getScuolaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2465b480-3413-4305-aa64-8b48414b77e9" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/scuola</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scu="http://scuola.registro.it/scuola">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <scu:getScuolaRequest>\r
+         <scu:id>1</scu:id>\r
+      </scu:getScuolaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://scuola.registro.it/scuola/ScuolaServicePortType/getScuolaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="eeb766a4-ca8f-46d1-97c9-dc5d8fa7803a" isOneWay="false" action="" name="getScuole" bindingOperationName="getScuole" type="Request-Response" outputName="getScuoleResponse" inputName="getScuoleRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="db46b448-00b6-4751-a002-ad3f6624b754" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/scuola</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scu="http://scuola.registro.it/scuola">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <scu:getScuoleRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://scuola.registro.it/scuola/ScuolaServicePortType/getScuoleRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e430eb0e-bf48-46fb-a5d5-63c5616d863b" isOneWay="false" action="" name="updateScuola" bindingOperationName="updateScuola" type="Request-Response" outputName="updateScuolaResponse" inputName="updateScuolaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2d6e2b47-3cb4-4988-a5db-213c4b2a1157" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/scuola</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scu="http://scuola.registro.it/scuola">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <scu:updateScuolaRequest>\r
+         <scu:scuola>\r
+            <scu:id>12</scu:id>\r
+            <scu:nome>Liceo Scientifico Corradino d'Ascanio</scu:nome>\r
+            <scu:tipo>Liceo Scientifico</scu:tipo>\r
+            <scu:indirizzo>Via Vestina 114</scu:indirizzo>\r
+            <scu:citta>Montesilvano</scu:citta>\r
+            <scu:provincia>PE</scu:provincia>\r
+            <scu:cap>65015</scu:cap>\r
+            <scu:regione>Abruzzo</scu:regione>\r
+         </scu:scuola>\r
+      </scu:updateScuolaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://scuola.registro.it/scuola/ScuolaServicePortType/updateScuolaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
