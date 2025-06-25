@@ -51,6 +51,8 @@ Vi è una cartella sql dedicata contenente i file per la creazione, gestione e o
 #### Procedure
 ### Inserimento utente gestore
 Si è creata una procedura per l'inserimento dei valori associati alla tabella ```utente``` con il ruolo di ```GES``` (gestore).
+La password può essere generata usando vari <a href="https://bcrypt-generator.com/">modelli online</a> di Bcrypt a 12 rounds. 
+Gli utenti, invece, come docente, segreteria e studente sono aggiunti direttamente tramite REST API con autenticazione.
 
 ## Servizi
 
@@ -66,10 +68,9 @@ Per il front-end + test con Postman.
 ### Implementazione
 Nello sviluppo si è seguito il pattern MVC: model, repository, dto, mapper, interfaccia service, service e rest controller.
 
-## Prossimi passi:
--Spring Security JWT per amministratore
--spring batch per caricare classi (csv) avviato tramite REST
 
-### TODO
-- SOAP classe
-- creare utente meno privilegiato per connessione a db da spring boot
+#### Riferimenti
+- <a href="https://www.youtube.com/watch?v=Kq-DRboTVrc">Spring Boot</a>
+- <a href="https://fullstackopen.com/en/">React</a> 
+- <a href="https://www.youtube.com/watch?v=oeni_9g7too&t=333s">Spring Security</a>
+- <a href="https://cs50.harvard.edu/sql/2024/">SQL</a>

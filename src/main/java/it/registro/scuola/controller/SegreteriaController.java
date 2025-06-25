@@ -1,6 +1,9 @@
 package it.registro.scuola.controller;
 
 import java.util.*;
+
+import it.registro.scuola.dto.register.AddSegreteriaReqDTO;
+import it.registro.scuola.dto.register.AddSegreteriaResDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,7 +43,7 @@ public class SegreteriaController {
 	}
 	
 	@PostMapping()
-	public ResponseEntity<SegreteriaDTO> addSegreteria(@Valid @RequestBody SegreteriaDTO s) {
+	public ResponseEntity<AddSegreteriaResDTO> addSegreteria(@Valid @RequestBody AddSegreteriaReqDTO s) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(segreteriaService.addSegreteria(s));
 	}
 	

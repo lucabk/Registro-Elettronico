@@ -45,18 +45,6 @@ public class SecurityConfig {
             .build();
     }
 
-    //Bean to customize UserDetailsService
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user1 = User
-//                .withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("user")
-//                .roles("GST")
-//                .build();
-//        return new InMemoryUserDetailsManager(user1);
-//    }
-
     //Bean to customiza AuthenticationProvider
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();

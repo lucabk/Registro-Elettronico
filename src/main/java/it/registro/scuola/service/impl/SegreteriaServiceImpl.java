@@ -1,6 +1,12 @@
 package it.registro.scuola.service.impl;
 
 import java.util.List;
+
+import it.registro.scuola.dto.register.AddSegreteriaReqDTO;
+import it.registro.scuola.dto.register.AddSegreteriaResDTO;
+import it.registro.scuola.mapper.ScuolaMapper;
+import it.registro.scuola.model.Utente;
+import it.registro.scuola.validation.SegreteriaInputValidation;
 import org.springframework.stereotype.Service;
 import it.registro.scuola.dto.SegreteriaDTO;
 import it.registro.scuola.mapper.SegreteriaMapper;
@@ -18,6 +24,7 @@ import it.registro.scuola.repository.SegreteriaRepository;
 public class SegreteriaServiceImpl implements SegreteriaService{
 	private SegreteriaRepository segreteriaRepository;
 	private ScuolaServiceImpl scuolaService;
+	private UtenteServiceImpl utenteService;
 
 	@Override
 	public SegreteriaDTO getSegreteria(int id) {
@@ -35,14 +42,23 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 	}
 
 	@Override
-	public SegreteriaDTO addSegreteria(SegreteriaDTO s) {
-		if(s.getScuolaDTO() == null) {
-			throw new IllegalArgumentException("E' obbliglatorio specificare la scuola a cui aggiungere la segreteria");
-		}
+	public AddSegreteriaResDTO addSegreteria(AddSegreteriaReqDTO s) {
+		SegreteriaInputValidation.addSegreteriaReqDTOValidation(s);
 		Scuola scuola = scuolaService.getScuola(s.getScuolaDTO().getId());
 		Segreteria entity = SegreteriaMapper.toEntity(s);
 		entity.setScuola(scuola);
-		return SegreteriaMapper.toDTO(segreteriaRepository.save(entity));
+		Segreteria savedSeg = segreteriaRepository.save(entity);
+
+		Utente newUser = new Utente(s.getUsername(), s.getPassword(), "SEG", savedSeg.getId());
+		Utente savedUser = utenteService.addUtente(newUser);
+
+		return new AddSegreteriaResDTO(
+				savedUser.getId(),
+				savedUser.getUsername(),
+				savedSeg.getId(),
+				savedSeg.getNome(),
+				ScuolaMapper.toDTO(savedSeg.getScuola())
+		);
 	}
 
 	@Override 
