@@ -4,20 +4,28 @@ use re;
 ####### CREAZIONE PROCEDURE ######
 ##################################
 
-# CREATE PROCEDURE name BEGIN END;
+# Procedura inserimento utente gestore
+DELIMITER //
+CREATE PROCEDURE inserimento_utente_gestore(
+	IN p_username VARCHAR(50),
+    IN p_password VARCHAR(255)
+) 
+BEGIN 
+	DECLARE last_id INT;
+    
+    -- inserismento nuovo utente di tipo gestore
+	INSERT INTO utente (username, password, ruolo, riferimento_id)
+	VALUES (p_username, p_password, 'GES', 0);
+    
+    -- recupera l'id appena creato
+	SET last_id = LAST_INSERT_ID();
+    
+    -- aggiorna il riferimento_id con l'id del gestore stesso
+	UPDATE utente SET riferimento_id = last_id WHERE id_utente = last_id;
+    
+END //
 
-############################# FARE PROCEDURA INSERIMENTO GESTORE
+DELIMITER ;
 
--- Step 1: inserisci
-INSERT INTO utente (username, password, ruolo, riferimento_id)
-VALUES ('user2', 'user2', 'GES', 0);
-
--- Step 2: recupera l'id appena creato
-SET @last_id = LAST_INSERT_ID();
-
--- Step 3: aggiorna riferimento_id con id stesso
-UPDATE utente SET riferimento_id = @last_id WHERE id_utente = @last_id;
-
-########################
-#TODO: trigger, logs
-########################
+-- chiamata della procedura
+CALL inserimento_utente_gestore('user3', '{noop}user3');

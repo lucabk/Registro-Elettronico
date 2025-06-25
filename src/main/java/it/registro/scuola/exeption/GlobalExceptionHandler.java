@@ -20,13 +20,6 @@ public class GlobalExceptionHandler {
 		);
 	}
 
-	@ExceptionHandler({UsernameNotFoundException.class})
-	public ResponseEntity<CustomError> handleUsernameNotFoundException(UsernameNotFoundException ex) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-				new CustomError(LocalDateTime.now(), HttpStatus.NOT_FOUND.value(), "USER NOT FOUND", ex.getMessage())
-		);
-	}
-	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<CustomError> handleValidationException(MethodArgumentNotValidException ex) {
 		StringBuilder message = new StringBuilder("Errore di validazione:\n");

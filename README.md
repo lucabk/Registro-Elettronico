@@ -48,6 +48,10 @@ Vi è una cartella sql dedicata contenente i file per la creazione, gestione e o
 #### Classe
 #### Segreteria
 
+#### Procedure
+### Inserimento utente gestore
+Si è creata una procedura per l'inserimento dei valori associati alla tabella ```utente``` con il ruolo di ```GES``` (gestore).
+
 ## Servizi
 
 ### SOAP
