@@ -2,13 +2,14 @@ package it.registro.scuola.service.impl;
 
 import java.util.List;
 
-import it.registro.scuola.dto.register.AddSegreteriaReqDTO;
-import it.registro.scuola.dto.register.AddSegreteriaResDTO;
+import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
+import it.registro.scuola.dto.segreteria.AddSegreteriaResDTO;
+import it.registro.scuola.dto.segreteria.UpSegreteriaPswDTO;
 import it.registro.scuola.mapper.ScuolaMapper;
 import it.registro.scuola.model.Utente;
 import it.registro.scuola.validation.SegreteriaInputValidation;
 import org.springframework.stereotype.Service;
-import it.registro.scuola.dto.SegreteriaDTO;
+import it.registro.scuola.dto.segreteria.SegreteriaDTO;
 import it.registro.scuola.mapper.SegreteriaMapper;
 import it.registro.scuola.model.Scuola;
 import it.registro.scuola.model.Segreteria;
@@ -70,6 +71,13 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 			sToUp.setScuola(scuola);
 		}
 		segreteriaRepository.save(sToUp);
+	}
+
+	@Override
+	public void updateSegreteriaPassword(UpSegreteriaPswDTO s, int id) {
+		Segreteria originalEntity = segreteriaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Segreteria con id "+id+" non trovata"));
+		SegreteriaInputValidation.upSegreteriaPswDTOValidation(s);
+		utenteService.upUtenteSegreteria(id, s.getPassword());
 	}
 
 	@Override

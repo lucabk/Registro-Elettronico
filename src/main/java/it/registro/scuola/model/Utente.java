@@ -28,7 +28,7 @@ public class Utente {
     private String ruolo;
 
     @Column(name = "riferimento_id")
-    private int riferimento_id;
+    private int riferimentoId;
 
     @Column(name = "data_inserimento", insertable = false, updatable = false)
     private Date dataInserimento;
@@ -36,10 +36,10 @@ public class Utente {
     @Column(name = "data_aggiornamento", insertable = false, updatable = false)
     private Date dataAggiornamento;
 
-    public Utente(String username, String password, String ruolo, int riferimento_id) {
+    public Utente(String username, String password, String ruolo, int riferimentoId) {
         this.username = username;
         this.password = password;
         this.ruolo = ruolo;
-        this.riferimento_id = riferimento_id;
+        this.riferimentoId = riferimentoId;
     }
 }

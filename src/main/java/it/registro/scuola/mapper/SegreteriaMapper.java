@@ -2,8 +2,8 @@ package it.registro.scuola.mapper;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import it.registro.scuola.dto.SegreteriaDTO;
-import it.registro.scuola.dto.register.AddSegreteriaReqDTO;
+import it.registro.scuola.dto.segreteria.SegreteriaDTO;
+import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
 import it.registro.scuola.model.Segreteria;
 
 public class SegreteriaMapper {

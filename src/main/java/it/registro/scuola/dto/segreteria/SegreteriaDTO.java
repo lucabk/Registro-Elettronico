@@ -1,5 +1,6 @@
-package it.registro.scuola.dto;
+package it.registro.scuola.dto.segreteria;
 
+import it.registro.scuola.dto.ScuolaDTO;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

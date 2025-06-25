@@ -1,8 +1,6 @@
-package it.registro.scuola.dto.register;
+package it.registro.scuola.dto.segreteria;
 
 import it.registro.scuola.dto.ScuolaDTO;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS utente(
     username VARCHAR(50) UNIQUE NOT NULL,
 	password VARCHAR(255) NOT NULL,	
     ruolo ENUM('GES', 'SEG', 'DOC', 'STU') NOT NULL,
-    riferimento_id INT UNSIGNED NOT NULL,
+    riferimento_id INT UNSIGNED NOT NULL UNIQUE,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_utente),
