@@ -5,6 +5,7 @@ import it.registro.scuola.repository.UtenteRepository;
 import it.registro.scuola.service.UtenteService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class UtenteServiceImpl implements UtenteService {
 
     private UtenteRepository utenteRepository;
+    private BCryptPasswordEncoder encoder;
 
     @Override
     public Utente addUtente(Utente u) {
         if(utenteRepository.findByUsername(u.getUsername()) != null) {
             throw new IllegalArgumentException("Utente con username '" + u.getUsername() + "' già presente nel db");
         }
+        u.setPassword(encoder.encode(u.getPassword()));
         return utenteRepository.save(u);
     }
 
@@ -29,6 +32,6 @@ public class UtenteServiceImpl implements UtenteService {
         if(utenteToUp == null){
             throw new EntityNotFoundException("Utente con riferimento id "+riferimentoId+ " non trovato");
         }
-        utenteToUp.setPassword(newPasssword);
+        utenteToUp.setPassword(encoder.encode(newPasssword));
     }
 }
