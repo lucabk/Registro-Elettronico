@@ -35,6 +35,7 @@ SHOW FULL TABLES IN re WHERE TABLE_TYPE LIKE 'VIEW';
 ##################################
 
 CREATE INDEX idx_classe_id_scuola ON classe(id_scuola); 
+CREATE INDEX idx_utente_riferimento_id ON utente(riferimento_id);
 #CREATE INDEX idx_profilo_studente_id_studente ON profilo_studente(id_studente);
 #CREATE INDEX idx_studente_id_classe ON studente(id_classe);
 #CREATE INDEX idx_incarico_docente_classe ON incarico(id_docente, id_classe);
@@ -42,6 +43,7 @@ CREATE INDEX idx_classe_id_scuola ON classe(id_scuola);
 
 # Mostra indice per tabella
 SHOW INDEXES FROM classe;
+SHOW INDEXES FROM utente;
 
 # Ottimizzazione delle query
 EXPLAIN SELECT * FROM classi_per_scuola;
