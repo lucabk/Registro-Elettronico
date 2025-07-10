@@ -65,6 +65,12 @@ Si aggiungno le dipendenze per JAXB, WSDL e spring-boot-starter-web-services; ov
 ### REST
 Per il front-end + test con Postman. 
 
+### JWT
+Si è usata crittografia simmetrica per la generazione della chiave con cui firmare il JWT. La chiave è stata generata mediante il comando:
+```bash
+openssl rand -base64 64
+```
+
 ### Implementazione
 Nello sviluppo si è seguito il pattern MVC: model, repository, dto, mapper, interfaccia service, service e rest controller.
 

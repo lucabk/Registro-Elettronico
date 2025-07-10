@@ -1,10 +1,16 @@
 package it.registro.scuola.service.impl;
 
+import it.registro.scuola.dto.TokenDTO;
+import it.registro.scuola.dto.UtenteDTO;
 import it.registro.scuola.model.Utente;
 import it.registro.scuola.repository.UtenteRepository;
 import it.registro.scuola.service.UtenteService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +22,8 @@ public class UtenteServiceImpl implements UtenteService {
 
     private UtenteRepository utenteRepository;
     private BCryptPasswordEncoder encoder;
+    private AuthenticationManager authenticationManager;
+    private JWTServiceImpl jwtService;
 
     @Override
     public Utente addUtente(Utente u) {
@@ -33,5 +41,18 @@ public class UtenteServiceImpl implements UtenteService {
             throw new EntityNotFoundException("Utente con riferimento id "+riferimentoId+ " non trovato");
         }
         utenteToUp.setPassword(encoder.encode(newPasssword));
+    }
+
+    @Override
+    public TokenDTO verify(UtenteDTO utente) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(utente.getUsername(), utente.getPassword())
+        );
+        if(authentication.isAuthenticated()) {
+            return new TokenDTO(jwtService.generateToken(utente.getUsername()));
+        } else {
+            throw  new BadCredentialsException("Credenziali non valide");
+        }
+
     }
 }

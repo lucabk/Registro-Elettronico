@@ -18,13 +18,6 @@ import it.registro.scuola.service.impl.ScuolaServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
-//////////////////////
-///
-///CORS TEMPORANEO
-///////////////////
-///
-@CrossOrigin(origins = "http://localhost:5173")
-
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/scuole")
