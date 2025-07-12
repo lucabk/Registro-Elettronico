@@ -2,6 +2,8 @@ package it.registro.scuola.exeption;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,7 +20,7 @@ public class GlobalExceptionHandler {
 				new CustomError(LocalDateTime.now(), HttpStatus.NOT_FOUND.value(), "NOT FOUND", ex.getMessage())
 		);
 	}
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<CustomError> handleValidationException(MethodArgumentNotValidException ex) {
 		StringBuilder message = new StringBuilder("Errore di validazione:\n");
@@ -54,6 +56,18 @@ public class GlobalExceptionHandler {
 					HttpStatus.BAD_REQUEST.value(),
 					"BAD REQUEST",
 					ex.getMessage()
+				));
+	}
+
+	@ExceptionHandler(BadCredentialsException.class)
+	public ResponseEntity<CustomError> handleBadCredentials(BadCredentialsException ex) {
+		return ResponseEntity
+				.status(HttpStatus.UNAUTHORIZED)
+				.body(new CustomError(
+						LocalDateTime.now(),
+						HttpStatus.UNAUTHORIZED.value(),
+						"UNAUTHORIZED",
+						"Username o password non validi"
 				));
 	}
 }
