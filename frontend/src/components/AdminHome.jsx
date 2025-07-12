@@ -40,10 +40,10 @@ const AdminHome = () => {
                     /> } 
                 />
                 <Route path='/schools/:id/update' element= { <UpdateSchool 
-                                schools={schools}
-                                setSchools={setSchools}
-                                /> }
-                            /> 
+                    schools={schools}
+                    setSchools={setSchools}
+                    /> }
+                /> 
             </Routes>
         </>
     )
