@@ -84,6 +84,7 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 	public void deleteSegreteria(int id) {
 		segreteriaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Segreteria con id "+id+" non trovata"));
 		segreteriaRepository.deleteById(id);
+		utenteService.deleteUtente(id); //idRiferimento
 	}
 
 }

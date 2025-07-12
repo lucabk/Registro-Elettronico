@@ -44,6 +44,12 @@ public class UtenteServiceImpl implements UtenteService {
     }
 
     @Override
+    public void deleteUtente(int idRiferimento) {
+        Utente u = utenteRepository.findByRiferimentoId(idRiferimento);
+        utenteRepository.deleteById(u.getId());
+    }
+
+    @Override
     public TokenDTO verify(UtenteDTO utente) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(utente.getUsername(), utente.getPassword())

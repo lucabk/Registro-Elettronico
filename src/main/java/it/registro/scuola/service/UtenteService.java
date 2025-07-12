@@ -9,5 +9,7 @@ public interface UtenteService {
 
     void upUtenteSegreteria(int idRiferimento, String password);
 
+    void deleteUtente(int idRiferimento);
+
     TokenDTO verify(UtenteDTO utente);
 }
