@@ -69,7 +69,7 @@ public class JWTServiceImpl implements JWTService {
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()
-                .verifyWith(getKey())
+                .verifyWith(getKey()) //verifica la firma
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
