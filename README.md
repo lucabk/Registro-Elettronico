@@ -65,14 +65,61 @@ Si aggiungno le dipendenze per JAXB, WSDL e spring-boot-starter-web-services; ov
 ### REST
 Per il front-end + test con Postman. 
 
-### JWT
-Si è usata crittografia simmetrica per la generazione della chiave con cui firmare il JWT. La chiave è stata generata mediante il comando:
+### Spring Security
+L'applicazione prevede autenticazione tramite username e password. Le credenziali sono fornite in anticipo agli utenti. 
+Gli utenti posono essere creati trami REST API dagli amminstratori; mentre gli admin si creano direttamente tramite SQL. 
+A seguito di una corretta autenticazione il back-end inoltra al client il token JWT con cui effettuare le successive chiamate autenticate.  
+
+#### JWT
+Si è usata crittografia simmetrica per la generazione della chiave con cui firmare il JWT. Il token fa uso dell'algoritmo di hashing HMAC che, in congiunzione con la firma, garantisce autentenicità ed integrità del token.
+La chiave è stata generata mediante il comando:
 ```bash
 openssl rand -base64 64
 ```
 
+Ecco come appare, per il ruolo di Segreteria, il contenuto del JWT decodificato base-64 (e firmato):
+
+```json
+{
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6IlJPTEVfU0VHIiwic3ViIjoiUzEwMSIsImlhdCI6MTc1MjMzMDUwNywiZXhwIjoxNzUyMzMyMzA3fQ.nn34gSzGYS5RO4f8G8JBTEL0SsIy8l8xMCwJhH1BngC-AKVLkSTHtNKahQbGL40jhmB-5LLDDkcbfGpu5tSLOw"
+}
+```
+Si specifica: il ruolo, lo username, la data di emissione e di scadenza del token JWT.
+```json
+{
+  "roles": "ROLE_SEG",
+  "sub": "S101",
+  "iat": 1752330507,
+  "exp": 1752332307
+}
+```
+
+Nel caso del ruolo di Gestore:
+```json
+{
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6IlJPTEVfR0VTIiwic3ViIjoiRzEwMCIsImlhdCI6MTc1MjMzMDc5MywiZXhwIjoxNzUyMzMyNTkzfQ.weaMpgu3H_tqPD4HDOEn9AmG4wv83wbgX7Ueh64dwcRh0fWgThBEprqx3Y24rnL-4ptHATDjukIBanaNYt_seg"
+}
+```
+Il payload del JWT decodificato:
+```json
+{
+  "roles": "ROLE_GES",
+  "sub": "G100",
+  "iat": 1752330793,
+  "exp": 1752332593
+}
+```
+
+
+#### Ruoli
+Nell'applicazione si prevedono 4 tipi di ruoli, da cui dipendono diverse tipi di autorizzazioni:
+- Gestore (admin)
+- Segreteria (gestisce la scuola di appartenenza, gli studenti ed i docenti)
+- Docente (elargisce le funzionalità di un insegnante relative ad una o più classi di studenti)
+- Studente (consulta le proprie informazione scolastiche)
+
 ### Implementazione
-Nello sviluppo si è seguito il pattern MVC: model, repository, dto, mapper, interfaccia service, service e rest controller.
+Nello sviluppo back-end si è seguito il pattern MVC: model, repository, dto, mapper, interfaccia service, service e rest controller.
 
 
 #### Riferimenti
@@ -80,3 +127,4 @@ Nello sviluppo si è seguito il pattern MVC: model, repository, dto, mapper, int
 - <a href="https://fullstackopen.com/en/">React</a> 
 - <a href="https://www.youtube.com/watch?v=oeni_9g7too&t=333s">Spring Security</a>
 - <a href="https://cs50.harvard.edu/sql/2024/">SQL</a>
+- <a href="https://jwt.io/">JWT</a> 

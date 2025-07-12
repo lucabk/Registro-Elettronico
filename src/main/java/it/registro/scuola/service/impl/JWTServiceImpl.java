@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import it.registro.scuola.service.JWTService;
+import it.registro.scuola.utilty.Ruolo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class JWTServiceImpl implements JWTService {
     public String generateToken(String username) {
 
         Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", getRole(username));
 
         return Jwts.builder()
                 .claims()
@@ -36,6 +38,17 @@ public class JWTServiceImpl implements JWTService {
                 .and()
                 .signWith(getKey())
                 .compact();
+    }
+
+    private String getRole(String username){
+        String role = switch (username.substring(0, 1)) {
+            case "G" -> Ruolo.GES.toString();
+            case "S" -> Ruolo.SEG.toString();
+            case "D" -> Ruolo.DOC.toString();
+            case "A" -> Ruolo.STU.toString();
+            default -> "";
+        };
+        return "ROLE_" + role;
     }
 
     private SecretKey getKey() {

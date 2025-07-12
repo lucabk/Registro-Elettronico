@@ -7,6 +7,7 @@ import it.registro.scuola.dto.segreteria.AddSegreteriaResDTO;
 import it.registro.scuola.dto.segreteria.UpSegreteriaPswDTO;
 import it.registro.scuola.mapper.ScuolaMapper;
 import it.registro.scuola.model.Utente;
+import it.registro.scuola.utilty.Ruolo;
 import it.registro.scuola.validation.SegreteriaInputValidation;
 import org.springframework.stereotype.Service;
 import it.registro.scuola.dto.segreteria.SegreteriaDTO;
@@ -50,7 +51,7 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 		entity.setScuola(scuola);
 		Segreteria savedSeg = segreteriaRepository.save(entity);
 
-		Utente newUser = new Utente(s.getUsername(), s.getPassword(), "SEG", savedSeg.getId());
+		Utente newUser = new Utente(s.getUsername(), s.getPassword(), Ruolo.SEG.toString(), savedSeg.getId());
 		Utente savedUser = utenteService.addUtente(newUser);
 
 		return new AddSegreteriaResDTO(

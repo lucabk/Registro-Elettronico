@@ -3,7 +3,7 @@ package it.registro.scuola.controller;
 import java.util.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +25,7 @@ public class ClasseController {
 
 	private ClasseServiceImpl classeService;
 
+	@PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
 	@GetMapping
 	public ResponseEntity<List<ClasseDTO>> getClassi(
 			@RequestParam(required=false) Integer idScuola) {
@@ -36,24 +37,28 @@ public class ClasseController {
 		}
 		return ResponseEntity.ok(classi);
 	}
-	
+
+	@PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
 	@GetMapping("{id}")
 	public ResponseEntity<ClasseDTO> getClasse(@PathVariable("id") int idClasse) {
 		return ResponseEntity.ok(classeService.getClasseDTO(idClasse));
 	}
-	
+
+	@PreAuthorize("hasAnyRole('GES', 'SEG')")
 	@PostMapping
 	public ResponseEntity<ClasseDTO> addClasse(@Valid @RequestBody ClasseDTO c) {
 		ClasseDTO classeSalvata = classeService.addClasseDTO(c); 
 		return ResponseEntity.status(HttpStatus.CREATED).body(classeSalvata);
 	}
-	
+
+	@PreAuthorize("hasAnyRole('GES', 'SEG')")
 	@PutMapping("{id}")
 	public ResponseEntity<ClasseDTO> updateClasse(@Valid @RequestBody ClasseDTO s, @PathVariable("id") int classeId) {
 		ClasseDTO classeAggiornata = classeService.updateClasseDTO(s, classeId);
 		return ResponseEntity.ok(classeAggiornata);
 	}
-	
+
+	@PreAuthorize("hasAnyRole('GES')")
 	@DeleteMapping("{id}")
 	public ResponseEntity<Void> deleteClasse(@PathVariable("id") int classeId) {
 		classeService.deleteClasseById(classeId);

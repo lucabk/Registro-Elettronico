@@ -49,8 +49,11 @@ public class UtenteServiceImpl implements UtenteService {
         utenteRepository.deleteById(u.getId());
     }
 
-    @Override
+    @Override //login
     public TokenDTO verify(UtenteDTO utente) {
+        if(utente.getUsername().charAt(0) != 'G' && utente.getUsername().charAt(0) != 'S' && utente.getUsername().charAt(0) != 'D' && utente.getUsername().charAt(0) != 'A'){
+            throw new BadCredentialsException("Lo username deve iniziare con A, S, D o G seguito da una serie di numeri");
+        }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(utente.getUsername(), utente.getPassword())
         );

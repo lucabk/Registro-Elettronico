@@ -15,7 +15,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(utente.getRuolo()));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + utente.getRuolo()));
     }
 
     @Override

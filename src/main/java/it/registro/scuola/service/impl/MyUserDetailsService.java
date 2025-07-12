@@ -23,7 +23,7 @@ public class MyUserDetailsService implements UserDetailsService {
         Utente utente = utenteRepository.findByUsername(username);
         if(utente == null){
             System.out.println("user not found");
-            throw new UsernameNotFoundException("Utente '"+ username + "' non trovato"); //gestione da configurare tramite Spring Security
+            throw new UsernameNotFoundException("Utente '"+ username + "' non trovato");
         }
 
         return new UserPrincipal(utente);
