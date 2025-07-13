@@ -56,16 +56,17 @@ Si è creata una procedura per l'inserimento dei valori associati alla tabella `
 La password può essere generata usando vari <a href="https://bcrypt-generator.com/">modelli online</a> di Bcrypt a 12 rounds. 
 Gli utenti, invece, come docente, segreteria e studente sono aggiunti direttamente tramite REST API con autenticazione.
 
-## Servizi
+## Back-end
+Il back-end è realizzato con il framework Spring Boot in Java.
 
 ### SOAP
 Servizio Soap implementato per la classe scuola. 
-
-### Implementazione
 Si aggiungno le dipendenze per JAXB, WSDL e spring-boot-starter-web-services; ovviamente anche il plugin per generare le classi SOAP. SI creano gli XSD, poi si lancia: mvn clean generate-sources. Si crea il file di configurazione WebServiceConfig.java che permette di creare i WSDL a runtime. Infine, si realizzano gli endpoint con i servizi implementati.
 
 ### REST
 Per il front-end + test con Postman. 
+Nello sviluppo back-end si è seguito il pattern MVC: model, repository, dto, mapper, interfaccia service, service e rest controller.
+
 
 ### Spring Security
 L'applicazione prevede autenticazione tramite username e password. Le credenziali sono fornite in anticipo agli utenti. 
@@ -120,9 +121,24 @@ Nell'applicazione si prevedono 4 tipi di ruoli, da cui dipendono diverse tipi di
 - Docente (elargisce le funzionalità di un insegnante relative ad una o più classi di studenti)
 - Studente (consulta le proprie informazione scolastiche)
 
-### Implementazione
-Nello sviluppo back-end si è seguito il pattern MVC: model, repository, dto, mapper, interfaccia service, service e rest controller.
+## Front-end
+Front end dell'applicazione sviluppato con React.
 
+### Creazione progetto
+Creazione del progetto nel workspace di Eclipse all'interno della cartella "frontend".
+
+```bash
+npx create-vite@latest frontend -- --template react
+cd frontend
+npm install
+```
+
+### Components
+#### Admin
+Per l'interazione con il backend si usano useState e useEffect
+
+#### Student - Teacher
+Per l'interazione con il backend si usano react-query e useReducer
 
 #### Riferimenti
 - <a href="https://www.youtube.com/watch?v=Kq-DRboTVrc">Spring Boot</a>
