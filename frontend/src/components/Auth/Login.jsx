@@ -2,8 +2,11 @@ import Footer from "../Footer"
 import TopScetion from "../TopSection"
 import * as authService from "../../service/auth"
 import { toast } from "react-toastify"
+import UserContext from "../context/userContext"
+import { useContext } from "react"
 
 const Login = () => {
+    const [_userToken, userTokenDispatcher] = useContext(UserContext)
 
     const handleSubmit = async (formData) => {
         try{
@@ -12,8 +15,9 @@ const Login = () => {
                 password : formData.get("password")
             }
             const res = await authService.login(credenziali)
+            userTokenDispatcher({ type : "SAVE_USER", payload : res.token }) //si salva il token nello stato userToken
+            window.localStorage.setItem("token", res.token) //si salva il token nel local storage del browser
             toast.success("Login effettuato con successo!")
-            console.log("res:", res)
         } catch(e) {
             toast.error("Credenziali Errate!")
             console.error("POST Error: ", e)

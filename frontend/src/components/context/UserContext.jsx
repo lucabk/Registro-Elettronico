@@ -12,10 +12,10 @@ const userReducer = (state, action) => {
 const UserContext = createContext()
 
 export const UserContextProvider = (props) => {
-    const [user, userDispatcher] = useReducer(userReducer, null)
+    const [userToken, userTokenDispatcher] = useReducer(userReducer, null)
 
     return (
-        <UserContext.Provider value={ [user, userDispatcher] }>
+        <UserContext.Provider value={ [userToken, userTokenDispatcher] }>
             {props.children}
         </UserContext.Provider>
     )

@@ -5,6 +5,7 @@ import * as schoolService from "../service/schools"
 import SchoolInfo from "./School/SchoolInfo"
 import SchoolForm from "./School/SchoolForm"
 import UpdateSchool from "./School/updateSchool"
+import { toast } from "react-toastify"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -13,7 +14,10 @@ const AdminHome = () => {
     useEffect(()=>{
         schoolService.getSchools(filter)
             .then(res =>  setSchools(res))
-            .catch(error => console.error("Error fetching schools:", error))
+            .catch(error => {
+                toast.error("Impossibile recuperare scuole")
+                console.error("Error fetching schools:", error)
+            })
     },[filter])
 
     const match = useMatch('/schools/:id')
