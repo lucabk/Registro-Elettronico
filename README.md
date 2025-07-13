@@ -18,6 +18,8 @@ spring.jpa.hibernate.ddl-auto=none
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 spring.jpa.show-sql=true
 
+# JWT KEY
+jwt.secret=${chiave}
 ```
 
 Le tecnologie usate sono: 
