@@ -1,12 +1,23 @@
 import Footer from "../Footer"
 import TopScetion from "../TopSection"
+import * as authService from "../../service/auth"
+import { toast } from "react-toastify"
 
 const Login = () => {
 
     const handleSubmit = async (formData) => {
-        console.log("submitted")
-        console.log("user: ", formData.get("username"))
-        console.log("psw: ", formData.get("password"))
+        try{
+            const credenziali = {
+                username : formData.get("username"),
+                password : formData.get("password")
+            }
+            const res = await authService.login(credenziali)
+            toast.success("Login effettuato con successo!")
+            console.log("res:", res)
+        } catch(e) {
+            toast.error("Credenziali Errate!")
+            console.error("POST Error: ", e)
+        }
     }
 
     return(
