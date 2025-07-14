@@ -1,9 +1,8 @@
-import { useContext } from "react"
-import UserContext from "./context/userContext"
+import { useUserToken } from "./context/userContext"
 import Logout from "./Auth/Logout"
 
 const TopScetion = ({ text, bg = "grey" }) => {
-    const [userToken, _userTokenDispatcher] = useContext(UserContext)
+    const userToken = useUserToken()
 
     let content
     let h1 = <h1 className="text-center fs-1 fw-bold">{text}</h1>

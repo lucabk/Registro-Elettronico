@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const userReducer = (state, action) => {
     switch(action.type) {
@@ -19,6 +19,16 @@ export const UserContextProvider = (props) => {
             {props.children}
         </UserContext.Provider>
     )
+}
+
+export const useUserToken = () => {
+    const userTokenAndDispatcher = useContext(UserContext)
+    return userTokenAndDispatcher[0]
+}
+
+export const useUserTokenDispatcher = () => {
+    const userTokenAndDispatcher = useContext(UserContext)
+    return userTokenAndDispatcher[1]
 }
 
 export default UserContext
