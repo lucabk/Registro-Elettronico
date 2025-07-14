@@ -1,14 +1,18 @@
+import { useContext } from "react"
+import UserContext from "./context/userContext"
+import Logout from "./Auth/Logout"
+
 const TopScetion = ({ text, bg = "grey" }) => {
+    const [userToken, _userTokenDispatcher] = useContext(UserContext)
+
     let content
-    let h1 = (
-        <h1 className="text-center fs-1 fw-bold">{text}</h1>
-    )
+    let h1 = <h1 className="text-center fs-1 fw-bold">{text}</h1>
     
     switch (bg) {
         
         case "green":
             content = (
-                <div className="container-fluid p-5 bg-success ">
+                <div className="container-fluid mt-0 p-5 bg-success ">
                     {h1}
                 </div>
             )
@@ -16,13 +20,20 @@ const TopScetion = ({ text, bg = "grey" }) => {
 
         default:
             content = (
-                <div className="container-fluid p-5 bg-secondary ">
+                <div className="container-fluid mt-0 p-5 bg-secondary ">
                     {h1}
                 </div>
             )
     }
+
+    let logged = (
+        <>
+            <Logout color={bg}/>
+            { content }
+        </>
+    )
     
-    return content
+    return userToken ? logged :  content
 }
 
 export default TopScetion

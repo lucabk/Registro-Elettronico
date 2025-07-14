@@ -22,15 +22,12 @@ const App = () => {
     <>
       <ToastContainer />
       { userToken === null ? (
-
         <Login />
-
       ) : (
-
-        <AdminHome />
-        
-      )
-      }
+        <>
+          <AdminHome />
+        </>
+      )}
     </>
   ) 
 } 
