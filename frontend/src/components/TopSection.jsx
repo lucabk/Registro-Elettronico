@@ -1,8 +1,8 @@
-import { useUserToken } from "./context/userContext"
+import { useUser } from "./context/userContext"
 import Logout from "./Auth/Logout"
 
 const TopScetion = ({ text, bg = "grey" }) => {
-    const userToken = useUserToken()
+    const userToken = useUser()
 
     let content
     let h1 = <h1 className="text-center fs-1 fw-bold">{text}</h1>

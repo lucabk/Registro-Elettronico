@@ -2,10 +2,10 @@ import Footer from "../Footer"
 import TopScetion from "../TopSection"
 import * as authService from "../../service/auth"
 import { toast } from "react-toastify"
-import { useUserTokenDispatcher } from "../context/userContext"
+import { useUserDispatcher } from "../context/userContext"
 
 const Login = () => {
-    const  userTokenDispatcher = useUserTokenDispatcher()
+    const  userTokenDispatcher = useUserDispatcher()
 
     const handleSubmit = async (formData) => {
         try{

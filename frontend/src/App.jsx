@@ -6,26 +6,26 @@ import UserContext from './components/context/userContext'
 import { useContext, useEffect } from 'react'
 
 const App = () => {
-  const [userToken, userTokenDispatcher] = useContext(UserContext)
+  const [user, userDispatcher] = useContext(UserContext)
 
   //fetch browser local storage: ripopola il contesto globale (userToken) con il token salvato nella memoria del browser al refresh
   useEffect(() => {
     const token = window.localStorage.getItem("token")
     if (token){
-      userTokenDispatcher({ type : "SAVE_USER", payload : token })
+      userDispatcher({ type : "SAVE_USER", payload : token })
     } 
   }, [])
 
-  //console.log("user token:", userToken)
+  console.log("user:", user)
   
   return(
     <>
       <ToastContainer />
-      { userToken === null ? (
+      { user === null ? (
         <Login />
       ) : (
         <>
-          <AdminHome />
+          { user.role === "ROLE_GES" && <AdminHome /> }
         </>
       )}
     </>

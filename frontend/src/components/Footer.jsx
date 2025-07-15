@@ -12,7 +12,7 @@ const Footer = ({ bg = "grey" }) => {
 
         case "green":
             content = (
-            <footer className="mt-2 p-3 bg-success text-dark">
+            <footer className="mt-2 mb-0 p-5 bg-success text-dark">
                 {icon}
             </footer>
             )
@@ -20,7 +20,7 @@ const Footer = ({ bg = "grey" }) => {
         
         default:
             content = (
-            <footer className="mt-2 p-3 bg-secondary text-dark">
+            <footer className="mt-2 mb-0 p-5 bg-secondary text-dark">
                 {icon}
             </footer>
             )

@@ -1,7 +1,7 @@
-import { useUserTokenDispatcher } from "../context/userContext"
+import { useUserDispatcher } from "../context/userContext"
 
 const LogoutButton = () => {
-    const userTokenDispatcher = useUserTokenDispatcher()
+    const userTokenDispatcher = useUserDispatcher()
 
     const handleLogout = (event) => {
         event.preventDefault()
