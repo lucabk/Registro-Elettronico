@@ -1,12 +1,12 @@
 import { useUserDispatcher } from "../context/userContext"
 
 const LogoutButton = () => {
-    const userTokenDispatcher = useUserDispatcher()
+    const userDispatcher = useUserDispatcher()
 
     const handleLogout = (event) => {
         event.preventDefault()
         window.localStorage.removeItem("token")
-        userTokenDispatcher({ type : "DELETE_USER" })
+        userDispatcher({ type : "DELETE_USER" })
     }
 
     return(
