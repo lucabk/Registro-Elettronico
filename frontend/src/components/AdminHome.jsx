@@ -20,7 +20,7 @@ const AdminHome = () => {
             })
     },[filter])
 
-    const match = useMatch('/schools/:id')
+    const match = useMatch('/admin/schools/:id')
     const school = match 
         ? schools.find(s => s.id === Number(match.params.id)) 
         : null

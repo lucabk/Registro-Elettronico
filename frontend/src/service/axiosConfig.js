@@ -1,9 +1,15 @@
 import axios from "axios"
 import { toast } from "react-toastify"
 
+
 let userDispatcher = null // variabile per gestire lo userDispatcher
 export const setUserDispatcher = (dispatcher) => {
     userDispatcher = dispatcher
+}
+
+let navigate = null // variabile per gester useNavigate
+export const setNavigate = (nav) => {
+    navigate = nav
 }
 
 const instance = axios.create({
@@ -28,6 +34,9 @@ instance.interceptors.response.use(
             localStorage.removeItem("token")
             if (userDispatcher) {
                 userDispatcher({ type: "DELETE_USER" })
+            }
+            if (navigate) {
+                navigate("/")
             }
         }
         return Promise.reject(error)

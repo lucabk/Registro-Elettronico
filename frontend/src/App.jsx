@@ -4,14 +4,18 @@ import Login from './components/Auth/Login'
 import UserContext from './components/context/userContext'
 import { useContext, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { setUserDispatcher } from './service/axiosConfig'
+import { setNavigate, setUserDispatcher } from './service/axiosConfig'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
 const App = () => {
   const [user, userDispatcher] = useContext(UserContext)
+  const navigate = useNavigate()
 
   //fetch browser local storage: ripopola il contesto globale (userToken) con il token salvato nella memoria del browser al refresh
   useEffect(() => {
-    setUserDispatcher(userDispatcher) //axios interceptor
+    setUserDispatcher(userDispatcher) //userDispatcher per axios interceptor
+    setNavigate(navigate)  // useNavigate per axios interceptor
     const token = window.localStorage.getItem("token")
     if (token) {
         const tokenPayload = JSON.parse(atob(token.split(".")[1]))
@@ -25,15 +29,34 @@ const App = () => {
     }
   }, [])
 
+  const getRedirectPath = (role) => {
+    switch (role){
+      case "ROLE_GES": return "/admin"
+      case "ROLE_SEG": return "/segreteria"
+      case "ROLE_DOC": return "/docente"
+      case "ROLE_STU": return "/studente"
+      default: return "/login"
+    }
+  }
+
   console.log("user:", user)
 
-  if (user === null) return <Login />
-  
-  return(
+  return (
     <>
-      { user.role === "ROLE_GES" && <AdminHome /> }
+      <Routes>
+        <Route path='/' element={ 
+          user === null ? 
+          <Login /> : 
+          <Navigate replace to = {getRedirectPath(user.role)} /> 
+        } />
+        <Route path='/admin/*' element={
+          user?.role === "ROLE_GES" ?
+          <AdminHome /> :
+          <Login /> 
+        } />
+      </Routes>
     </>
-  ) 
+  )
 } 
 
 export default App

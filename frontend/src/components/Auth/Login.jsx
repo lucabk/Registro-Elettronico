@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 import { useUserDispatcher } from "../context/userContext"
 
 const Login = () => {
-    const  userTokenDispatcher = useUserDispatcher()
+    const  userDispatcher = useUserDispatcher()
 
     const handleSubmit = async (formData) => {
         try{
@@ -14,7 +14,7 @@ const Login = () => {
                 password : formData.get("password")
             }
             const res = await authService.login(credenziali)
-            userTokenDispatcher({ type : "SAVE_USER", payload : res.token }) //si salva il token nello stato userToken
+            userDispatcher({ type : "SAVE_USER", payload : res.token }) //si salva il token nello stato userToken
             window.localStorage.setItem("token", res.token) //si salva il token nel local storage del browser
             toast.success("Login effettuato con successo!")
         } catch(e) {

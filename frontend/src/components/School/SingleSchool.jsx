@@ -5,7 +5,7 @@ const SingleSchool = ({ school }) => {
    return(
         <>
             <td>
-                <Link className='school-link' to={`/schools/${school.id}`}>
+                <Link className='school-link' to={`/admin/schools/${school.id}`}>
                     {school.nome}
                 </Link>
             </td>
