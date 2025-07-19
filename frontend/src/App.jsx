@@ -4,7 +4,7 @@ import Login from './components/Auth/Login'
 import UserContext from './components/context/userContext'
 import { useContext, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { setNavigate, setUserDispatcher } from './service/axiosConfig'
+import { axiosSetNavigate, axiosSetUserDispatcher } from './service/axiosConfig'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
 
@@ -14,8 +14,8 @@ const App = () => {
 
   //fetch browser local storage: ripopola il contesto globale (userToken) con il token salvato nella memoria del browser al refresh
   useEffect(() => {
-    setUserDispatcher(userDispatcher) //userDispatcher per axios interceptor
-    setNavigate(navigate)  // useNavigate per axios interceptor
+    axiosSetUserDispatcher(userDispatcher) //userDispatcher per axios interceptor
+    axiosSetNavigate(navigate)  // useNavigate per axios interceptor
     const token = window.localStorage.getItem("token")
     if (token) {
         const tokenPayload = JSON.parse(atob(token.split(".")[1]))
@@ -25,6 +25,7 @@ const App = () => {
           toast.error("Sessione scaduta. Si prega di effettuare il login")
           window.localStorage.removeItem("token")
           userDispatcher({ type : "DELETE_USER" })
+          navigate("/")
         }
     }
   }, [])

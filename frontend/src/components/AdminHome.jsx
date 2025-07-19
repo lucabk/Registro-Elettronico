@@ -6,6 +6,7 @@ import SchoolInfo from "./School/SchoolInfo"
 import SchoolForm from "./School/SchoolForm"
 import UpdateSchool from "./School/updateSchool"
 import { toast } from "react-toastify"
+import Segreterie from "./Secretaryship/Secretaryship"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -20,7 +21,7 @@ const AdminHome = () => {
             })
     },[filter])
 
-    const match = useMatch('/admin/schools/:id')
+    const match = useMatch('/admin/schools/:id/*')
     const school = match 
         ? schools.find(s => s.id === Number(match.params.id)) 
         : null
@@ -43,11 +44,15 @@ const AdminHome = () => {
                     setSchools={setSchools}
                     /> } 
                 />
-                <Route path='/schools/:id/update' element= { <UpdateSchool 
+                <Route path='/schools/:id/update' element = { <UpdateSchool 
                     schools={schools}
                     setSchools={setSchools}
                     /> }
                 /> 
+                <Route path='/schools/:id/segreterie' element = { <Segreterie 
+                    school={school}
+                    /> }
+                />
             </Routes>
         </>
     )

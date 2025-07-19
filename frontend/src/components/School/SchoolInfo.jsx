@@ -41,6 +41,14 @@ const SchoolInfo = ({ school, setSchools, schools }) => {
                                 {school.nome}
                             </div>
                             <ul className="list-group list-group-flush ">
+                                <li className="list-group-item">
+                                    <Link 
+                                        to="segreterie" 
+                                        style={{ color: "black" }}
+                                    >
+                                        Segreterie disponibili
+                                    </Link>
+                                </li>
                                 <li className="list-group-item">Indirizzo di studi: {school.tipo}</li>
                                 <li className="list-group-item">CAP: {school.cap}</li>
                                 <li className="list-group-item">Regione: {school.regione}</li>

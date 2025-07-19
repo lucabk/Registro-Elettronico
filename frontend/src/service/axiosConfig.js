@@ -3,12 +3,12 @@ import { toast } from "react-toastify"
 
 
 let userDispatcher = null // variabile per gestire lo userDispatcher
-export const setUserDispatcher = (dispatcher) => {
+export const axiosSetUserDispatcher = (dispatcher) => {
     userDispatcher = dispatcher
 }
 
 let navigate = null // variabile per gester useNavigate
-export const setNavigate = (nav) => {
+export const axiosSetNavigate = (nav) => {
     navigate = nav
 }
 
