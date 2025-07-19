@@ -2,7 +2,7 @@ import { useUser } from "./context/userContext"
 import Logout from "./Auth/Logout"
 import { Link } from "react-router-dom"
 
-const TopScetion = ({ text, bg = "grey" }) => {
+const TopScetion = ({ text, bg = "grey", hp=true }) => {
     const userToken = useUser()
 
     let content
@@ -24,7 +24,7 @@ const TopScetion = ({ text, bg = "grey" }) => {
             content = (
                 <div className="container-fluid mt-0 p-5 bg-success ">
                     {h1}
-                    {homePage}
+                    {hp && homePage}
                 </div>
             )
             break

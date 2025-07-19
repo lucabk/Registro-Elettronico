@@ -25,7 +25,7 @@ const Login = () => {
 
     return(
         <>
-            <TopScetion text={"Benvenuto sul portale myScuola"} bg={"green"}/>
+            <TopScetion text={"Benvenuto sul portale myScuola"} bg={"green"} hp={false}/>
             <div className="container p-3 mb-5 mt-5 bg-light text-dark p-5">
                 <h2 className="text-center fs-2 mb-4">Effettua il login</h2>
                 <form action={handleSubmit} className="row needs-validation">
