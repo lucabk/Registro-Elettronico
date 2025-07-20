@@ -36,7 +36,7 @@ const UpdateSchool = ({ setSchools, schools }) => {
             toast.error("Errore durante l'aggiornamento")
             console.error("Errore aggiornamento scuola: ", e)
         }
-        navigate(`/schools/${school.id}`)
+        navigate(`/admin/schools/${school.id}`)
     }
 
     return(

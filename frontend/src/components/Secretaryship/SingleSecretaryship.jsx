@@ -1,9 +1,11 @@
 const SingleSegreteria = ({ segreteria }) => {
 
     return(
-        <p>
-            nome segreteria: {segreteria.nome}
-        </p>
+        <ul>
+            <li>
+                <strong>{segreteria.nome}</strong> (id = {segreteria.id})
+            </li>
+        </ul>
     )
 }
 

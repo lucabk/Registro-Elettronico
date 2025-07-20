@@ -23,7 +23,7 @@ const Segreterie = ({ school }) => {
     console.log("segreterie: ", segreterie)
 
     const renderContend = () => {
-        if(segreterie.length > 1){
+        if(segreterie.length >= 1){
             return (
                 segreterie.map(
                     s => <SingleSegreteria key={s.id} segreteria={s} />
@@ -47,7 +47,7 @@ const Segreterie = ({ school }) => {
                     }
                 </div>
             )}
-            <AddSegreteria />
+            <AddSegreteria school={school} setSegreterie={setSegreterie}/>
             <Footer />
         </>
     )
