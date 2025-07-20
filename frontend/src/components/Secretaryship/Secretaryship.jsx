@@ -20,13 +20,16 @@ const Segreterie = ({ school }) => {
         }
     }, [])
 
-    console.log("segreterie: ", segreterie)
 
     const renderContend = () => {
         if(segreterie.length >= 1){
             return (
                 segreterie.map(
-                    s => <SingleSegreteria key={s.id} segreteria={s} />
+                    s => <SingleSegreteria 
+                        key={s.id} 
+                        segreteria={s} 
+                        setSegreterie={setSegreterie}
+                        segreterie={segreterie}/>
                 )
             )
         } else {

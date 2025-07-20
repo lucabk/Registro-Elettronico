@@ -11,3 +11,7 @@ export const addSegreteria = async (newS) => {
     const res = await axios.post(API_SEGRETERIE, newS)
     return res.data
 }
+
+export const deleteSegreteria = async (id) => {
+    await axios.delete(`${API_SEGRETERIE}/${id}`)
+}
