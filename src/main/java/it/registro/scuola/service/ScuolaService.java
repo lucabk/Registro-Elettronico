@@ -30,5 +30,4 @@ public interface ScuolaService {
 	List<ScuolaDTO> getScuoleByRegioneAndCittaDTO(String r, String c);
 
 	List<ScuolaDTO> getScuoleByProvinciaAndCittaDTO(String p, String c);
-
 }

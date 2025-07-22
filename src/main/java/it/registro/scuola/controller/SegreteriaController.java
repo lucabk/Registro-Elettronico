@@ -2,6 +2,7 @@ package it.registro.scuola.controller;
 
 import java.util.*;
 
+import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaResDTO;
 import it.registro.scuola.dto.segreteria.UpSegreteriaPswDTO;
@@ -66,5 +67,10 @@ public class SegreteriaController {
 	public ResponseEntity<Void> deleteSegreteria(@PathVariable int id){
 		segreteriaService.deleteSegreteria(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@GetMapping("/utente/{username}")
+	public ResponseEntity<ScuolaDTO> getScuolaBySegreteria(@PathVariable("username") String username) {
+		return ResponseEntity.ok(segreteriaService.getScuolaByUsername(username));
 	}
 }

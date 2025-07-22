@@ -1,5 +1,10 @@
 package it.registro.scuola.service.impl;
 
+import it.registro.scuola.dto.segreteria.SegreteriaDTO;
+import it.registro.scuola.model.Utente;
+import it.registro.scuola.repository.SegreteriaRepository;
+import it.registro.scuola.repository.UtenteRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import it.registro.scuola.dto.ScuolaDTO;
@@ -128,5 +133,4 @@ public class ScuolaServiceImpl implements ScuolaService {
 	public List<ScuolaDTO> getScuoleByProvinciaAndCittaDTO(String p, String c) {
 		return ScuolaMapper.toListDTO(getScuoleByProvinciaAndCitta(p, c));
 	}
-
 }

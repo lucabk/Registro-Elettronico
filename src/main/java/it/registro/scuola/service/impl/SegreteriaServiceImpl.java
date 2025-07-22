@@ -2,13 +2,16 @@ package it.registro.scuola.service.impl;
 
 import java.util.List;
 
+import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaResDTO;
 import it.registro.scuola.dto.segreteria.UpSegreteriaPswDTO;
 import it.registro.scuola.mapper.ScuolaMapper;
 import it.registro.scuola.model.Utente;
+import it.registro.scuola.repository.UtenteRepository;
 import it.registro.scuola.utilty.Ruolo;
 import it.registro.scuola.validation.SegreteriaInputValidation;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import it.registro.scuola.dto.segreteria.SegreteriaDTO;
 import it.registro.scuola.mapper.SegreteriaMapper;
@@ -27,6 +30,7 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 	private SegreteriaRepository segreteriaRepository;
 	private ScuolaServiceImpl scuolaService;
 	private UtenteServiceImpl utenteService;
+	private UtenteRepository utenteRepository;
 
 	@Override
 	public SegreteriaDTO getSegreteria(int id) {
@@ -88,4 +92,13 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 		utenteService.deleteUtente(id); //idRiferimento
 	}
 
+	@Override
+	public ScuolaDTO getScuolaByUsername(String username) {
+		Utente u = utenteRepository.findByUsername(username);
+		if(u == null) {
+			throw new UsernameNotFoundException("Utente "+username+" non trovato");
+		}
+		SegreteriaDTO s = getSegreteria(u.getRiferimentoId());
+		return  s.getScuolaDTO();
+	}
 }

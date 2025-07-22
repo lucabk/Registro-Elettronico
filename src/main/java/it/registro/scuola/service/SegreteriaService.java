@@ -1,5 +1,6 @@
 package it.registro.scuola.service;
 
+import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.dto.segreteria.SegreteriaDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaResDTO;
@@ -22,5 +23,6 @@ public interface SegreteriaService {
 	void updateSegreteriaPassword(UpSegreteriaPswDTO s, int id);
 	
 	void deleteSegreteria(int id);
-	
+
+	ScuolaDTO getScuolaByUsername(String username);
 }
