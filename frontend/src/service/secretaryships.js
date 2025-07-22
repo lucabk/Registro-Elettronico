@@ -15,3 +15,8 @@ export const addSegreteria = async (newS) => {
 export const deleteSegreteria = async (id) => {
     await axios.delete(`${API_SEGRETERIE}/${id}`)
 }
+
+export const getSchoolBySecr = async (username) => {
+    const res = await axios.get(`${API_SEGRETERIE}/utente/${username}`)
+    return res.data
+}

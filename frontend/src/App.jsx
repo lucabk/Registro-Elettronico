@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { axiosSetNavigate, axiosSetUserDispatcher } from './service/axiosConfig'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
+import SegreteriaHome from './components/SegreteriaHome'
 
 const App = () => {
   const [user, userDispatcher] = useContext(UserContext)
@@ -54,6 +55,11 @@ const App = () => {
           user?.role === "ROLE_GES" ?
           <AdminHome /> :
           <Login /> 
+        } />
+        <Route path='/segreteria/*' element={
+          user?.role === "ROLE_SEG" ?
+          <SegreteriaHome /> :
+          <Login />
         } />
       </Routes>
     </>
