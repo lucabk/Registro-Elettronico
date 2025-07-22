@@ -1,3 +1,4 @@
+import { toast } from "react-toastify"
 import { useUserDispatcher } from "../context/userContext"
 
 const LogoutButton = () => {
@@ -7,6 +8,7 @@ const LogoutButton = () => {
         event.preventDefault()
         window.localStorage.removeItem("token")
         userDispatcher({ type : "DELETE_USER" })
+        toast.success("Disconnessione avvenuta con successo")
     }
 
     return(

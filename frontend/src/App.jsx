@@ -1,5 +1,5 @@
 import './index.css'
-import AdminHome from "./components/adminHome"
+import AdminHome from "./components/AdminHome"
 import Login from './components/Auth/Login'
 import UserContext from './components/context/userContext'
 import { useContext, useEffect } from 'react'
