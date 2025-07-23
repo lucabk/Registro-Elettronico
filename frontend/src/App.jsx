@@ -8,6 +8,7 @@ import { axiosSetNavigate, axiosSetUserDispatcher } from './service/axiosConfig'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
 import SegreteriaHome from './components/SegreteriaHome'
+import { getRedirectPath } from './util/getPath'
 
 const App = () => {
   const [user, userDispatcher] = useContext(UserContext)
@@ -30,16 +31,6 @@ const App = () => {
         }
     }
   }, [])
-
-  const getRedirectPath = (role) => {
-    switch (role){
-      case "ROLE_GES": return "/admin"
-      case "ROLE_SEG": return "/segreteria"
-      case "ROLE_DOC": return "/docente"
-      case "ROLE_STU": return "/studente"
-      default: return "/login"
-    }
-  }
 
   console.log("user:", user)
 
