@@ -3,7 +3,7 @@ import Logout from "./Auth/Logout"
 import { Link } from "react-router-dom"
 
 const TopScetion = ({ text, bg = "grey", hp=true }) => {
-    const userToken = useUser()
+    const user = useUser()
 
     let content
     let h1 = <h1 className="text-center fs-1 fw-bold">{text}</h1>
@@ -29,6 +29,15 @@ const TopScetion = ({ text, bg = "grey", hp=true }) => {
             )
             break
 
+        case "segr":
+            content = (
+                <div className="container-fluid mt-0 p-5 bg-info text-dark">
+                    {h1}
+                    {hp && homePage}
+                </div>
+            )
+            break
+
         default:
             content = (
                 <div className="container-fluid mt-0 p-5 bg-secondary ">
@@ -45,7 +54,7 @@ const TopScetion = ({ text, bg = "grey", hp=true }) => {
         </>
     )
     
-    return userToken ? logged :  content
+    return user ? logged :  content
 }
 
 export default TopScetion

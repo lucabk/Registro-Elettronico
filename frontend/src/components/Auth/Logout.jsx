@@ -9,6 +9,11 @@ const Logout = ({ color }) => {
                 <LogoutButton />
             </div>
             break
+        case "segr":
+            content = <div className="container-fluid p-0 m-0 bg-info text-dark d-flex justify-content-end">
+                <LogoutButton />
+            </div>
+            break
         default:
             content = <div className="container-fluid m-0 p-0 bg-secondary d-flex justify-content-end">
                 <LogoutButton />

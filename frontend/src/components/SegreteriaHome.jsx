@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { getSchoolBySecr } from "../service/secretaryships"
 import { useUser } from "./context/userContext"
 import { toast } from "react-toastify"
+import ClassiScuolaSegr from "./Class/ClassiScuolaSegr"
 
 const SegreteriaHome = () => {
     const [school, setSchool] = useState(null)
@@ -22,7 +23,10 @@ const SegreteriaHome = () => {
         <>
             <Routes>
                 <Route path='/' element={ <SchoolHomePage 
-                    school={school}  />} 
+                    school={school} />} 
+                />
+                <Route path='/classi' element={ <ClassiScuolaSegr
+                    schoolId={school?.id} />} 
                 />
             </Routes>
         </>

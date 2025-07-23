@@ -18,6 +18,14 @@ const Footer = ({ bg = "grey" }) => {
             )
             break
         
+        case "segr":
+            content = (
+            <footer className="mt-2 mb-0 p-5 bg-info">
+                {icon}
+            </footer>
+            )
+            break
+        
         default:
             content = (
             <footer className="mt-2 mb-0 p-5 bg-secondary text-dark">
