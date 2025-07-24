@@ -13,3 +13,7 @@ export const getClassById = async (classId) => {
     const res = await axios.get(`${API_CLASSI}/${classId}`)
     return res.data
 }
+
+export const deleteClass = async (classId) => {
+    await axios.delete(`${API_CLASSI}/${classId}`)
+}

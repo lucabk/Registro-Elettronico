@@ -16,7 +16,7 @@ const Login = () => {
             const res = await authService.login(credenziali)
             userDispatcher({ type : "SAVE_USER", payload : res.token }) //si salva il token nello stato userToken
             window.localStorage.setItem("token", res.token) //si salva il token nel local storage del browser
-            toast.success("Login effettuato con successo!")
+            toast.success(`Login avvenuto con successo!`)
         } catch(e) {
             toast.error("Credenziali Errate!")
             console.error("POST Error: ", e)

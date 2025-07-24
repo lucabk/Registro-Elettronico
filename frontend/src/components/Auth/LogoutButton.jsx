@@ -1,16 +1,17 @@
 import { toast } from "react-toastify"
-import { useUserDispatcher } from "../context/userContext"
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import UserContext from "../context/userContext"
 
 const LogoutButton = () => {
-    const userDispatcher = useUserDispatcher()
+    const [user, userDispatcher] = useContext(UserContext)
     const navigate = useNavigate()
 
     const handleLogout = (event) => {
         event.preventDefault()
         window.localStorage.removeItem("token")
         userDispatcher({ type : "DELETE_USER" })
-        toast.success("Disconnessione avvenuta con successo")
+        toast.success(`Utente ${user?.username} disconnesso`)
         navigate("/")
     }
 

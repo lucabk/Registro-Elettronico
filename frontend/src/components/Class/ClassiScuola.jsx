@@ -27,6 +27,8 @@ const ClassiScuola = ({ schoolId }) => {
                         <th className="text-center">Lettera</th>
                         <th className="text-center">Anno Scolasitco</th>
                         <th className="text-center">Info</th>
+                        <th className="text-center">Aggiorna</th>
+                        <th className="text-center">Cancella</th>
                     </tr>
                 </thead>
                 <tbody className="table-group-divider">
@@ -38,7 +40,7 @@ const ClassiScuola = ({ schoolId }) => {
                     })
                     .map(c => 
                         <tr key={c.id}>
-                            <SingleClass SingleClass={c} />
+                            <SingleClass singleClass={c} setClasses={setClasses} classes={classes} />
                         </tr>
                 )}
                 </tbody>

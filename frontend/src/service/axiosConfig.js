@@ -30,7 +30,7 @@ instance.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-            toast.error("Sessione scaduta o non autorizzata. Effettua di nuovo il login.")
+            toast.error("Non si è autorizzati a svolgere questa azione. Si rieffettui il Login")
             localStorage.removeItem("token")
             if (userDispatcher) {
                 userDispatcher({ type: "DELETE_USER" })
