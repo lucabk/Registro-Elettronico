@@ -1,10 +1,15 @@
 import axios from "./axiosConfig"
 
-const API_BASE = 'http://localhost:8080/api/classi'
+const API_CLASSI = '/api/classi'
 
-export const getClasses = async (schoolId) => {
+export const getClasses = async (schoolId) => { //getClassiByIdScuola
     const params = {}
     if (schoolId) params.idScuola = schoolId
-    const res = await axios.get(API_BASE, { params })
+    const res = await axios.get(API_CLASSI, { params })
+    return res.data
+}
+
+export const getClassById = async (classId) => {
+    const res = await axios.get(`${API_CLASSI}/${classId}`)
     return res.data
 }

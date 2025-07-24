@@ -14,18 +14,19 @@ const ClassiScuola = ({ schoolId }) => {
                 console.error("Errore nel recupero delle classi associate alla scuola: ", error)})
     },[])
 
-    //console.log(classes)
+    console.log("classi della scuola:", classes)
 
     return (
-        <div>
+        <div className="container-fluid bg-light p-5">
             <h3 className="mt-5 text-center fs-3">Classi disponibili nella scuola</h3>
             <table className="container table p-3 mt-5 table-dark table-striped table-bordered bg-secondary">
                 <caption>Tabella Classi</caption>
                 <thead className="table-light">
                     <tr>
-                        <th>Grado</th>
-                        <th>Lettera</th>
-                        <th>Anno Scolasitco</th>
+                        <th className="text-center">Grado</th>
+                        <th className="text-center">Lettera</th>
+                        <th className="text-center">Anno Scolasitco</th>
+                        <th className="text-center">Info</th>
                     </tr>
                 </thead>
                 <tbody className="table-group-divider">

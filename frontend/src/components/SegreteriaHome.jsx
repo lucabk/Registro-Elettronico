@@ -1,10 +1,11 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useMatch } from "react-router-dom"
 import SchoolHomePage from "./School/SchoolHomePage"
 import { useEffect, useState } from "react"
 import { getSchoolBySecr } from "../service/secretaryships"
 import { useUser } from "./context/userContext"
 import { toast } from "react-toastify"
 import ClassiScuolaSegr from "./Class/ClassiScuolaSegr"
+import ClassInfo from "./Class/ClassInfo"
 
 const SegreteriaHome = () => {
     const [school, setSchool] = useState(null)
@@ -19,15 +20,23 @@ const SegreteriaHome = () => {
             })
     },[])
 
+    const matchClassId = useMatch('/segreteria/classi/:idClasse/*')
+    const classId = matchClassId 
+        ? Number(matchClassId.params.idClasse)
+        : null
+
     return(
         <>
             <Routes>
-                <Route path='/' element={ <SchoolHomePage 
-                    school={school} />} 
-                />
-                <Route path='/classi' element={ <ClassiScuolaSegr
-                    schoolId={school?.id} />} 
-                />
+                <Route path='/' element={ 
+                    <SchoolHomePage school={school} />
+                } />
+                <Route path='/classi' element={ 
+                    <ClassiScuolaSegr  schoolId={school?.id} />
+                } />
+                <Route path='/classi/:idClasse' element={
+                    <ClassInfo classId={classId} />
+                } />
             </Routes>
         </>
     )

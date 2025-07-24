@@ -7,6 +7,7 @@ import SchoolForm from "./School/SchoolForm"
 import UpdateSchool from "./School/updateSchool"
 import { toast } from "react-toastify"
 import Segreterie from "./Secretaryship/Secretaryship"
+import ClassInfo from "./Class/ClassInfo"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -21,10 +22,16 @@ const AdminHome = () => {
             })
     },[filter])
 
-    const match = useMatch('/admin/schools/:id/*')
-    const school = match 
-        ? schools.find(s => s.id === Number(match.params.id)) 
+    const matchSchool = useMatch('/admin/schools/:idScuola/*')
+    const school = matchSchool 
+        ? schools.find(s => s.id === Number(matchSchool.params.idScuola)) 
         : null
+
+    const matchClassId = useMatch('/admin/schools/:idScuola/:idClasse/*')
+    const classId = matchClassId 
+        ? Number(matchClassId.params.idClasse)
+        : null
+
 
     return(
         <>  
@@ -34,7 +41,7 @@ const AdminHome = () => {
                     schools={schools} 
                     setFilter={setFilter} /> } 
                 />
-                <Route path='/schools/:id' element={ <SchoolInfo 
+                <Route path='/schools/:idScuola' element={ <SchoolInfo 
                     school={school} 
                     setSchools={setSchools}
                     schools={schools} /> } 
@@ -44,14 +51,17 @@ const AdminHome = () => {
                     setSchools={setSchools}
                     /> } 
                 />
-                <Route path='/schools/:id/update' element = { <UpdateSchool 
+                <Route path='/schools/:idScuola/update' element = { <UpdateSchool 
                     schools={schools}
                     setSchools={setSchools}
                     /> }
                 /> 
-                <Route path='/schools/:id/segreterie' element = { <Segreterie 
+                <Route path='/schools/:idScuola/segreterie' element = { <Segreterie 
                     school={school}
                     /> }
+                />
+                <Route path='/schools/:idScuola/:idClasse' element = { <ClassInfo 
+                    classId={classId} /> }
                 />
             </Routes>
         </>
