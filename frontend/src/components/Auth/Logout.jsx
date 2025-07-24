@@ -1,15 +1,17 @@
+import { useUser } from "../context/userContext"
 import LogoutButton from "./LogoutButton"
 
-const Logout = ({ color }) => {
+const Logout = () => {
     let content 
+    const user = useUser()
 
-    switch (color) {
-        case "green":
+    switch (user.role) {
+        case "ROLE_STU":
             content = <div className="container-fluid p-0 m-0 bg-success d-flex justify-content-end">
                 <LogoutButton />
             </div>
             break
-        case "segr":
+        case "ROLE_SEG":
             content = <div className="container-fluid p-0 m-0 bg-info text-dark d-flex justify-content-end">
                 <LogoutButton />
             </div>

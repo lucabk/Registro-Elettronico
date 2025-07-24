@@ -1,4 +1,7 @@
-const Footer = ({ bg = "grey" }) => {
+import { useUser } from "./context/userContext"
+
+const Footer = () => {
+    const user = useUser() 
     let content
     let icon = (
         <a href="https://github.com/lucabk/Registro-Elettronico" target="_blank">
@@ -8,9 +11,9 @@ const Footer = ({ bg = "grey" }) => {
         </a>
     )
 
-    switch(bg){
+    switch(user?.role){
 
-        case "green":
+        case "ROLE_STU":
             content = (
             <footer className="mt-2 mb-0 p-5 bg-success text-dark">
                 {icon}
@@ -18,7 +21,7 @@ const Footer = ({ bg = "grey" }) => {
             )
             break
         
-        case "segr":
+        case "ROLE_SEG":
             content = (
             <footer className="mt-2 mb-0 p-5 bg-info">
                 {icon}
@@ -26,9 +29,17 @@ const Footer = ({ bg = "grey" }) => {
             )
             break
         
-        default:
+        case "ROLE_GES":
             content = (
             <footer className="mt-2 mb-0 p-5 bg-secondary text-dark">
+                {icon}
+            </footer>
+            )
+            break
+
+        default:
+            content = (
+            <footer className="mt-2 mb-0 p-5 bg-success text-dark">
                 {icon}
             </footer>
             )

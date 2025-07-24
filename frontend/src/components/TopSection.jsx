@@ -3,7 +3,7 @@ import Logout from "./Auth/Logout"
 import { Link } from "react-router-dom"
 import { getRedirectPath } from "../util/getPath"
 
-const TopScetion = ({ text, bg = "grey", hp=true }) => {
+const TopScetion = ({ text, hp=true }) => {
     const user = useUser()
 
     let content
@@ -19,9 +19,9 @@ const TopScetion = ({ text, bg = "grey", hp=true }) => {
         </div>
     )
     
-    switch (bg) {
+    switch (user?.role) {
         
-        case "green":
+        case "ROLE_STU":
             content = (
                 <div className="container-fluid mt-0 p-5 bg-success ">
                     {h1}
@@ -30,7 +30,7 @@ const TopScetion = ({ text, bg = "grey", hp=true }) => {
             )
             break
 
-        case "segr":
+        case "ROLE_SEG":
             content = (
                 <div className="container-fluid mt-0 p-5 bg-info text-dark">
                     {h1}
@@ -39,18 +39,27 @@ const TopScetion = ({ text, bg = "grey", hp=true }) => {
             )
             break
 
-        default:
+        case "ROLE_GES":
             content = (
                 <div className="container-fluid mt-0 p-5 bg-secondary ">
                     {h1}
                     {homePage}
                 </div>
             )
+            break
+
+        default:
+            content = (
+                <div className="container-fluid mt-0 p-5 bg-success ">
+                    {h1}
+                    {hp && homePage}
+                </div>
+            )
     }
 
     let logged = (
         <>
-            <Logout color={bg}/>
+            <Logout />
             { content }
         </>
     )

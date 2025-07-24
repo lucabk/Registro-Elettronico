@@ -5,9 +5,9 @@ import ClassiScuola from "./ClassiScuola"
 const ClassiScuolaSegr = ({ schoolId }) => {
     return(
         <>
-            <TopScetion text={"Home Page della scuola"} bg={"segr"}/>
+            <TopScetion text={"Home Page della scuola"} />
             <ClassiScuola schoolId={schoolId} />
-            <Footer bg={"segr"}/>
+            <Footer />
         </>
     )
 }
