@@ -40,7 +40,7 @@ const ClassiScuola = ({ schoolId }) => {
                     })
                     .map(c => 
                         <tr key={c.id}>
-                            <SingleClass singleClass={c} setClasses={setClasses} classes={classes} />
+                            <SingleClass singleClass={c} setClasses={setClasses} classes={classes}/>
                         </tr>
                 )}
                 </tbody>

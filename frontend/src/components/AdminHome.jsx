@@ -8,6 +8,7 @@ import UpdateSchool from "./School/updateSchool"
 import { toast } from "react-toastify"
 import Segreterie from "./Secretaryship/Secretaryship"
 import ClassInfo from "./Class/ClassInfo"
+import UpdateClass from "./Class/UpdateClass"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -36,33 +37,30 @@ const AdminHome = () => {
     return(
         <>  
             <Routes>
-                <Route path='/' element={ <Schools 
-                    filter={filter} 
-                    schools={schools} 
-                    setFilter={setFilter} /> } 
+                <Route path='/' element={ 
+                    <Schools filter={filter} schools={schools} setFilter={setFilter} /> } 
                 />
-                <Route path='/schools/:idScuola' element={ <SchoolInfo 
-                    school={school} 
-                    setSchools={setSchools}
-                    schools={schools} /> } 
+                
+                <Route path='/schools/:idScuola' element={ 
+                    <SchoolInfo school={school} setSchools={setSchools} schools={schools} /> } 
                 />
-                <Route path='/addSchool' element= { <SchoolForm 
-                    schools={schools} 
-                    setSchools={setSchools}
-                    /> } 
+                
+                <Route path='/addSchool' element= { 
+                    <SchoolForm schools={schools} setSchools={setSchools} /> } 
                 />
-                <Route path='/schools/:idScuola/update' element = { <UpdateSchool 
-                    schools={schools}
-                    setSchools={setSchools}
-                    /> }
+                
+                <Route path='/schools/:idScuola/update' element = { 
+                    <UpdateSchool schools={schools} setSchools={setSchools} /> }
                 /> 
-                <Route path='/schools/:idScuola/segreterie' element = { <Segreterie 
-                    school={school}
-                    /> }
+                
+                <Route path='/schools/:idScuola/segreterie' element = { 
+                    <Segreterie school={school} /> }
                 />
-                <Route path='/schools/:idScuola/:idClasse' element = { <ClassInfo 
-                    classId={classId} /> }
+                
+                <Route path='/schools/:idScuola/:idClasse' element = { 
+                    <ClassInfo classId={classId} /> }
                 />
+                
             </Routes>
         </>
     )

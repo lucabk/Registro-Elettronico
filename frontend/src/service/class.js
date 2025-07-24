@@ -17,3 +17,8 @@ export const getClassById = async (classId) => {
 export const deleteClass = async (classId) => {
     await axios.delete(`${API_CLASSI}/${classId}`)
 }
+
+export const updateClass = async (classId, newClass) => {
+    const res = await axios.put(`${API_CLASSI}/${classId}`, newClass)
+    return res.data
+}
