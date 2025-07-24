@@ -6,7 +6,6 @@ import { useUser } from "./context/userContext"
 import { toast } from "react-toastify"
 import ClassiScuolaSegr from "./Class/ClassiScuolaSegr"
 import ClassInfo from "./Class/ClassInfo"
-import UpdateClass from "./Class/UpdateClass"
 
 const SegreteriaHome = () => {
     const [school, setSchool] = useState(null)
@@ -33,7 +32,7 @@ const SegreteriaHome = () => {
                     <SchoolHomePage school={school} />
                 } />
                 <Route path='/classi' element={ 
-                    <ClassiScuolaSegr  schoolId={school?.id} />
+                    <ClassiScuolaSegr  school={school} />
                 } />
                 <Route path='/classi/:idClasse' element={
                     <ClassInfo classId={classId} />

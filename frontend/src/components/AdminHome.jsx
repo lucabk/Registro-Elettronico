@@ -8,7 +8,6 @@ import UpdateSchool from "./School/updateSchool"
 import { toast } from "react-toastify"
 import Segreterie from "./Secretaryship/Secretaryship"
 import ClassInfo from "./Class/ClassInfo"
-import UpdateClass from "./Class/UpdateClass"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])

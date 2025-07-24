@@ -22,3 +22,8 @@ export const updateClass = async (classId, newClass) => {
     const res = await axios.put(`${API_CLASSI}/${classId}`, newClass)
     return res.data
 }
+
+export const addClasse = async (newClass) => {
+    const res = await axios.post(API_CLASSI, newClass)
+    return res.data
+}

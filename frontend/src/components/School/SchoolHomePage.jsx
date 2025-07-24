@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const SchoolHomePage = ({ school }) => {
     return(
         <>
-            <TopSection text={"Home Page della scuola"} />
+            <TopSection text={school.nome} />
             <div className="container bg-light p-3">
                 <h2 className="mt-5 text-center fs-2">Scheda informativa sulla scuola</h2>
             </div>

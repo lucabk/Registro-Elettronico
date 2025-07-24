@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import * as classService from "../../service/class"
 import SingleClass from "./SingleClass"
 import { toast } from "react-toastify"
+import ClasseForm from "./ClasseForm"
 
 const ClassiScuola = ({ schoolId }) => {
     const [classes, setClasses] = useState([])
@@ -45,6 +46,7 @@ const ClassiScuola = ({ schoolId }) => {
                 )}
                 </tbody>
             </table>
+            <ClasseForm setClasses={setClasses} schoolId={schoolId}/>
         </div>
     )
 } 
