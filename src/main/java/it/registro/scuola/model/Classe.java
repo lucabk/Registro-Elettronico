@@ -1,6 +1,8 @@
 package it.registro.scuola.model;
 
 import java.util.Date;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +38,9 @@ public class Classe {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_scuola", nullable = false)
 	private Scuola scuola;
+
+	@OneToMany(mappedBy = "classe")
+	private Set<Studente> studenti;
 
 	public Classe(int grado, String lettera, String annoScolastico) {
 		super();

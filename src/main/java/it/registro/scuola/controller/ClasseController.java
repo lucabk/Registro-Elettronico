@@ -58,7 +58,7 @@ public class ClasseController {
 		return ResponseEntity.ok(classeAggiornata);
 	}
 
-	@PreAuthorize("hasAnyRole('GES')")
+	@PreAuthorize("hasAnyRole('GES', 'SEG')")
 	@DeleteMapping("{id}")
 	public ResponseEntity<Void> deleteClasse(@PathVariable("id") int classeId) {
 		classeService.deleteClasseById(classeId);

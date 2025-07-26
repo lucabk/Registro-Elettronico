@@ -64,17 +64,7 @@ CREATE TABLE IF NOT EXISTS verifica(
 CREATE TABLE studente(
 	id_studente INT UNSIGNED AUTO_INCREMENT,
     id_classe INT UNSIGNED,
-    username VARCHAR(50) UNIQUE NOT NULL,
-	psw VARCHAR(255) NOT NULL,	
-    data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_studente),
-    FOREIGN KEY (id_classe) REFERENCES classe(id_classe)
-);
-
-CREATE TABLE IF NOT EXISTS profilo_studente(
-	id_profilo INT UNSIGNED AUTO_INCREMENT,
-    id_studente INT UNSIGNED UNIQUE,
+    id_scuola INT UNSIGNED,
     nome VARCHAR(50) NOT NULL,	
     cognome VARCHAR(50) NOT NULL,	
     email VARCHAR(50) UNIQUE NOT NULL,
@@ -86,11 +76,12 @@ CREATE TABLE IF NOT EXISTS profilo_studente(
     cap CHAR(5) NOT NULL,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_profilo),
-    FOREIGN KEY (id_studente) REFERENCES studente(id_studente),
     CHECK (LENGTH(cap) = 5),
     CHECK (LENGTH(provincia) = 2),
-    CHECK (LENGTH(cod_fiscale) = 16)
+    CHECK (LENGTH(codice_fiscale) = 16),
+    PRIMARY KEY (id_studente),
+    FOREIGN KEY (id_classe) REFERENCES classe(id_classe),
+    FOREIGN KEY (id_scuola) REFERENCES scuola(id_scuola)
 );
 
 CREATE TABLE IF NOT EXISTS valutazione(

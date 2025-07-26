@@ -51,5 +51,25 @@ INSERT INTO segreteria (id_scuola, nome) VALUES (4, "Segreteria 1"), (4, "Segret
 
 SELECT * FROM segreteria;
 
-#Inserimento dei gestori nelle procedure
+# Inserimento dei gestori nelle procedure o tramite API
 SELECT * FROM utente;
+
+# Segretire per scuola
+SELECT * FROM segreterie_per_scuola; 
+
+# Studenti
+INSERT INTO studente (id_classe, id_scuola, nome, cognome, email, numero, codice_fiscale, indirizzo, citta, provincia, cap) VALUES 
+(1, 1, 'Luca', 'Rossi', 'luca.rossi@example.com', '3201234567', 'RSSLCU01A01H501U', 'Via Roma 12', 'Milano', 'MI', '20100'),
+(1, 1, 'Giulia', 'Bianchi', 'giulia.bianchi@example.com', '3407654321','BNCGLI02B02H501W', 'Via Torino 34', 'Milano', 'MI', '20100'),
+(36, 3, 'Mario', 'Verdi', 'mario.verdi@example.com', '3887653241','KNFGLD23B06H501F', 'Via Como 34', 'Milano', 'MI', '20100');
+
+SELECT * FROM studente;
+
+# Studenti per classe e scuola
+SELECT s.id_studente, s.nome, s.cognome, c.id_classe, c.grado, c.lettera, c.anno_scolastico, sc.id_scuola, sc.nome, sc.citta 
+FROM studente s 
+JOIN classe c ON s.id_classe = c.id_classe
+JOIN scuola sc ON s.id_scuola = sc.id_scuola;
+
+# Studenti per classe definita
+SELECT * FROM studenti_per_classe WHERE id_classe=1;
