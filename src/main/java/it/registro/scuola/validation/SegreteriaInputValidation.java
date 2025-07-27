@@ -15,6 +15,8 @@ public class SegreteriaInputValidation {
             throw new IllegalArgumentException("E' obbligatorio specificare uno username per l'utente assocaito alla segreteria");
         } else if (req.getPassword() == null || req.getPassword().trim().isEmpty()) {
             throw new IllegalArgumentException("E' obbligatorio specificare una password per l'utente assocaito alla segreteria");
+        } else if (req.getUsername().charAt(0) != 'S') {
+            throw new IllegalArgumentException("Lo username della segreteria deve iniziare con la 'S' maiuscola");
         }
     }
 

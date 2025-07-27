@@ -30,7 +30,7 @@ public class ClasseServiceImpl implements ClasseService {
 		return ClasseMapper.toListDTO(getClassi());
 	}
 	
-	private Classe getClasse(int id) {
+	public Classe getClasse(int id) {
 		return classeRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Classe con id " + id + " non travata"));
 	}

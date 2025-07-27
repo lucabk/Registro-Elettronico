@@ -1,6 +1,9 @@
 package it.registro.scuola.mapper;
 
-import it.registro.scuola.dto.StudenteDTO;
+import it.registro.scuola.dto.Studente.AddStudenteDTO;
+import it.registro.scuola.dto.Studente.StudenteDTO;
+import it.registro.scuola.model.Classe;
+import it.registro.scuola.model.Scuola;
 import it.registro.scuola.model.Studente;
 
 import java.util.ArrayList;
@@ -16,5 +19,10 @@ public class StudenteMapper {
 
     public static List<StudenteDTO> toListDTO(List<Studente> studentes) {
         return studentes.stream().map(s -> toDTO(s)).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static Studente toEntity(AddStudenteDTO s, Scuola scuolaStudente, Classe classeStudente) {
+        return new Studente(s.getNome(), s.getCognome(), s.getEmail(), s.getNumero(), s.getCodiceFiscale(),
+                s.getIndirizzo(), s.getCitta(), s.getProvincia(), s.getCap(), scuolaStudente, classeStudente);
     }
 }

@@ -1,13 +1,14 @@
 package it.registro.scuola.controller;
 
-import it.registro.scuola.dto.StudenteDTO;
+import it.registro.scuola.dto.Studente.AddStudenteDTO;
+import it.registro.scuola.dto.Studente.StudenteDTO;
 import it.registro.scuola.service.impl.StudenteServiceImpl;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -29,4 +30,9 @@ public class StudenteController {
         return ResponseEntity.ok(studenteService.getStudentiByScuola(idScuola));
     }
 
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @PostMapping
+    public ResponseEntity<StudenteDTO> addStudente(@Valid @RequestBody AddStudenteDTO s) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(studenteService.addStudente(s));
+    }
 }

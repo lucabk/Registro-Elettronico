@@ -1,10 +1,10 @@
 package it.registro.scuola.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.Date;
 
 @Entity
@@ -59,4 +59,18 @@ public class Studente {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_classe", nullable = false)
     private Classe classe;
+
+    public Studente(String nome, String cognome, String email, String numero, String codiceFiscale, String indirizzo, String citta, String provincia, String cap, Scuola scuola, Classe classe) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.numero = numero;
+        this.codiceFiscale = codiceFiscale;
+        this.indirizzo = indirizzo;
+        this.citta = citta;
+        this.provincia = provincia;
+        this.cap = cap;
+        this.scuola = scuola;
+        this.classe = classe;
+    }
 }
