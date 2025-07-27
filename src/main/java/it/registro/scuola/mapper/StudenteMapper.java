@@ -25,4 +25,17 @@ public class StudenteMapper {
         return new Studente(s.getNome(), s.getCognome(), s.getEmail(), s.getNumero(), s.getCodiceFiscale(),
                 s.getIndirizzo(), s.getCitta(), s.getProvincia(), s.getCap(), scuolaStudente, classeStudente);
     }
+
+    public static Studente entityToUpdate(Studente originalEntity, StudenteDTO s) {
+        originalEntity.setNome(s.getNome());
+        originalEntity.setCognome(s.getCognome());
+        originalEntity.setEmail(s.getEmail());
+        originalEntity.setNumero(s.getNumero());
+        originalEntity.setCodiceFiscale(s.getCodiceFiscale());
+        originalEntity.setIndirizzo(s.getIndirizzo());
+        originalEntity.setCitta(s.getCitta());
+        originalEntity.setProvincia(s.getProvincia());
+        originalEntity.setCap(s.getCap());
+        return originalEntity;
+    }
 }

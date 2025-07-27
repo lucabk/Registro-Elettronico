@@ -50,4 +50,16 @@ public class StudenteServiceImpl implements StudenteService {
 
         return saved;
     }
+
+    @Override
+    public StudenteDTO updateStudente(StudenteDTO s, int id) {
+        StudenteInputValidation.ValidationStudenteDTO(s);
+        Studente originalEntity = studenteRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Studente con id "+id+" non trovato"));
+        Studente entityUpdated = StudenteMapper.entityToUpdate(originalEntity, s);
+        if(entityUpdated.getScuola().getId() != s.getScuolaDTO().getId() && entityUpdated.getClasse().getId() != s.getClasseDTO().getId()) {
+            entityUpdated.setScuola(scuolaService.getScuola(s.getScuolaDTO().getId()));
+            entityUpdated.setClasse(classeService.getClasse(s.getClasseDTO().getId()));
+        }
+        return StudenteMapper.toDTO(studenteRepository.save(entityUpdated));
+    }
 }

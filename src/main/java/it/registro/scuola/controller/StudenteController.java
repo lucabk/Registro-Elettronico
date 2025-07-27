@@ -35,4 +35,10 @@ public class StudenteController {
     public ResponseEntity<StudenteDTO> addStudente(@Valid @RequestBody AddStudenteDTO s) {
         return ResponseEntity.status(HttpStatus.CREATED).body(studenteService.addStudente(s));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'STU')")
+    @PutMapping("{id}")
+    public ResponseEntity<StudenteDTO> updateStudente(@Valid @RequestBody StudenteDTO s, @PathVariable("id") int id) {
+        return ResponseEntity.ok(studenteService.updateStudente(s, id));
+    }
 }

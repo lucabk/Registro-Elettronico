@@ -8,4 +8,5 @@ public interface StudenteService {
     StudenteDTO getStudente(int id);
     List<StudenteDTO> getStudentiByScuola(int idScuola);
     StudenteDTO addStudente(AddStudenteDTO s);
+    StudenteDTO updateStudente(StudenteDTO s, int id);
 }
