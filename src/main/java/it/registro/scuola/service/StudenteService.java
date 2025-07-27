@@ -9,4 +9,5 @@ public interface StudenteService {
     List<StudenteDTO> getStudentiByScuola(int idScuola);
     StudenteDTO addStudente(AddStudenteDTO s);
     StudenteDTO updateStudente(StudenteDTO s, int id);
+    void deleteStudente(int id);
 }

@@ -41,4 +41,11 @@ public class StudenteController {
     public ResponseEntity<StudenteDTO> updateStudente(@Valid @RequestBody StudenteDTO s, @PathVariable("id") int id) {
         return ResponseEntity.ok(studenteService.updateStudente(s, id));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteStudente(@PathVariable("id") int id){
+        studenteService.deleteStudente(id);
+        return ResponseEntity.noContent().build();
+    }
 }

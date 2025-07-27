@@ -62,4 +62,11 @@ public class StudenteServiceImpl implements StudenteService {
         }
         return StudenteMapper.toDTO(studenteRepository.save(entityUpdated));
     }
+
+    @Override
+    public void deleteStudente(int id) {
+        getStudente(id);
+        studenteRepository.deleteById(id);
+        utenteService.deleteUtente(id);
+    }
 }

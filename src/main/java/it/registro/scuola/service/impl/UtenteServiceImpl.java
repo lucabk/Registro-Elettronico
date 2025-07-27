@@ -46,7 +46,9 @@ public class UtenteServiceImpl implements UtenteService {
     @Override
     public void deleteUtente(int idRiferimento) {
         Utente u = utenteRepository.findByRiferimentoId(idRiferimento);
-        utenteRepository.deleteById(u.getId());
+        if(u != null){
+            utenteRepository.deleteById(u.getId());
+        }
     }
 
     @Override //login
