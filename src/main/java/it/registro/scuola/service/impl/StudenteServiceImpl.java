@@ -24,6 +24,6 @@ public class StudenteServiceImpl implements StudenteService {
 
     @Override
     public List<StudenteDTO> getStudentiByScuola(int idScuola) {
-        return List.of();
+        return StudenteMapper.toListDTO(studenteRepository.findByClasseId(idScuola));
     }
 }
