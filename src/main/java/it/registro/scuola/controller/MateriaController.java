@@ -36,4 +36,11 @@ public class MateriaController {
     public ResponseEntity<MateriaDTO> updateMateria(@Valid @RequestBody MateriaDTO m, @PathVariable("id") int id){
         return ResponseEntity.ok(materiaService.updateMateria(m, id));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteMateria(@PathVariable("id") int id){
+        materiaService.deleteMateria(id);
+        return ResponseEntity.noContent().build();
+    }
 }

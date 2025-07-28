@@ -33,4 +33,10 @@ public class MateriaServiceImpl implements MateriaService {
         Materia entityUpdated = MateriaMapper.EntityToUpdate(originalEntity, m);
         return MateriaMapper.toDTO(materiaRepository.save(entityUpdated));
     }
+
+    @Override
+    public void deleteMateria(int id) {
+        getMateria(id);
+        materiaRepository.deleteById(id);
+    }
 }
