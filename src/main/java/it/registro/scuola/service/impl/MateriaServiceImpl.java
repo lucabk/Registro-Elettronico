@@ -20,4 +20,9 @@ public class MateriaServiceImpl implements MateriaService {
     public MateriaDTO getMateria(int id) {
         return (MateriaMapper.toDTO(materiaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Matiera con id "+id+" non trovata"))));
     }
+
+    @Override
+    public MateriaDTO addMateria(MateriaDTO m) {
+        return MateriaMapper.toDTO(materiaRepository.save(MateriaMapper.toEntity(m)));
+    }
 }
