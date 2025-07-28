@@ -44,4 +44,11 @@ public class DocenteServiceImpl implements DocenteService {
         Docente entityUpdated = DocenteMapper.EntityToUpdate(originalEntity, d);
         return DocenteMapper.toDTO(docenteRepository.save(entityUpdated));
     }
+
+    @Override
+    public void deleteDocente(int id) {
+        getDocente(id);
+        docenteRepository.deleteById(id);
+        utenteService.deleteUtente(id);
+    }
 }

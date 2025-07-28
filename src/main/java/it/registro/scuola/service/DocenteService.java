@@ -7,4 +7,5 @@ public interface DocenteService {
     DocenteDTO getDocente(int id);
     DocenteDTO addDocente(AddDocenteDTO d);
     DocenteDTO updateDocente(DocenteDTO d, int id);
+    void deleteDocente(int id);
 }

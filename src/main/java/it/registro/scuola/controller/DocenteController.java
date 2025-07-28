@@ -37,4 +37,11 @@ public class DocenteController {
         return ResponseEntity.ok(docenteService.updateDocente(d, id));
     }
 
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteDocente(@PathVariable("id") int id) {
+        docenteService.deleteDocente(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

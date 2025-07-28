@@ -52,7 +52,7 @@ public class StudenteController {
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
     @DeleteMapping("{id}")
-    public ResponseEntity deleteStudente(@PathVariable("id") int id){
+    public ResponseEntity<Void> deleteStudente(@PathVariable("id") int id){
         studenteService.deleteStudente(id);
         return ResponseEntity.noContent().build();
     }
