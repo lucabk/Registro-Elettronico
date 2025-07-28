@@ -11,4 +11,11 @@ public class MateriaMapper {
     public static Materia toEntity(MateriaDTO m) {
         return new Materia(m.getNome(), m.getCodice(), m.getProgramma());
     }
+
+    public static Materia EntityToUpdate(Materia originalEntity, MateriaDTO m) {
+        originalEntity.setNome(m.getNome());
+        originalEntity.setCodice(m.getCodice());
+        originalEntity.setProgramma(m.getProgramma());
+        return originalEntity;
+    }
 }

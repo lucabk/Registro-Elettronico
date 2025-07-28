@@ -30,4 +30,10 @@ public class MateriaController {
     public ResponseEntity<MateriaDTO> addMateria(@Valid @RequestBody MateriaDTO m){
         return ResponseEntity.status(HttpStatus.CREATED).body(materiaService.addMateria(m));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PutMapping("{id}")
+    public ResponseEntity<MateriaDTO> updateMateria(@Valid @RequestBody MateriaDTO m, @PathVariable("id") int id){
+        return ResponseEntity.ok(materiaService.updateMateria(m, id));
+    }
 }
