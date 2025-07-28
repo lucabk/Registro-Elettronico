@@ -1,11 +1,10 @@
 package it.registro.scuola.controller;
 
 import java.util.*;
-
 import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaResDTO;
-import it.registro.scuola.dto.segreteria.UpSegreteriaPswDTO;
+import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -58,8 +57,8 @@ public class SegreteriaController {
 	}
 
 	@PutMapping("u{id}")
-	public ResponseEntity<Void> updateSegreteriaPsw(@Valid @RequestBody UpSegreteriaPswDTO s, @PathVariable("id") int idSegreteria) {
-		segreteriaService.updateSegreteriaPassword(s, idSegreteria);
+	public ResponseEntity<Void> updateSegreteriaPsw(@Valid @RequestBody UpdateUtentePswDTO c, @PathVariable("id") int idSegreteria) {
+		segreteriaService.updateSegreteriaPassword(c, idSegreteria);
 		return ResponseEntity.noContent().build();
 	}
 	

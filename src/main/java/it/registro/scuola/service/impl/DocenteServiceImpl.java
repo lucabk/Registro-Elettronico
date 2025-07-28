@@ -2,6 +2,7 @@ package it.registro.scuola.service.impl;
 
 import it.registro.scuola.dto.docente.AddDocenteDTO;
 import it.registro.scuola.dto.docente.DocenteDTO;
+import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.mapper.DocenteMapper;
 import it.registro.scuola.model.Docente;
 import it.registro.scuola.model.Utente;
@@ -9,6 +10,7 @@ import it.registro.scuola.repository.DocenteRepository;
 import it.registro.scuola.service.DocenteService;
 import it.registro.scuola.utilty.Ruolo;
 import it.registro.scuola.validation.DocenteInputValidation;
+import it.registro.scuola.validation.UtenteInputValidation;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -43,6 +45,13 @@ public class DocenteServiceImpl implements DocenteService {
         Docente originalEntity = docenteRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Docente con id "+id+ " non trovato"));
         Docente entityUpdated = DocenteMapper.EntityToUpdate(originalEntity, d);
         return DocenteMapper.toDTO(docenteRepository.save(entityUpdated));
+    }
+
+    @Override
+    public void udpdatePswDocente(UpdateUtentePswDTO c, int id) {
+        UtenteInputValidation.ValidationUpdateUtentePswDTO(c);
+        getDocente(id);
+        utenteService.upUtentePsw(id, c);
     }
 
     @Override

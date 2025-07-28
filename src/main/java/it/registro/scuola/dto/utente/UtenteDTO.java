@@ -1,4 +1,4 @@
-package it.registro.scuola.dto.segreteria;
+package it.registro.scuola.dto.utente;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -11,7 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpSegreteriaPswDTO {
+public class UtenteDTO {
+
+    @NotBlank
+    @Size(min=1, max=50)
+    private String username;
 
     @NotBlank
     @Size(min=4, max=50)

@@ -1,8 +1,8 @@
 package it.registro.scuola.service.impl;
 
-import it.registro.scuola.dto.Studente.UpdatePswStudenteDTO;
+import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.dto.TokenDTO;
-import it.registro.scuola.dto.UtenteDTO;
+import it.registro.scuola.dto.utente.UtenteDTO;
 import it.registro.scuola.model.Utente;
 import it.registro.scuola.repository.UtenteRepository;
 import it.registro.scuola.service.UtenteService;
@@ -36,16 +36,7 @@ public class UtenteServiceImpl implements UtenteService {
     }
 
     @Override
-    public void upUtenteSegreteria(int riferimentoId, String newPasssword) {
-        Utente utenteToUp = utenteRepository.findByRiferimentoId(riferimentoId);
-        if(utenteToUp == null){
-            throw new EntityNotFoundException("Utente con riferimento id "+riferimentoId+ " non trovato");
-        }
-        utenteToUp.setPassword(encoder.encode(newPasssword));
-    }
-
-    @Override
-    public void upUtenteStudente(int riferimentoId, UpdatePswStudenteDTO credentials) {
+    public void upUtentePsw(int riferimentoId, UpdateUtentePswDTO credentials) {
         Utente utenteToUp = utenteRepository.findByRiferimentoId(riferimentoId);
         if(utenteToUp == null){
             throw new EntityNotFoundException("Utente con riferimento id "+riferimentoId+ " non trovato");

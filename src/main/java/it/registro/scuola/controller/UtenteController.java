@@ -1,8 +1,7 @@
 package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.TokenDTO;
-import it.registro.scuola.dto.UtenteDTO;
-import it.registro.scuola.model.Utente;
+import it.registro.scuola.dto.utente.UtenteDTO;
 import it.registro.scuola.service.impl.UtenteServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

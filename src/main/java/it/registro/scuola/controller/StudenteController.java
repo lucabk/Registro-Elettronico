@@ -2,7 +2,7 @@ package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.Studente.AddStudenteDTO;
 import it.registro.scuola.dto.Studente.StudenteDTO;
-import it.registro.scuola.dto.Studente.UpdatePswStudenteDTO;
+import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.service.impl.StudenteServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -45,7 +45,7 @@ public class StudenteController {
 
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'STU')")
     @PutMapping("u{id}")
-    public ResponseEntity<Void> updateStudentepsw(@Valid @RequestBody UpdatePswStudenteDTO c, @PathVariable("id") int id) {
+    public ResponseEntity<Void> updateStudentepsw(@Valid @RequestBody UpdateUtentePswDTO c, @PathVariable("id") int id) {
         studenteService.updatePswStudente(c, id);
         return ResponseEntity.noContent().build();
     }

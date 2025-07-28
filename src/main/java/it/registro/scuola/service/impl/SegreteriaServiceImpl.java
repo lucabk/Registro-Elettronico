@@ -5,12 +5,13 @@ import java.util.List;
 import it.registro.scuola.dto.ScuolaDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
 import it.registro.scuola.dto.segreteria.AddSegreteriaResDTO;
-import it.registro.scuola.dto.segreteria.UpSegreteriaPswDTO;
+import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.mapper.ScuolaMapper;
 import it.registro.scuola.model.Utente;
 import it.registro.scuola.repository.UtenteRepository;
 import it.registro.scuola.utilty.Ruolo;
 import it.registro.scuola.validation.SegreteriaInputValidation;
+import it.registro.scuola.validation.UtenteInputValidation;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import it.registro.scuola.dto.segreteria.SegreteriaDTO;
@@ -79,10 +80,10 @@ public class SegreteriaServiceImpl implements SegreteriaService{
 	}
 
 	@Override
-	public void updateSegreteriaPassword(UpSegreteriaPswDTO s, int id) {
-		Segreteria originalEntity = segreteriaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Segreteria con id "+id+" non trovata"));
-		SegreteriaInputValidation.upSegreteriaPswDTOValidation(s);
-		utenteService.upUtenteSegreteria(id, s.getPassword());
+	public void updateSegreteriaPassword(UpdateUtentePswDTO c, int id) {
+		UtenteInputValidation.ValidationUpdateUtentePswDTO(c);
+		getSegreteria(id);
+		utenteService.upUtentePsw(id, c);
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.docente.AddDocenteDTO;
 import it.registro.scuola.dto.docente.DocenteDTO;
+import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.service.impl.DocenteServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,13 @@ public class DocenteController {
     @PutMapping("{id}")
     public ResponseEntity<DocenteDTO> updateDocente(@Valid @RequestBody DocenteDTO d, @PathVariable("id") int id){
         return ResponseEntity.ok(docenteService.updateDocente(d, id));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PutMapping("u{id}")
+    public ResponseEntity<Void> updateDocentePsw(@Valid @RequestBody UpdateUtentePswDTO c, @PathVariable("id") int id){
+        docenteService.udpdatePswDocente(c, id);
+        return ResponseEntity.noContent().build();
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")

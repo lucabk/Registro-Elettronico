@@ -2,7 +2,7 @@ package it.registro.scuola.service.impl;
 
 import it.registro.scuola.dto.Studente.AddStudenteDTO;
 import it.registro.scuola.dto.Studente.StudenteDTO;
-import it.registro.scuola.dto.Studente.UpdatePswStudenteDTO;
+import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.mapper.StudenteMapper;
 import it.registro.scuola.model.Classe;
 import it.registro.scuola.model.Scuola;
@@ -12,6 +12,7 @@ import it.registro.scuola.repository.StudenteRepository;
 import it.registro.scuola.service.StudenteService;
 import it.registro.scuola.utilty.Ruolo;
 import it.registro.scuola.validation.StudenteInputValidation;
+import it.registro.scuola.validation.UtenteInputValidation;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -65,10 +66,10 @@ public class StudenteServiceImpl implements StudenteService {
     }
 
     @Override
-    public void updatePswStudente(UpdatePswStudenteDTO c, int id) {
-        StudenteInputValidation.ValidationupdatePswStudenteDTO(c);
+    public void updatePswStudente(UpdateUtentePswDTO c, int id) {
+        UtenteInputValidation.ValidationUpdateUtentePswDTO(c);
         getStudente(id);
-        utenteService.upUtenteStudente(id, c);
+        utenteService.upUtentePsw(id, c);
     }
 
     @Override

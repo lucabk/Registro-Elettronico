@@ -1,7 +1,6 @@
 package it.registro.scuola.validation;
 
 import it.registro.scuola.dto.segreteria.AddSegreteriaReqDTO;
-import it.registro.scuola.dto.segreteria.UpSegreteriaPswDTO;
 
 public class SegreteriaInputValidation {
 
@@ -20,10 +19,5 @@ public class SegreteriaInputValidation {
         }
     }
 
-    //PUT psw validation
-    public static void upSegreteriaPswDTOValidation(UpSegreteriaPswDTO req) {
-        if(req.getPassword() == null) {
-            throw new IllegalArgumentException("E' obbliglatorio specificare la nuova password");
-        }
-    }
+
 }
