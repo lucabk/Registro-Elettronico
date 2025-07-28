@@ -14,4 +14,18 @@ public class DocenteMapper {
         return new Docente(d.getNome(), d.getCognome(), d.getEmail(), d.getNumero(), d.getCodiceFiscale(),
                 d.getIndirizzo(), d.getCitta(), d.getProvincia(), d.getCap(), d.getIstruzione());
     }
+
+    public static Docente EntityToUpdate(Docente originalEntity, DocenteDTO d) {
+        originalEntity.setNome(d.getNome());
+        originalEntity.setCognome(d.getCognome());
+        originalEntity.setEmail(d.getEmail());
+        originalEntity.setNumero(d.getNumero());
+        originalEntity.setCodiceFiscale(d.getCodiceFiscale());
+        originalEntity.setIndirizzo(d.getIndirizzo());
+        originalEntity.setCitta(d.getCitta());
+        originalEntity.setProvincia(d.getProvincia());
+        originalEntity.setCap(d.getCap());
+        originalEntity.setIstruzione(d.getIstruzione());
+        return originalEntity;
+    }
 }

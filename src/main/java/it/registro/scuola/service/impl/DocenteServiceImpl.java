@@ -37,4 +37,11 @@ public class DocenteServiceImpl implements DocenteService {
 
         return DocenteMapper.toDTO(saved);
     }
+
+    @Override
+    public DocenteDTO updateDocente(DocenteDTO d, int id) {
+        Docente originalEntity = docenteRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Docente con id "+id+ " non trovato"));
+        Docente entityUpdated = DocenteMapper.EntityToUpdate(originalEntity, d);
+        return DocenteMapper.toDTO(docenteRepository.save(entityUpdated));
+    }
 }

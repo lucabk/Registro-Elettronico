@@ -8,8 +8,9 @@ public class DocenteInputValidation {
             throw new IllegalArgumentException("E' obbligatorio specificare uno username");
         } else if (req.getPassword() == null || req.getPassword().trim().isEmpty()) {
             throw new IllegalArgumentException("E' obbligatorio specificare una password");
-        }  else if(req.getUsername().charAt(0) != 'D') {
+        } else if(req.getUsername().charAt(0) != 'D') {
         throw new IllegalArgumentException("Lo username del docente deve iniziare con un 'D' maiuscola seguita dal numero di matricola");
+        }
     }
-    }
+
 }

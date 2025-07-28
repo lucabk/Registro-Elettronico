@@ -31,4 +31,10 @@ public class DocenteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(docenteService.addDocente(d));
     }
 
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PutMapping("{id}")
+    public ResponseEntity<DocenteDTO> updateDocente(@Valid @RequestBody DocenteDTO d, @PathVariable("id") int id){
+        return ResponseEntity.ok(docenteService.updateDocente(d, id));
+    }
+
 }
