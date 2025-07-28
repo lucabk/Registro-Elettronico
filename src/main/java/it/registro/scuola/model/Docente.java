@@ -4,18 +4,19 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.util.Date;
 
 @Entity
-@Table(name = "studente")
+@Table(name = "docente")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Studente {
+public class Docente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_studente")
+    @Column(name = "id_docente")
     private int id;
 
     @Column(name = "nome")
@@ -45,21 +46,16 @@ public class Studente {
     @Column(name = "cap")
     private String cap;
 
+    @Column(name = "istruzione")
+    private String istruzione;
+
     @Column(name = "data_inserimento", insertable = false, updatable = false)
     private Date dataInserimento;
 
     @Column(name = "data_aggiornamento", insertable = false, updatable = false)
     private Date dataAggiornamento;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_scuola", nullable = false)
-    private Scuola scuola;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_classe", nullable = false)
-    private Classe classe;
-
-    public Studente(String nome, String cognome, String email, String numero, String codiceFiscale, String indirizzo, String citta, String provincia, String cap, Scuola scuola, Classe classe) {
+    public Docente(String nome, String cognome, String email, String numero, String codiceFiscale, String indirizzo, String citta, String provincia, String cap, String istruzione) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
@@ -69,7 +65,6 @@ public class Studente {
         this.citta = citta;
         this.provincia = provincia;
         this.cap = cap;
-        this.scuola = scuola;
-        this.classe = classe;
+        this.istruzione = istruzione;
     }
 }
