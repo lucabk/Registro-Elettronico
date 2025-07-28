@@ -1,5 +1,6 @@
 package it.registro.scuola.service.impl;
 
+import it.registro.scuola.dto.Studente.UpdatePswStudenteDTO;
 import it.registro.scuola.dto.TokenDTO;
 import it.registro.scuola.dto.UtenteDTO;
 import it.registro.scuola.model.Utente;
@@ -41,6 +42,19 @@ public class UtenteServiceImpl implements UtenteService {
             throw new EntityNotFoundException("Utente con riferimento id "+riferimentoId+ " non trovato");
         }
         utenteToUp.setPassword(encoder.encode(newPasssword));
+    }
+
+    @Override
+    public void upUtenteStudente(int riferimentoId, UpdatePswStudenteDTO credentials) {
+        Utente utenteToUp = utenteRepository.findByRiferimentoId(riferimentoId);
+        if(utenteToUp == null){
+            throw new EntityNotFoundException("Utente con riferimento id "+riferimentoId+ " non trovato");
+        }
+        if(utenteToUp.getUsername().equals(credentials.getUsername())){
+            utenteToUp.setPassword(encoder.encode(credentials.getPassword()));
+        } else {
+            throw new IllegalArgumentException("Username invalido");
+        }
     }
 
     @Override

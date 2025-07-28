@@ -2,6 +2,7 @@ package it.registro.scuola.service.impl;
 
 import it.registro.scuola.dto.Studente.AddStudenteDTO;
 import it.registro.scuola.dto.Studente.StudenteDTO;
+import it.registro.scuola.dto.Studente.UpdatePswStudenteDTO;
 import it.registro.scuola.mapper.StudenteMapper;
 import it.registro.scuola.model.Classe;
 import it.registro.scuola.model.Scuola;
@@ -61,6 +62,13 @@ public class StudenteServiceImpl implements StudenteService {
             entityUpdated.setClasse(classeService.getClasse(s.getClasseDTO().getId()));
         }
         return StudenteMapper.toDTO(studenteRepository.save(entityUpdated));
+    }
+
+    @Override
+    public void updatePswStudente(UpdatePswStudenteDTO c, int id) {
+        StudenteInputValidation.ValidationupdatePswStudenteDTO(c);
+        getStudente(id);
+        utenteService.upUtenteStudente(id, c);
     }
 
     @Override
