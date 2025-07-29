@@ -24,7 +24,6 @@ public class DocenteController {
         return ResponseEntity.ok(docenteService.getDocente(id));
     }
 
-    //get docente by scuola
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
     @PostMapping

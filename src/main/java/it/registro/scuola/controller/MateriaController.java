@@ -23,8 +23,6 @@ public class MateriaController {
         return ResponseEntity.ok(materiaService.getMateria(id));
     }
 
-    //get materie by scuola
-
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
     @PostMapping
     public ResponseEntity<MateriaDTO> addMateria(@Valid @RequestBody MateriaDTO m){
