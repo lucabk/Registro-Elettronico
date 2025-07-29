@@ -28,4 +28,4 @@ END //
 DELIMITER ;
 
 -- chiamata della procedura
-CALL inserimento_utente_gestore('user3', '{noop}user3');
+CALL inserimento_utente_gestore('G100', '$2a$12$cgW2S7kbmA/NyN26q3XRXuT9rE4T4RlwxcAnlodY5oXfM1ApBFwGa');

@@ -55,7 +55,7 @@ SELECT * FROM segreteria;
 SELECT * FROM utente;
 
 # Segretire per scuola
-SELECT * FROM segreterie_per_scuola; 
+SELECT * FROM segreterie_per_scuola; -- WHERE id_scuola = 1; 
 
 # Studenti
 INSERT INTO studente (id_classe, id_scuola, nome, cognome, email, numero, codice_fiscale, indirizzo, citta, provincia, cap) VALUES 
@@ -73,3 +73,42 @@ JOIN scuola sc ON s.id_scuola = sc.id_scuola;
 
 # Studenti per classe definita
 SELECT * FROM studenti_per_classe WHERE id_classe=1;
+
+# Account studenti
+SELECT s.id_studente, s.id_classe, s.id_scuola, s.nome, s.cognome, u.id_utente, u.username, u.password, u.ruolo, u.riferimento_id 
+FROM studente s JOIN utente u ON s.id_studente = u.riferimento_id 
+WHERE ruolo = 'STU';
+
+SELECT * FROM utente WHERE ruolo = 'STU';
+SELECT * FROM studente;
+
+# Docente
+INSERT INTO docente (nome, cognome, email, numero, codice_fiscale, indirizzo, citta, provincia, cap, istruzione)
+VALUES ('Luigi', 'Annibale', 'luigi.annibale@mail.com', '3404224169', 'LGNNBU01A01H503T', 'Via Rimini 43', 'Milano', 'MI', '20100', 'LM Storia Contemporanea');
+
+# Account docenti
+SELECT d.id_docente, d.nome, d.cognome, u.id_utente, u.username, u.password, u.ruolo, u.riferimento_id 
+FROM docente d JOIN utente u ON d.id_docente= u.riferimento_id 
+WHERE ruolo = 'DOC';
+
+SELECT * FROM docente;
+SELECT * FROM utente WHERE ruolo = 'DOC';
+
+# Materia
+INSERT INTO materia (nome, codice, programma)
+VALUES 
+('Matematica', 'MAT01', 'Equazioni, funzioni, derivate, integrali, probabilità'),
+('Fisica', 'FIS01', 'Meccanica, termodinamica, elettromagnetismo, ottica'),
+('Italiano', 'ITA01', 'Analisi del testo, letteratura italiana, grammatica, produzione scritta');
+
+SELECT * FROM materia;
+
+# Incarico
+INSERT INTO incarico (id_scuola, id_classe, id_docente, id_materia)
+VALUES (1, 1, 10, 3); 
+
+SELECT * FROM incarico;
+
+# Docenti per scuola-classe-materia
+SELECT * FROM docenti_per_scuola;
+SELECT * FROM insegnamento_docenti_per_classe; 

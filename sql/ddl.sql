@@ -124,17 +124,7 @@ CREATE TABLE IF NOT EXISTS assenza(
 
 CREATE TABLE IF NOT EXISTS docente(
 	id_docente INT UNSIGNED AUTO_INCREMENT,
-    username VARCHAR(50) UNIQUE NOT NULL,
-	psw VARCHAR(255) NOT NULL,	
-    data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_docente)
-);
-
-CREATE TABLE IF NOT EXISTS profilo_docente(
-	id_profilo_docente INT UNSIGNED AUTO_INCREMENT,
-    id_docente INT UNSIGNED,
-	nome VARCHAR(50) NOT NULL,	
+    nome VARCHAR(50) NOT NULL,	
     cognome VARCHAR(50) NOT NULL,	
     email VARCHAR(50) UNIQUE NOT NULL,
     numero VARCHAR(15) UNIQUE NOT NULL,
@@ -144,19 +134,18 @@ CREATE TABLE IF NOT EXISTS profilo_docente(
     provincia VARCHAR(10) NOT NULL,
     cap CHAR(5) NOT NULL,
     istruzione TEXT NOT NULL,
-    anni_esperienza TINYINT UNSIGNED,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_profilo_docente),
-    FOREIGN KEY (id_docente) REFERENCES docente(id_docente),
-    CHECK (LENGTH(cap) = 5),
+    PRIMARY KEY (id_docente),
+	CHECK (LENGTH(cap) = 5),
     CHECK (LENGTH(provincia) = 2),
-    CHECK (LENGTH(cod_fiscale) = 16)
+    CHECK (LENGTH(codice_fiscale) = 16)
 );
 
 CREATE TABLE IF NOT EXISTS materia(
 	id_materia INT UNSIGNED AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL UNIQUE,
+    nome VARCHAR(50) NOT NULL,
+    codice VARCHAR(10) NOT NULL UNIQUE,
     programma TEXT NOT NULL ,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -165,15 +154,18 @@ CREATE TABLE IF NOT EXISTS materia(
 
 CREATE TABLE IF NOT EXISTS incarico(
 	id_incarico INT UNSIGNED AUTO_INCREMENT,
+    id_scuola INT UNSIGNED,
 	id_classe INT UNSIGNED,
     id_docente INT UNSIGNED,
     id_materia INT UNSIGNED,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_incarico),
+    FOREIGN KEY (id_scuola) REFERENCES scuola(id_scuola),
     FOREIGN KEY (id_classe) REFERENCES classe(id_classe),
     FOREIGN KEY (id_docente) REFERENCES docente(id_docente),
-    FOREIGN KEY (id_materia) REFERENCES materia(id_materia)
+    FOREIGN KEY (id_materia) REFERENCES materia(id_materia),
+    UNIQUE(id_scuola, id_classe, id_materia)
 );
 
 CREATE TABLE IF NOT EXISTS segreteria(
