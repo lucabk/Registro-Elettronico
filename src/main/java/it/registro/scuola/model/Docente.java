@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "docente")
@@ -53,6 +54,9 @@ public class Docente {
 
     @Column(name = "data_aggiornamento", insertable = false, updatable = false)
     private Date dataAggiornamento;
+
+    @OneToMany(mappedBy = "docente")
+    private Set<Incarico> incarichi;
 
     public Docente(String nome, String cognome, String email, String numero, String codiceFiscale, String indirizzo, String citta, String provincia, String cap, String istruzione) {
         this.nome = nome;

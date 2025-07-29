@@ -42,6 +42,9 @@ public class Classe {
 	@OneToMany(mappedBy = "classe")
 	private Set<Studente> studenti;
 
+	@OneToMany(mappedBy = "classe")
+	private Set<Incarico> incarichi;
+
 	public Classe(int grado, String lettera, String annoScolastico) {
 		super();
 		this.grado = grado;
