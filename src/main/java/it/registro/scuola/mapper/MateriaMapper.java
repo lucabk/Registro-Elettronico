@@ -3,6 +3,10 @@ package it.registro.scuola.mapper;
 import it.registro.scuola.dto.MateriaDTO;
 import it.registro.scuola.model.Materia;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class MateriaMapper {
     public static MateriaDTO toDTO(Materia m) {
         return new MateriaDTO(m.getId(), m.getNome(), m.getCodice(), m.getProgramma());
@@ -17,5 +21,9 @@ public class MateriaMapper {
         originalEntity.setCodice(m.getCodice());
         originalEntity.setProgramma(m.getProgramma());
         return originalEntity;
+    }
+
+    public static List<MateriaDTO> toDTOList(List<Materia> m) {
+        return m.stream().map(MateriaMapper::toDTO).collect(Collectors.toCollection(ArrayList::new));
     }
 }

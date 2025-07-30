@@ -10,6 +10,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -20,6 +22,11 @@ public class MateriaServiceImpl implements MateriaService {
     @Override
     public MateriaDTO getMateriaDTO(int id) {
         return MateriaMapper.toDTO(materiaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Matiera con id "+id+" non trovata")));
+    }
+
+    @Override
+    public List<MateriaDTO> getMaterie() {
+        return MateriaMapper.toDTOList(materiaRepository.findAll());
     }
 
     public Materia getMateria(int id){

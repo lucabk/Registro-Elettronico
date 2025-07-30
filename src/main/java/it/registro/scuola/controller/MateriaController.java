@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/materia")
@@ -20,6 +22,12 @@ public class MateriaController {
     @GetMapping("{id}")
     ResponseEntity<MateriaDTO> getMateria(@PathVariable("id") int id){
         return ResponseEntity.ok(materiaService.getMateriaDTO(id));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @GetMapping
+    ResponseEntity<List<MateriaDTO>> getMaterie(){
+        return ResponseEntity.ok(materiaService.getMaterie());
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
