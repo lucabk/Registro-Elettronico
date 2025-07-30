@@ -23,4 +23,12 @@ public class IncaricoMapper {
         newIncarico.setMateria(m);
         return newIncarico;
     }
+
+    public static Incarico toEnityUp(Incarico originalEntity, Scuola s, Classe c, Docente d, Materia m) {
+        originalEntity.setScuola(s);
+        originalEntity.setClasse(c);
+        originalEntity.setDocente(d);
+        originalEntity.setMateria(m);
+        return originalEntity;
+    }
 }

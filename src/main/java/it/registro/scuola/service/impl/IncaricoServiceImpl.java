@@ -2,10 +2,7 @@ package it.registro.scuola.service.impl;
 
 import it.registro.scuola.dto.incarico.IncaricoDTO;
 import it.registro.scuola.mapper.IncaricoMapper;
-import it.registro.scuola.model.Classe;
-import it.registro.scuola.model.Docente;
-import it.registro.scuola.model.Materia;
-import it.registro.scuola.model.Scuola;
+import it.registro.scuola.model.*;
 import it.registro.scuola.repository.IncaricoRepository;
 import it.registro.scuola.service.IncaricoService;
 import it.registro.scuola.validation.IncaricoInputValidation;
@@ -43,12 +40,27 @@ public class IncaricoServiceImpl implements IncaricoService {
 
     @Override
     public IncaricoDTO addIncarico(IncaricoDTO i) {
+        Dati dati = getDati(i);
+        return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnity(dati.s(), dati.c(), dati.d(), dati.m())));
+    }
+
+    private Dati getDati(IncaricoDTO i) {
         IncaricoInputValidation.addIncaricoDTOValidation(i);
         Scuola s = scuolaService.getScuola(i.getScuolaDTO().getId());
         Classe c = classeService.getClasse(i.getClasseDTO().getId());
         IncaricoInputValidation.checkScuolaClasse(s, c);
         Docente d = docenteService.getDocente(i.getDocenteDTO().getId());
         Materia m = materiaService.getMateria(i.getMateriaDTO().getId());
-        return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnity(s, c, d, m)));
+        return new Dati(s, c, d, m);
+    }
+
+    private record Dati(Scuola s, Classe c, Docente d, Materia m) {
+    }
+
+    @Override
+    public IncaricoDTO updateIncarico(IncaricoDTO i, int id) {
+        Incarico originalEntity = incaricoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Incarico con id "+id+" non trovato"));
+        Dati dati = getDati(i);
+        return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnityUp(originalEntity, dati.s(), dati.c(), dati.d(), dati.m())));
     }
 }
