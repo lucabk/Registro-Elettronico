@@ -55,7 +55,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/classi?idScuola=3",
+							"raw": "http://localhost:8080/api/classi?idScuola=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -68,7 +68,7 @@
 							"query": [
 								{
 									"key": "idScuola",
-									"value": "3"
+									"value": "2"
 								}
 							]
 						}
@@ -83,7 +83,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{TOKEN-GES}}",
+									"value": "{{TOKEN-SEG}}",
 									"type": "string"
 								}
 							]
@@ -91,7 +91,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/classi/1",
+							"raw": "http://localhost:8080/api/classi/93",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -100,7 +100,7 @@
 							"path": [
 								"api",
 								"classi",
-								"1"
+								"93"
 							]
 						}
 					},
@@ -154,7 +154,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"grado\": 2,\r\n    \"lettera\": \"C\",\r\n    \"annoScolastico\": \"2025/2026\",\r\n    \"scuolaDTO\": {\r\n        \"id\": 3\r\n    }\r\n}",
+							"raw": "{\r\n    \"grado\": 1,\r\n    \"lettera\": \"C\",\r\n    \"annoScolastico\": \"2025/2026\",\r\n    \"scuolaDTO\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -184,7 +184,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{TOKEN-GES}}",
+									"value": "{{TOKEN-SEG}}",
 									"type": "string"
 								}
 							]
@@ -201,7 +201,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/classi/91",
+							"raw": "http://localhost:8080/api/classi/61",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -210,7 +210,7 @@
 							"path": [
 								"api",
 								"classi",
-								"91"
+								"61"
 							]
 						}
 					},
@@ -400,7 +400,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{TOKEN-GES}}",
+									"value": "{{TOKEN-SEG}}",
 									"type": "string"
 								}
 							]
@@ -431,7 +431,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{TOKEN-GES}}",
+									"value": "{{TOKEN-SEG}}",
 									"type": "string"
 								}
 							]
@@ -461,7 +461,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{userTOKEN}}",
+									"value": "{{TOKEN-SEG}}",
 									"type": "string"
 								}
 							]
@@ -469,7 +469,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/segreterie/29",
+							"raw": "http://localhost:8080/api/segreterie/39",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -478,7 +478,7 @@
 							"path": [
 								"api",
 								"segreterie",
-								"29"
+								"39"
 							]
 						}
 					},
@@ -487,6 +487,16 @@
 				{
 					"name": "getSegreterieByIdScuola",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-GES}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -518,7 +528,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{userTOKEN}}",
+									"value": "{{TOKEN-GES}}",
 									"type": "string"
 								}
 							]
@@ -527,7 +537,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\" : \"Segreteria 3\",\r\n    \"scuolaDTO\" : {\r\n        \"id\" : 2\r\n    },\r\n    \"username\" : \"S103\",\r\n    \"password\" : \"segr\"\r\n}",
+							"raw": "{\r\n    \"nome\" : \"Segreteria 3\",\r\n    \"scuolaDTO\" : {\r\n        \"id\" : 1\r\n    },\r\n    \"username\" : \"S107\",\r\n    \"password\" : \"segr\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -597,7 +607,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{userTOKEN}}",
+									"value": "{{TOKEN-GES}}",
 									"type": "string"
 								}
 							]
@@ -606,7 +616,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\" : \"segret\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"S101\",\r\n    \"password\" : \"segret\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -614,7 +624,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/segreterie/u25",
+							"raw": "http://localhost:8080/api/segreterie/u28",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -623,7 +633,39 @@
 							"path": [
 								"api",
 								"segreterie",
-								"u25"
+								"u28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getScuolaBySegreteria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/segreterie/utente/S101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"segreterie",
+								"utente",
+								"S101"
 							]
 						}
 					},
@@ -711,7 +753,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"S101\",\r\n    \"password\" : \"segr1\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"S101\",\r\n    \"password\" : \"segret\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -727,6 +769,911 @@
 							"port": "8080",
 							"path": [
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login (STU)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"// Prende il token dalla risposta JSON e lo salva come variabile di ambiente\r",
+									"const response = pm.response.json();\r",
+									"pm.environment.set(\"TOKEN-STU\", response.token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"A100\",\r\n    \"password\" : \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Studente",
+			"item": [
+				{
+					"name": "getStudente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/studente/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"studente",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStudentiByIdScuola",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/studente?idScuola=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"studente"
+							],
+							"query": [
+								{
+									"key": "idScuola",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addStudente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Mario\",\r\n    \"cognome\": \"Verdi\",\r\n    \"email\": \"mario.verdi@example.com\",\r\n    \"numero\": \"3887653241\",\r\n    \"codiceFiscale\": \"KNFGLD23B06H501F\",\r\n    \"indirizzo\": \"Via Como 34\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"scuolaDTO\": { \"id\": 3 },\r\n    \"classeDTO\": { \"id\": 36 },\r\n    \"username\": \"A102\",\r\n    \"password\": \"marioverdi\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/studente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"studente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStudente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"nome\": \"Fabio\",\r\n    \"cognome\": \"Galli\",\r\n    \"email\": \"fabio.gialli@example.com\",\r\n    \"numero\": \"3331234567\",\r\n    \"codiceFiscale\": \"RSSLCU01A01H501X\",\r\n    \"indirizzo\": \"Via Roma 130\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"scuolaDTO\": { \"id\": 1 },\r\n    \"classeDTO\": { \"id\": 1 }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/studente/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"studente",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStudentePsw",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"A100\",\r\n    \"password\" : \"password\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/studente/u5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"studente",
+								"u5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteStudente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/studente/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"studente",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Docente",
+			"item": [
+				{
+					"name": "getDocente",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/docente/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docente",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDocenti",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/docente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDocente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/docente/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docente",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addDocente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Serena\",\r\n  \"cognome\": \"Montagne\",\r\n  \"email\": \"serena.montagne@example.com\",\r\n  \"numero\": \"3476540091\",\r\n  \"codiceFiscale\": \"SRNMNT99C15G209J\",\r\n  \"indirizzo\": \"Via Imola 33\",\r\n  \"citta\": \"Monza\",\r\n  \"provincia\": \"MO\",\r\n  \"cap\": \"10100\",\r\n  \"istruzione\": \"LM Biologia\",\r\n  \"username\": \"D106\",\r\n  \"password\": \"serenamontagna\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/docente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDocente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Susanna\",\r\n    \"cognome\": \"Verdoni\",\r\n    \"email\": \"susanna.arancioni@example.com\",\r\n    \"numero\": \"3887653241\",\r\n    \"codiceFiscale\": \"SSRNCD23B06H501G\",\r\n    \"indirizzo\": \"Via Molise 4\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"istruzione\" : \"LM Matematica\",\r\n    \"username\": \"D102\",\r\n    \"password\": \"password\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/docente/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docente",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDocentePsw",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"D102\",\r\n    \"password\" : \"password\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/docente/u3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docente",
+								"u3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Materia",
+			"item": [
+				{
+					"name": "getMateria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/materia/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMaterie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addMateria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"Scienze\",\r\n    \"codice\" : \"SCI01\",\r\n    \"programma\" : \"DNA, Chimica, Fotosintesi, Biologia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMateria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"Latino\",\r\n    \"codice\" : \"LAT01\",\r\n    \"programma\" : \"Virgilio, Catullo, Cicerone, Seneca\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/materia/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMateria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"Latino\",\r\n    \"codice\" : \"LAT01\",\r\n    \"programma\" : \"Virgilio, Catullo, Cicerone, Seneca\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/materia/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Incarico",
+			"item": [
+				{
+					"name": "getIncarico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/incarico/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incarico",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIncarichiByScuola",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/incarico/scuola?idScuola=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incarico",
+								"scuola"
+							],
+							"query": [
+								{
+									"key": "idScuola",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIncarichiByClasse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/incarico/classe?idClasse=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incarico",
+								"classe"
+							],
+							"query": [
+								{
+									"key": "idClasse",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addIncarico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"scuolaDTO\"     :   { \"id\" : 3 },\r\n    \"classeDTO\"     :   { \"id\" : 36 },\r\n    \"docenteDTO\"    :   { \"id\" : 12 },\r\n    \"materiaDTO\"    :   { \"id\" : 7 }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/incarico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incarico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateIncarico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"scuolaDTO\"     :   { \"id\" : 3 },\r\n    \"classeDTO\"     :   { \"id\" : 36 },\r\n    \"docenteDTO\"    :   { \"id\" : 13 },\r\n    \"materiaDTO\"    :   { \"id\" : 8 }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/incarico/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incarico",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteIncarico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/incarico/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incarico",
+								"12"
 							]
 						}
 					},

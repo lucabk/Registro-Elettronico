@@ -111,4 +111,13 @@ SELECT * FROM incarico;
 
 # Docenti per scuola-classe-materia
 SELECT * FROM docenti_per_scuola;
-SELECT * FROM insegnamento_docenti_per_classe; 
+SELECT * FROM insegnamento_docenti_per_classe WHERE id_classe = 1; 
+
+# Scuola-Classe-Docente-Materia
+SELECT i.id_incarico, s.id_scuola, s.nome, c.id_classe, c.grado, c.lettera, c.anno_scolastico, d.id_docente, d.nome, d.cognome, m.id_materia, m.nome AS materia
+FROM incarico i JOIN scuola s ON s.id_scuola = i.id_scuola 
+JOIN classe c ON c.id_classe = i.id_classe
+JOIN docente d ON d.id_docente = i.id_docente
+JOIN materia m ON m.id_materia = i.id_materia;
+#WHERE c.id_classe = 1;
+
