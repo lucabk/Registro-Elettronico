@@ -25,8 +25,12 @@ public class DocenteServiceImpl implements DocenteService {
     private UtenteServiceImpl utenteService;
 
     @Override
-    public DocenteDTO getDocente(int id) {
+    public DocenteDTO getDocenteDTO(int id) {
         return DocenteMapper.toDTO(docenteRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Docente con id "+id+" non trovato")));
+    }
+
+    public Docente getDocente(int id){
+        return docenteRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Docente con id "+id+" non trovato"));
     }
 
     @Override
@@ -50,13 +54,13 @@ public class DocenteServiceImpl implements DocenteService {
     @Override
     public void udpdatePswDocente(UpdateUtentePswDTO c, int id) {
         UtenteInputValidation.ValidationUpdateUtentePswDTO(c);
-        getDocente(id);
+        getDocenteDTO(id);
         utenteService.upUtentePsw(id, c);
     }
 
     @Override
     public void deleteDocente(int id) {
-        getDocente(id);
+        getDocenteDTO(id);
         docenteRepository.deleteById(id);
         utenteService.deleteUtente(id);
     }

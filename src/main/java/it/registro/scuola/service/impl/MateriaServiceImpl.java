@@ -18,8 +18,12 @@ public class MateriaServiceImpl implements MateriaService {
     private final MateriaRepository materiaRepository;
 
     @Override
-    public MateriaDTO getMateria(int id) {
-        return (MateriaMapper.toDTO(materiaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Matiera con id "+id+" non trovata"))));
+    public MateriaDTO getMateriaDTO(int id) {
+        return MateriaMapper.toDTO(materiaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Matiera con id "+id+" non trovata")));
+    }
+
+    public Materia getMateria(int id){
+        return materiaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Matiera con id "+id+" non trovata"));
     }
 
     @Override
@@ -36,7 +40,7 @@ public class MateriaServiceImpl implements MateriaService {
 
     @Override
     public void deleteMateria(int id) {
-        getMateria(id);
+        getMateriaDTO(id);
         materiaRepository.deleteById(id);
     }
 }

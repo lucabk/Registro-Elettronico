@@ -7,4 +7,5 @@ public interface IncaricoService {
     IncaricoDTO getIncarico(int id);
     List<IncaricoDTO> getIncaricoByScuola(int idScuola);
     List<IncaricoDTO> getIncaricoByClasse(int idClasse);
+    IncaricoDTO addIncarico(IncaricoDTO i);
 }

@@ -1,7 +1,6 @@
 package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.MateriaDTO;
-import it.registro.scuola.mapper.MateriaMapper;
 import it.registro.scuola.service.impl.MateriaServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -20,7 +19,7 @@ public class MateriaController {
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC', 'STU')")
     @GetMapping("{id}")
     ResponseEntity<MateriaDTO> getMateria(@PathVariable("id") int id){
-        return ResponseEntity.ok(materiaService.getMateria(id));
+        return ResponseEntity.ok(materiaService.getMateriaDTO(id));
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")

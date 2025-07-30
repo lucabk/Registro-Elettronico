@@ -2,7 +2,9 @@ package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.incarico.IncaricoDTO;
 import it.registro.scuola.service.impl.IncaricoServiceImpl;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -32,4 +34,11 @@ public class IncaricoController {
     ResponseEntity<List<IncaricoDTO>> getIncaricoByClasse(@RequestParam(required = true) Integer idClasse){
         return ResponseEntity.ok(incaricoService.getIncaricoByClasse(idClasse));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @PostMapping
+    ResponseEntity<IncaricoDTO> addIncarico(@Valid @RequestBody IncaricoDTO i){
+        return ResponseEntity.status(HttpStatus.CREATED).body(incaricoService.addIncarico(i));
+    }
+
 }

@@ -21,7 +21,7 @@ public class DocenteController {
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
     @GetMapping("{id}")
     ResponseEntity<DocenteDTO> getDocente(@PathVariable("id") int id) {
-        return ResponseEntity.ok(docenteService.getDocente(id));
+        return ResponseEntity.ok(docenteService.getDocenteDTO(id));
     }
 
 
