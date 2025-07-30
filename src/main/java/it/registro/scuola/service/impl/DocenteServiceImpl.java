@@ -16,6 +16,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -27,6 +29,11 @@ public class DocenteServiceImpl implements DocenteService {
     @Override
     public DocenteDTO getDocenteDTO(int id) {
         return DocenteMapper.toDTO(docenteRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Docente con id "+id+" non trovato")));
+    }
+
+    @Override
+    public List<DocenteDTO> getDocenti() {
+        return DocenteMapper.toDTOList(docenteRepository.findAll());
     }
 
     public Docente getDocente(int id){

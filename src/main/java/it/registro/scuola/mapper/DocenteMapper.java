@@ -4,6 +4,10 @@ import it.registro.scuola.dto.docente.AddDocenteDTO;
 import it.registro.scuola.dto.docente.DocenteDTO;
 import it.registro.scuola.model.Docente;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class DocenteMapper {
     public static DocenteDTO toDTO(Docente d) {
         return new DocenteDTO(d.getId(), d.getNome(), d.getCognome(), d.getEmail(), d.getNumero(), d.getCodiceFiscale(),
@@ -27,5 +31,9 @@ public class DocenteMapper {
         originalEntity.setCap(d.getCap());
         originalEntity.setIstruzione(d.getIstruzione());
         return originalEntity;
+    }
+
+    public static List<DocenteDTO> toDTOList(List<Docente> d) {
+        return d.stream().map(DocenteMapper::toDTO).collect(Collectors.toCollection(ArrayList::new));
     }
 }

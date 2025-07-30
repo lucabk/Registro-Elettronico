@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/docente")
@@ -24,6 +26,11 @@ public class DocenteController {
         return ResponseEntity.ok(docenteService.getDocenteDTO(id));
     }
 
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @GetMapping
+    public ResponseEntity<List<DocenteDTO>> getDocenti(){
+        return ResponseEntity.ok(docenteService.getDocenti());
+    }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
     @PostMapping
