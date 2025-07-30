@@ -46,4 +46,11 @@ public class IncaricoController {
     ResponseEntity<IncaricoDTO> updateIncarico(@Valid @RequestBody IncaricoDTO i, @PathVariable int id){
         return ResponseEntity.ok(incaricoService.updateIncarico(i, id));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @DeleteMapping("{id}")
+    ResponseEntity<Void> deleteIncatico(@PathVariable("id") int id){
+        incaricoService.deleteIncarico(id);
+        return ResponseEntity.noContent().build();
+    }
 }

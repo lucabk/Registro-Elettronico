@@ -63,4 +63,10 @@ public class IncaricoServiceImpl implements IncaricoService {
         Dati dati = getDati(i);
         return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnityUp(originalEntity, dati.s(), dati.c(), dati.d(), dati.m())));
     }
+
+    @Override
+    public void deleteIncarico(int id) {
+        getIncarico(id);
+        incaricoRepository.deleteById(id);
+    }
 }

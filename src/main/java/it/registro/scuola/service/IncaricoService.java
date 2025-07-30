@@ -9,4 +9,5 @@ public interface IncaricoService {
     List<IncaricoDTO> getIncaricoByClasse(int idClasse);
     IncaricoDTO addIncarico(IncaricoDTO i);
     IncaricoDTO updateIncarico(IncaricoDTO i, int id);
+    void deleteIncarico(int id);
 }
