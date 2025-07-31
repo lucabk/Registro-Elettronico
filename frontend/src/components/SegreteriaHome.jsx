@@ -7,6 +7,7 @@ import { toast } from "react-toastify"
 import ClassiScuolaSegr from "./Class/ClassiScuolaSegr"
 import ClassInfo from "./Class/ClassInfo"
 import Students from "./Student/Students"
+import StudentInfo from "./Student/StudentInfo"
 
 const SegreteriaHome = () => {
     const [school, setSchool] = useState(null)
@@ -48,7 +49,7 @@ const SegreteriaHome = () => {
                     { <Students classId={classId} /> }
                 />    
                 <Route path='/classi/:idClasse/students/:idStudent' element = 
-                    { <Students studentId={studentId} /> }
+                    { <StudentInfo studentId={studentId} /> }
                 />    
 
             </Routes>

@@ -10,7 +10,7 @@ const StudentInfo = ({ studentId }) => {
     const [showForm, setShowForm] = useState(false)
     const queryClient = useQueryClient()
 
-    const { data, isPending, _isError, _error } = useQuery({
+    const { data, isPending, _isError, error } = useQuery({
         queryKey : ['student'],
         queryFn : () => studentService.getStudentById(studentId)
     })
@@ -31,6 +31,7 @@ const StudentInfo = ({ studentId }) => {
         <>
         <TopScetion text={"Dettagli dello studente"} />
         {isPending && <span>Caricamento studente in corso...</span>}
+        {error && toast.error("Errore caricamento studente")}
 
         { data && (
             <div className="container bg-light d-flex justify-content-center p-3">

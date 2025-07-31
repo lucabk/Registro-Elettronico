@@ -7,7 +7,7 @@ import SingleStudent from "./SingleStudent"
 
 const Students = ({ classId }) => {
 
-    const { isPending, isError, data, _error } = useQuery({
+    const { isPending, _isError, data, error } = useQuery({
         queryKey : ['students'],
         queryFn : () => studentService.getStudentsByClasse(classId)
     })
@@ -18,10 +18,10 @@ const Students = ({ classId }) => {
         <>
             <TopScetion text={`Studenti ${data && data[0]?.classeDTO?.grado}${data && data[0]?.classeDTO?.lettera}`}/>
             {isPending && <span>Caricamento degli studenti in corso...</span>}
-            {isError && toast.error("Errore caricamento studenti")}
+            {error && toast.error("Errore caricamento studenti")}
 
             <div className="container-fluid bg-light p-5">
-                <h3 className="mt-5 text-center fs-3">Studenti disponibili</h3>
+                <h2 className="mt-5 text-center fs-2">Studenti disponibili</h2>
                 <table className="container table p-3 mt-5 table-dark table-striped table-bordered bg-secondary">
                     <caption>Tabella Studenti</caption>
                     <thead className="table-light">
