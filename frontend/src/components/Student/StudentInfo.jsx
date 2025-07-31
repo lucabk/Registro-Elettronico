@@ -1,22 +1,36 @@
 import TopScetion from "../TopSection"
 import Footer from "../Footer"
 import * as studentService from "../../service/student"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { toast } from "react-toastify"
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import UpdateStudentForm from "./UpdateStudentForm"
 
 const StudentInfo = ({ studentId }) => {
+    const [showForm, setShowForm] = useState(false)
+    const queryClient = useQueryClient()
 
-    const { data, isPending, isError, _error } = useQuery({
+    const { data, isPending, _isError, _error } = useQuery({
         queryKey : ['student'],
         queryFn : () => studentService.getStudentById(studentId)
+    })
+
+    const updateStudentMutation = useMutation({
+        mutationFn : studentService.updateStudente,
+        onSuccess : (studentUpdated) => {
+            queryClient.setQueryData(['student'], studentUpdated)
+            toast.success("Informazioni aggiornate correttamente")
+        },
+        onError : (e) => {
+            toast.error("Errore aggiornamento studente")
+            console.error("Errore aggiornamento studente: ", e)
+        }
     })
 
     return(
         <>
         <TopScetion text={"Dettagli dello studente"} />
         {isPending && <span>Caricamento studente in corso...</span>}
-        {isError && toast.error("Errore caricamento studente")}
 
         { data && (
             <div className="container bg-light d-flex justify-content-center p-3">
@@ -34,14 +48,21 @@ const StudentInfo = ({ studentId }) => {
                     </div>
                     <div className="card-footer text-body-secondary p-4">
                         <div className="d-grid gap-3">
-                            <Link to='#'>
-                                <button type="button" className="btn btn-outline-dark" >
-                                    Aggiorna i dati dello studente
-                                </button>
-                            </Link>
+                            <button onClick={()=>setShowForm(prev => !prev)} type="button" className="btn btn-outline-dark" >
+                                {showForm ? "Nascondi" : "Aggiorna i dati dello studente" }
+                            </button>
                         </div>
                     </div>
                 </div>
+
+                { showForm && (
+                    < UpdateStudentForm 
+                        updateStudentMutation={updateStudentMutation} 
+                        student={data}
+                        setShowForm={setShowForm}
+                    />
+                )}
+
             </div>
         )}
         <Footer />
