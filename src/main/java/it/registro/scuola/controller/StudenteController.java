@@ -26,9 +26,15 @@ public class StudenteController {
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
-    @GetMapping
+    @GetMapping("/byScuola")
     public ResponseEntity<List<StudenteDTO>> getStudentiByScuola(@RequestParam(required = true) Integer idScuola) {
         return ResponseEntity.ok(studenteService.getStudentiByScuola(idScuola));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @GetMapping("/byClasse")
+    public ResponseEntity<List<StudenteDTO>> getStudentiByClasse(@RequestParam Integer idClasse) {
+        return ResponseEntity.ok(studenteService.getStudentiByClasse(idClasse));
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")

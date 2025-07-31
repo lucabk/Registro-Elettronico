@@ -9,6 +9,7 @@ import java.util.List;
 public interface StudenteService {
     StudenteDTO getStudente(int id);
     List<StudenteDTO> getStudentiByScuola(int idScuola);
+    List<StudenteDTO> getStudentiByClasse(int idClasse);
     StudenteDTO addStudente(AddStudenteDTO s);
     StudenteDTO updateStudente(StudenteDTO s, int id);
     void updatePswStudente(UpdateUtentePswDTO c , int id);
