@@ -8,6 +8,7 @@ import UpdateSchool from "./School/updateSchool"
 import { toast } from "react-toastify"
 import Segreterie from "./Secretaryship/Secretaryship"
 import ClassInfo from "./Class/ClassInfo"
+import Students from "./Student/Students"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -58,6 +59,10 @@ const AdminHome = () => {
                 
                 <Route path='/schools/:idScuola/:idClasse' element = { 
                     <ClassInfo classId={classId} /> }
+                />
+
+                <Route path='/schools/:idScuola/:idClasse/students' element = {
+                    <Students classId={classId} />}
                 />
                 
             </Routes>

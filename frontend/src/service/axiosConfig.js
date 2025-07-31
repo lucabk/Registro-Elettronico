@@ -30,7 +30,7 @@ instance.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-            toast.error("Non si è autorizzati a svolgere questa azione. Si rieffettui il Login")
+            toast.error("Si rieffettui nuovamente il Login")
             localStorage.removeItem("token")
             if (userDispatcher) {
                 userDispatcher({ type: "DELETE_USER" })

@@ -16,7 +16,7 @@ const ClassInfo = ({ classId }) => {
     return(
         <>
             <TopScetion text={`Informazioni sulla classe ${data?.grado}${data?.lettera}`}/>
-            {isPending && <span>Carimante classi in corso...</span>}
+            {isPending && <span>Carimanto classi in corso...</span>}
             {isError && toast.error("Errore caricamento della classe")}
              <div className="container bg-light d-flex justify-content-center p-3">
                     <div className="card m-4 fs-5" style={{width: "18rem"}}>
@@ -30,7 +30,7 @@ const ClassInfo = ({ classId }) => {
                         </ul>
                         <div className="card-body">
                             <div className="d-grid gap-3">
-                                <Link to='#'>
+                                <Link to='students'>
                                     <button type="button" className="btn btn-outline-success" >
                                         Alunni
                                     </button>
