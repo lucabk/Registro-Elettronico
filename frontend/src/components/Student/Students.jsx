@@ -8,16 +8,16 @@ import SingleStudent from "./SingleStudent"
 const Students = ({ classId }) => {
 
     const { isPending, isError, data, _error } = useQuery({
-        queryKey : ['studenti'],
+        queryKey : ['students'],
         queryFn : () => studentService.getStudentsByClasse(classId)
     })
 
-    console.log(data);
+    //console.log(data);
 
     return(
         <>
-            <TopScetion text={`Studenti ${data[0]?.classeDTO?.grado}${data[0]?.classeDTO?.lettera}`}/>
-            {isPending && <span>Carimanto degli studenti in corso...</span>}
+            <TopScetion text={`Studenti ${data && data[0]?.classeDTO?.grado}${data && data[0]?.classeDTO?.lettera}`}/>
+            {isPending && <span>Caricamento degli studenti in corso...</span>}
             {isError && toast.error("Errore caricamento studenti")}
 
             <div className="container-fluid bg-light p-5">
@@ -35,10 +35,11 @@ const Students = ({ classId }) => {
                             <th className="text-center">Città</th>
                             <th className="text-center">Provincia</th>
                             <th className="text-center">CAP</th>
+                            <th className="text-center">Info</th>
                         </tr>
                     </thead>
                     <tbody className="table-group-divider">
-                    {data
+                    {data && data
                         .slice() // shallow copy per non mutare lo stato
                         .sort((a, b) => {
                             if (a.cognome !== b.cognome) return a.cognome - b.cognome;

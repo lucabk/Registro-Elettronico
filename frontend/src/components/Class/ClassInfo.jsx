@@ -18,7 +18,7 @@ const ClassInfo = ({ classId }) => {
             <TopScetion text={`Informazioni sulla classe ${data?.grado}${data?.lettera}`}/>
             {isPending && <span>Carimanto classi in corso...</span>}
             {isError && toast.error("Errore caricamento della classe")}
-             <div className="container bg-light d-flex justify-content-center p-3">
+                <div className="container bg-light d-flex justify-content-center p-3">
                     <div className="card m-4 fs-5" style={{width: "18rem"}}>
                         <div className="card-header bg-dark text-white">
                             {data?.scuolaDTO.nome}

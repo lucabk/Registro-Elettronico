@@ -26,6 +26,11 @@ const SegreteriaHome = () => {
         ? Number(matchClassId.params.idClasse)
         : null
 
+    const matchStudentId = useMatch('/segreteria/classi/:idClasse/students/:idStudent/*')    
+    const studentId = matchStudentId
+        ? Number(matchStudentId.params.idStudent)
+        : null
+
     return(
         <>
             <Routes>
@@ -41,6 +46,9 @@ const SegreteriaHome = () => {
                 />
                 <Route path='/classi/:idClasse/students' element = 
                     { <Students classId={classId} /> }
+                />    
+                <Route path='/classi/:idClasse/students/:idStudent' element = 
+                    { <Students studentId={studentId} /> }
                 />    
 
             </Routes>

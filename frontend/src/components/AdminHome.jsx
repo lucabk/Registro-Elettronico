@@ -9,6 +9,7 @@ import { toast } from "react-toastify"
 import Segreterie from "./Secretaryship/Secretaryship"
 import ClassInfo from "./Class/ClassInfo"
 import Students from "./Student/Students"
+import StudentInfo from "./Student/StudentInfo"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -33,6 +34,10 @@ const AdminHome = () => {
         ? Number(matchClassId.params.idClasse)
         : null
 
+    const matchStudentId = useMatch('/admin/schools/:idScuola/:idClasse/students/:idStudent/*')    
+    const studentId = matchStudentId
+        ? Number(matchStudentId.params.idStudent)
+        : null
 
     return(
         <>  
@@ -63,6 +68,10 @@ const AdminHome = () => {
 
                 <Route path='/schools/:idScuola/:idClasse/students' element = {
                     <Students classId={classId} />}
+                />
+
+                <Route path='/schools/:idScuola/:idClasse/students/:idStudent' element= {
+                   <StudentInfo  studentId={studentId} />  }
                 />
                 
             </Routes>
