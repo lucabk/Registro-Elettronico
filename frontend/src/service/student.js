@@ -21,3 +21,7 @@ export const addStudente = async (newStudent) => {
     const res = await axios.post(API_STUDENTI, newStudent)
     return res.data
 }
+
+export const deleteStudente = async (id) => {
+   await axios.delete(`${API_STUDENTI}/${id}`)
+}

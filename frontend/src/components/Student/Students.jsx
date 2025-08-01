@@ -32,6 +32,18 @@ const Students = ({ classId, schoolId }) => {
         }
     })
 
+    const deleteStudentMutation = useMutation({
+        mutationFn : studentService.deleteStudente,
+        onSuccess : () => {
+            queryClient.invalidateQueries({ queryKey : ['students'] })
+            toast.success("Studente eliminato correttamente")
+        },
+        onError : (e) => {
+             toast.error("Errore eliminazione studente")
+            console.error("Errore eliminazione studente: ", e)
+        }
+    })
+
     //console.log(data);
 
     return(
@@ -56,6 +68,7 @@ const Students = ({ classId, schoolId }) => {
                             <th className="text-center">Provincia</th>
                             <th className="text-center">CAP</th>
                             <th className="text-center">Info</th>
+                            <th className="text-center">Cancella</th>
                         </tr>
                     </thead>
                     <tbody className="table-group-divider">
@@ -67,7 +80,10 @@ const Students = ({ classId, schoolId }) => {
                         })
                         .map(s => 
                             <tr key={s.id}>
-                                <SingleStudent student={s} />
+                                <SingleStudent 
+                                    student={s} 
+                                    deleteStudentMutation={deleteStudentMutation}
+                                />
                             </tr>
                     )}
                     </tbody>
