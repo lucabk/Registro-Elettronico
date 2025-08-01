@@ -46,7 +46,7 @@ const SegreteriaHome = () => {
                     { <ClassInfo classId={classId} /> } 
                 />
                 <Route path='/classi/:idClasse/students' element = 
-                    { <Students classId={classId} /> }
+                    { <Students classId={classId} schoolId={school?.id}/> }
                 />    
                 <Route path='/classi/:idClasse/students/:idStudent' element = 
                     { <StudentInfo studentId={studentId} /> }

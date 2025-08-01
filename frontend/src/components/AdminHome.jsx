@@ -71,7 +71,7 @@ const AdminHome = () => {
                 />
 
                 <Route path='/schools/:idScuola/:idClasse/students/:idStudent' element= {
-                   <StudentInfo  studentId={studentId} />  }
+                   <StudentInfo  studentId={studentId} schoolId={school?.id}/>  }
                 />
                 
             </Routes>
