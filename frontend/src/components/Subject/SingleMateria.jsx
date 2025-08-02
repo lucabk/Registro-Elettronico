@@ -1,10 +1,9 @@
-import { useState } from "react"
 import UpdateSubject from "./UpdateSubject"
 import { toast } from "react-toastify"
 import * as materiaService from "../../service/subject"
 
 const SingleMateria = ({ materia, setMaterie }) => {
-    const [formVisible, setFormVisible] = useState(false)
+    //const [formVisible, setFormVisible] = useState(false)
 
     const handleDelete = async (e) => {
         e.preventDefault()
@@ -24,6 +23,9 @@ const SingleMateria = ({ materia, setMaterie }) => {
         <>
             <td className="text-center">{materia.codice}</td>
             <td className="text-center">{materia.nome}</td>
+            {
+                /*
+                
             <td className="text-center">{materia.programma}</td>
             <td className="text-center">
                 {
@@ -49,6 +51,8 @@ const SingleMateria = ({ materia, setMaterie }) => {
                     )
                 }
             </td>
+                */
+            }
             <td className="text-center">
                 <button type="button" onClick={handleDelete} className="btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" fill="red" className="bi bi-x" viewBox="0 0 16 16">

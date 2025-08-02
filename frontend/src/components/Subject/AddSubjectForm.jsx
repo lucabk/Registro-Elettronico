@@ -7,7 +7,6 @@ const AddSubjectForm = ({ setMaterie }) => {
         const newMateria = {
             nome : formData.get("nome"),
             codice : formData.get("codice"),
-            programma : formData.get("programma")
         }
         try{
             const saved = await materiaService.addMateria(newMateria)
@@ -25,16 +24,12 @@ const AddSubjectForm = ({ setMaterie }) => {
                 <h2 className="text-center fs-2 mb-4">Aggiungi materia</h2>
                  <form action={handleSubmit} className="row needs-validation">
                     <div className="mt-3 col-4">
-                        <label htmlFor="nome" className="form-label" >Insegnamento</label>
-                        <input className="form-control" id="nome" type="text" name="nome" placeholder="Italiano" maxLength={50} required></input>
-                    </div>
-                    <div className="mt-3 col-4">
-                        <label htmlFor="codice" className="form-label" >Codice</label>
+                        <label htmlFor="codice" className="form-label" >Identificativo</label>
                         <input className="form-control" id="codice" type="text" name="codice" placeholder="ITA01" maxLength={10} required></input>
                     </div>
                     <div className="mt-3 col-4">
-                        <label htmlFor="programma" className="form-label" >Programma</label>
-                        <input className="form-control" id="programma" type="text" name="programma" placeholder="Dante, Virgilio, ..." maxLength={65535} required></input>
+                        <label htmlFor="nome" className="form-label" >Insegnamento</label>
+                        <input className="form-control" id="nome" type="text" name="nome" placeholder="Italiano" maxLength={50} required></input>
                     </div>
                     <button className="mt-5 btn btn-dark btn-lg">Aggiungi</button>
                 </form>

@@ -29,8 +29,6 @@ const GetSubjects = () => {
                         <tr>
                             <th className="text-center">Identificativo</th>
                             <th className="text-center">Insegnamento</th>
-                            <th className="text-center">Programma</th>
-                            <th className="text-center">Aggiorna Programma</th>
                             <th className="text-center">Elimina</th>
                         </tr>
                     </thead>

@@ -12,11 +12,6 @@ export const addMateria = async (newMateria) => {
     return res.data
 }
 
-export const updateMateria = async (newMateria, id) => {
-    const res = await axios.put(`${API_MATERIA}/${id}`, newMateria)
-    return res.data
-}
-
 export const deleteMateria = async (id) => {
     await axios.delete(`${API_MATERIA}/${id}`)
 }
