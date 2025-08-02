@@ -4,6 +4,7 @@ import TopScetion from "../TopSection"
 import * as materiaService from "../../service/subject"
 import { toast } from "react-toastify"
 import SingleMateria from "./SingleMateria"
+import AddSubjectForm from "./AddSubjectForm"
 
 const GetSubjects = () => {
     const [materie, setMaterie] = useState([])
@@ -19,9 +20,9 @@ const GetSubjects = () => {
 
     return(
         <>
-            <TopScetion text={"Insegnamenti"} />
+            <TopScetion text={"Materie"} />
             <div className="container-fluid p-3 bg-light text-dark p-5">
-                <h2 className="text-center fs-2 mb-4">Lista degli Insegnamenti disponibili nel database</h2>
+                <h2 className="text-center fs-2 mb-4">Insegnamenti disponibili nel database</h2>
                 <table className="container table p-3 mt-5 table-dark table-striped table-bordered bg-secondary">
                     <caption>Tabella Materie</caption>
                     <thead className="table-light">
@@ -49,6 +50,9 @@ const GetSubjects = () => {
                     </tbody>
                 </table>
             </div>
+
+            <AddSubjectForm setMaterie={ setMaterie }/>
+
             <Footer />
         </>
     )
