@@ -8,6 +8,7 @@ import ClassiScuolaSegr from "./Class/ClassiScuolaSegr"
 import ClassInfo from "./Class/ClassInfo"
 import Students from "./Student/Students"
 import StudentInfo from "./Student/StudentInfo"
+import GetSubjects from "./Subject/GetSubjects"
 
 const SegreteriaHome = () => {
     const [school, setSchool] = useState(null)
@@ -51,6 +52,10 @@ const SegreteriaHome = () => {
                 <Route path='/classi/:idClasse/students/:idStudent' element = 
                     { <StudentInfo studentId={studentId} /> }
                 />    
+
+                <Route path='/materie' element =
+                    { <GetSubjects /> }
+                />
 
             </Routes>
         </>

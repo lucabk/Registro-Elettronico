@@ -2,12 +2,11 @@ import Footer from "../Footer"
 import TopScetion from "../TopSection"
 import { useQuery } from "@tanstack/react-query"
 import * as ClassService from "../../service/class"
-import { toast } from "react-toastify"
 import { Link } from "react-router-dom"
 
 const ClassInfo = ({ classId }) => {
 
-    const {isPending, isError, data, _error } = useQuery({
+    const {isPending, data } = useQuery({
         queryKey: ['classi'],
         queryFn: () => ClassService.getClassById(classId)
     })
@@ -17,7 +16,6 @@ const ClassInfo = ({ classId }) => {
         <>
             <TopScetion text={`Informazioni sulla classe ${data?.grado}${data?.lettera}`}/>
             {isPending && <span>Carimanto classi in corso...</span>}
-            {isError && toast.error("Errore caricamento della classe")}
                 <div className="container bg-light d-flex justify-content-center p-3">
                     <div className="card m-4 fs-5" style={{width: "18rem"}}>
                         <div className="card-header bg-dark text-white">

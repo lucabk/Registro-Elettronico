@@ -28,6 +28,13 @@ const SchoolHomePage = ({ school }) => {
                                     </button>
                                 </Link>
                             </div>
+                            <div className="d-grid gap-3 mt-3">
+                                <Link to='/segreteria/materie'>
+                                    <button type="button" className="btn btn-outline-secondary" >
+                                        Insegnamenti
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                         <div className="card-footer text-body-secondary">
                             {school.indirizzo}, {school.citta} ({school.provincia})
