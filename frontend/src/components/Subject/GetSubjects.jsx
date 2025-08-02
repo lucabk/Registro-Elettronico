@@ -30,7 +30,7 @@ const GetSubjects = () => {
                             <th className="text-center">Identificativo</th>
                             <th className="text-center">Insegnamento</th>
                             <th className="text-center">Programma</th>
-                            <th className="text-center">Aggiorna</th>
+                            <th className="text-center">Aggiorna Programma</th>
                             <th className="text-center">Elimina</th>
                         </tr>
                     </thead>
@@ -42,7 +42,7 @@ const GetSubjects = () => {
                                     .sort((a, b) => a.codice.localeCompare(b.codice))
                                     .map( m => 
                                         <tr key={m.id}>
-                                            <SingleMateria materia={m} />
+                                            <SingleMateria materia={m} setMaterie={setMaterie}/>
                                         </tr>
                                     )
                             )
