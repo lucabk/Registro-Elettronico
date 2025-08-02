@@ -19,4 +19,5 @@ public class IncaricoDTO {
     private ClasseDTO classeDTO;
     private DocenteDTO docenteDTO;
     private MateriaDTO materiaDTO;
+    private String programma;
 }

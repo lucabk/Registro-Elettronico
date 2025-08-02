@@ -40,4 +40,7 @@ public class Incarico {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_materia", nullable = false)
     private Materia materia;
+
+    @Column(name = "programma")
+    private String programma;
 }

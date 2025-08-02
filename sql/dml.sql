@@ -105,8 +105,8 @@ VALUES
 SELECT * FROM materia;
 
 # Incarico
-INSERT INTO incarico (id_scuola, id_classe, id_docente, id_materia)
-VALUES (1, 1, 10, 3); 
+INSERT INTO incarico (id_scuola, id_classe, id_docente, id_materia, programma)
+VALUES (1, 1, 3, 1, 'Algebra, Geometria, Integrali, Calcolo delle probabilità'); 
 
 SELECT * FROM incarico;
 
@@ -115,7 +115,7 @@ SELECT * FROM docenti_per_scuola;
 SELECT * FROM insegnamento_docenti_per_classe WHERE id_classe = 1; 
 
 # Scuola-Classe-Docente-Materia
-SELECT i.id_incarico, s.id_scuola, s.nome, c.id_classe, c.grado, c.lettera, c.anno_scolastico, d.id_docente, d.nome, d.cognome, m.id_materia, m.nome AS materia
+SELECT i.id_incarico, s.id_scuola, s.nome, c.id_classe, c.grado, c.lettera, c.anno_scolastico, d.id_docente, d.nome, d.cognome, m.id_materia, m.nome AS materia, i.programma
 FROM incarico i JOIN scuola s ON s.id_scuola = i.id_scuola 
 JOIN classe c ON c.id_classe = i.id_classe
 JOIN docente d ON d.id_docente = i.id_docente

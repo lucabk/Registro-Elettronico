@@ -41,7 +41,7 @@ public class IncaricoServiceImpl implements IncaricoService {
     @Override
     public IncaricoDTO addIncarico(IncaricoDTO i) {
         Dati dati = getDati(i);
-        return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnity(dati.s(), dati.c(), dati.d(), dati.m())));
+        return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnity(dati.s(), dati.c(), dati.d(), dati.m(), i.getProgramma())));
     }
 
     private Dati getDati(IncaricoDTO i) {
@@ -61,7 +61,7 @@ public class IncaricoServiceImpl implements IncaricoService {
     public IncaricoDTO updateIncarico(IncaricoDTO i, int id) {
         Incarico originalEntity = incaricoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Incarico con id "+id+" non trovato"));
         Dati dati = getDati(i);
-        return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnityUp(originalEntity, dati.s(), dati.c(), dati.d(), dati.m())));
+        return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnityUp(originalEntity, dati.s(), dati.c(), dati.d(), dati.m(), i.getProgramma())));
     }
 
     @Override
