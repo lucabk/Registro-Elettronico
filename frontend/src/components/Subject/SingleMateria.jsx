@@ -1,5 +1,7 @@
 import { useState } from "react"
 import UpdateSubject from "./UpdateSubject"
+import { toast } from "react-toastify"
+import * as materiaService from "../../service/subject"
 
 const SingleMateria = ({ materia, setMaterie }) => {
     const [formVisible, setFormVisible] = useState(false)
@@ -7,7 +9,14 @@ const SingleMateria = ({ materia, setMaterie }) => {
     const handleDelete = async (e) => {
         e.preventDefault()
         if(window.confirm(`Cancellare la materia ${materia?.nome}?`)){
-            console.log("cancellata")
+            try{
+                await materiaService.deleteMateria(materia.id)
+                setMaterie(prev => prev.filter(m => m.id !== materia.id))
+                toast.success("Materia eliminata")
+            }catch(e){
+                toast.error("Errore eliminazione materia")
+                console.error("Errore eliminazione materia: ", e)
+            }
         }
     }
 
