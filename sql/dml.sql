@@ -55,7 +55,7 @@ SELECT * FROM segreteria;
 SELECT * FROM utente;
 
 # Segretire per scuola
-SELECT * FROM segreterie_per_scuola; -- WHERE id_scuola = 1; 
+SELECT * FROM segreterie_per_scuola WHERE id_scuola = 1; 
 
 # Studenti
 INSERT INTO studente (id_classe, id_scuola, nome, cognome, email, numero, codice_fiscale, indirizzo, citta, provincia, cap) VALUES 
@@ -66,10 +66,11 @@ INSERT INTO studente (id_classe, id_scuola, nome, cognome, email, numero, codice
 SELECT * FROM studente;
 
 # Studenti per classe e scuola
-SELECT s.id_studente, s.nome, s.cognome, c.id_classe, c.grado, c.lettera, c.anno_scolastico, sc.id_scuola, sc.nome, sc.citta 
+SELECT sc.id_scuola, sc.nome, sc.citta, c.id_classe, c.grado, c.lettera, c.anno_scolastico, s.id_studente, s.nome, s.cognome   
 FROM studente s 
 JOIN classe c ON s.id_classe = c.id_classe
-JOIN scuola sc ON s.id_scuola = sc.id_scuola;
+JOIN scuola sc ON s.id_scuola = sc.id_scuola
+WHERE sc.id_scuola=1;
 
 # Studenti per classe definita
 SELECT * FROM studenti_per_classe WHERE id_classe=1;
@@ -95,11 +96,11 @@ SELECT * FROM docente;
 SELECT * FROM utente WHERE ruolo = 'DOC';
 
 # Materia
-INSERT INTO materia (nome, codice, programma)
+INSERT INTO materia (nome, codice)
 VALUES 
-('Matematica', 'MAT01', 'Equazioni, funzioni, derivate, integrali, probabilità'),
-('Fisica', 'FIS01', 'Meccanica, termodinamica, elettromagnetismo, ottica'),
-('Italiano', 'ITA01', 'Analisi del testo, letteratura italiana, grammatica, produzione scritta');
+('Matematica', 'MAT01'),
+('Fisica', 'FIS01'),
+('Italiano', 'ITA01');
 
 SELECT * FROM materia;
 

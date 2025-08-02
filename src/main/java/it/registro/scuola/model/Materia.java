@@ -26,9 +26,6 @@ public class Materia {
     @Column(name = "codice")
     private String codice;
 
-    @Column(name = "programma")
-    private String programma;
-
     @Column(name = "data_inserimento", insertable = false, updatable = false)
     private Date dataInserimento;
 
@@ -38,9 +35,8 @@ public class Materia {
     @OneToMany(mappedBy = "materia")
     private Set<Incarico> incarichi;
 
-    public Materia(String nome, String codice, String programma) {
+    public Materia(String nome, String codice) {
         this.nome = nome;
         this.codice = codice;
-        this.programma = programma;
     }
 }

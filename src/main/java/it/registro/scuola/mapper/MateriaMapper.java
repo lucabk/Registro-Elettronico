@@ -9,17 +9,16 @@ import java.util.stream.Collectors;
 
 public class MateriaMapper {
     public static MateriaDTO toDTO(Materia m) {
-        return new MateriaDTO(m.getId(), m.getNome(), m.getCodice(), m.getProgramma());
+        return new MateriaDTO(m.getId(), m.getNome(), m.getCodice());
     }
 
     public static Materia toEntity(MateriaDTO m) {
-        return new Materia(m.getNome(), m.getCodice(), m.getProgramma());
+        return new Materia(m.getNome(), m.getCodice());
     }
 
     public static Materia EntityToUpdate(Materia originalEntity, MateriaDTO m) {
         originalEntity.setNome(m.getNome());
         originalEntity.setCodice(m.getCodice());
-        originalEntity.setProgramma(m.getProgramma());
         return originalEntity;
     }
 

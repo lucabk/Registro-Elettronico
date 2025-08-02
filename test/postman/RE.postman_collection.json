@@ -408,7 +408,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/segreterie/28",
+							"raw": "http://localhost:8080/api/segreterie/31",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -417,7 +417,7 @@
 							"path": [
 								"api",
 								"segreterie",
-								"28"
+								"31"
 							]
 						}
 					},
@@ -616,7 +616,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"S101\",\r\n    \"password\" : \"segret\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"S106\",\r\n    \"password\" : \"segret\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -624,7 +624,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/segreterie/u28",
+							"raw": "http://localhost:8080/api/segreterie/u31",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -633,7 +633,7 @@
 							"path": [
 								"api",
 								"segreterie",
-								"u28"
+								"u31"
 							]
 						}
 					},
@@ -802,7 +802,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"A100\",\r\n    \"password\" : \"password\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"A104\",\r\n    \"password\" : \"mariorossi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -844,7 +844,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/studente/4",
+							"raw": "http://localhost:8080/api/studente/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -853,7 +853,7 @@
 							"path": [
 								"api",
 								"studente",
-								"4"
+								"5"
 							]
 						}
 					},
@@ -875,7 +875,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/studente?idScuola=1",
+							"raw": "http://localhost:8080/api/studente/byScuola?idScuola=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -883,12 +883,50 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"studente"
+								"studente",
+								"byScuola"
 							],
 							"query": [
 								{
 									"key": "idScuola",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStudentiByIdClasse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/studente/byClasse?idClasse=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"studente",
+								"byClasse"
+							],
+							"query": [
+								{
+									"key": "idClasse",
+									"value": "2"
 								}
 							]
 						}
@@ -912,7 +950,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Mario\",\r\n    \"cognome\": \"Verdi\",\r\n    \"email\": \"mario.verdi@example.com\",\r\n    \"numero\": \"3887653241\",\r\n    \"codiceFiscale\": \"KNFGLD23B06H501F\",\r\n    \"indirizzo\": \"Via Como 34\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"scuolaDTO\": { \"id\": 3 },\r\n    \"classeDTO\": { \"id\": 36 },\r\n    \"username\": \"A102\",\r\n    \"password\": \"marioverdi\"\r\n  }",
+							"raw": "{\r\n    \"nome\": \"Giovanni\",\r\n    \"cognome\": \"Rosii\",\r\n    \"email\": \"giovanni.rossi@example.com\",\r\n    \"numero\": \"3458792230\",\r\n    \"codiceFiscale\": \"GVNRSS23B06H501F\",\r\n    \"indirizzo\": \"Via Lago 1\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"scuolaDTO\": { \"id\": 1 },\r\n    \"classeDTO\": { \"id\": 2 },\r\n    \"username\": \"A103\",\r\n    \"password\": \"giovannirossi\"\r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1362,7 +1400,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\" : \"Scienze\",\r\n    \"codice\" : \"SCI01\",\r\n    \"programma\" : \"DNA, Chimica, Fotosintesi, Biologia\"\r\n}",
+							"raw": "{\r\n    \"nome\" : \"Scienze\",\r\n    \"codice\" : \"SCI01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1401,7 +1439,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\" : \"Latino\",\r\n    \"codice\" : \"LAT01\",\r\n    \"programma\" : \"Virgilio, Catullo, Cicerone, Seneca\"\r\n}",
+							"raw": "{\r\n    \"nome\" : \"Latino\",\r\n    \"codice\" : \"LAT01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1409,7 +1447,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/materia/4",
+							"raw": "http://localhost:8080/api/materia/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1418,7 +1456,7 @@
 							"path": [
 								"api",
 								"materia",
-								"4"
+								"5"
 							]
 						}
 					},
@@ -1444,7 +1482,7 @@
 							"raw": "{\r\n    \"nome\" : \"Latino\",\r\n    \"codice\" : \"LAT01\",\r\n    \"programma\" : \"Virgilio, Catullo, Cicerone, Seneca\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/materia/6",
+							"raw": "http://localhost:8080/api/materia/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1453,7 +1491,7 @@
 							"path": [
 								"api",
 								"materia",
-								"6"
+								"5"
 							]
 						}
 					},

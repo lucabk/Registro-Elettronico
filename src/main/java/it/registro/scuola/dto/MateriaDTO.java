@@ -23,7 +23,4 @@ public class MateriaDTO {
     @Size(min=1, max=10)
     private String codice;
 
-    @NotBlank
-    @Size(min=1, max = 65535)
-    private String programma;
 }

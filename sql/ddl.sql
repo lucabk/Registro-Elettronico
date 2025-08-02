@@ -146,7 +146,6 @@ CREATE TABLE IF NOT EXISTS materia(
 	id_materia INT UNSIGNED AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     codice VARCHAR(10) NOT NULL UNIQUE,
-    programma TEXT NOT NULL ,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_materia)
@@ -158,6 +157,7 @@ CREATE TABLE IF NOT EXISTS incarico(
 	id_classe INT UNSIGNED,
     id_docente INT UNSIGNED,
     id_materia INT UNSIGNED,
+    programma TEXT NOT NULL ,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_incarico),
