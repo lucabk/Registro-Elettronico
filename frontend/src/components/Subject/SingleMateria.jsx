@@ -1,4 +1,3 @@
-import UpdateSubject from "./UpdateSubject"
 import { toast } from "react-toastify"
 import * as materiaService from "../../service/subject"
 

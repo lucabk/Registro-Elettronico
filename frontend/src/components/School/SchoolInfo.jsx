@@ -55,14 +55,19 @@ const SchoolInfo = ({ school, setSchools, schools }) => {
                             </ul>
                             <div className="card-body">
                                 <div className="d-grid gap-3">
-                                <Link to='update'>
-                                    <button type="button" className="btn btn-outline-warning" >
-                                        Aggiorna 
-                                    </button>
-                                </Link>
+                                    <Link to='update'>
+                                        <button type="button" className="btn btn-outline-warning" >
+                                            Aggiorna 
+                                        </button>
+                                    </Link>
                                     <button type="button" className="btn btn-outline-danger" onClick={handleDelete}>
                                         Elimina
                                     </button>
+                                    <Link to='materie'>
+                                        <button type="button" className="btn btn-outline-secondary" >
+                                            Insegnamenti
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="card-footer text-body-secondary">
