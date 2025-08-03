@@ -10,8 +10,16 @@ export const getRedirectPath = (role) => {
 
 export const getSubjectPath = (role) => {
     switch(role){
-        case "ROLE_GES": return "/admin/schools/materie"
+        case "ROLE_GES": return "/admin/materie"
         case "ROLE_SEG": return "/segreteria/materie"
+        default: return "/login"
+    }
+}
+
+export const getTeacherPath = (role) => {
+    switch(role){
+        case "ROLE_GES": return "/admin/docenti"
+        case "ROLE_SEG": return "/segreteria/docenti"
         default: return "/login"
     }
 }

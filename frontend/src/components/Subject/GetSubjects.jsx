@@ -20,7 +20,7 @@ const GetSubjects = () => {
 
     return(
         <>
-            <TopScetion text={"Materie"} />
+            <TopScetion text={"Portale materie"} />
             <div className="container-fluid p-3 bg-light text-dark p-5">
                 <h2 className="text-center fs-2 mb-4">Insegnamenti disponibili nel database</h2>
                 <table className="container table p-3 mt-5 table-dark table-striped table-bordered bg-secondary">

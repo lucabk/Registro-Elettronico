@@ -9,6 +9,7 @@ import ClassInfo from "./Class/ClassInfo"
 import Students from "./Student/Students"
 import StudentInfo from "./Student/StudentInfo"
 import GetSubjects from "./Subject/GetSubjects"
+import GetTeachers from "./Teacher/GetTeachers"
 
 const SegreteriaHome = () => {
     const [school, setSchool] = useState(null)
@@ -55,6 +56,10 @@ const SegreteriaHome = () => {
 
                 <Route path='/materie' element =
                     { <GetSubjects /> }
+                />
+
+                <Route path='/docenti' element =
+                    { <GetTeachers /> }
                 />
 
             </Routes>

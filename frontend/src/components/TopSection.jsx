@@ -1,7 +1,7 @@
 import { useUser } from "./context/userContext"
 import Logout from "./Auth/Logout"
 import { Link } from "react-router-dom"
-import { getRedirectPath, getSubjectPath } from "../util/getPath"
+import { getRedirectPath, getSubjectPath, getTeacherPath } from "../util/getPath"
 
 const TopScetion = ({ text, hp=true }) => {
     const user = useUser()
@@ -28,7 +28,7 @@ const TopScetion = ({ text, hp=true }) => {
                 <span className="visually-hidden">Home Page link</span>
             </Link>
             <Link className="nav-link text-dark" to={getSubjectPath(user?.role)}>Materie</Link>
-            <Link className="nav-link text-dark disabled" to="#">Docenti</Link>
+            <Link className="nav-link text-dark" to={getTeacherPath(user?.role)}>Docenti</Link>
         </nav>
     )
     

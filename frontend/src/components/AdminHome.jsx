@@ -50,10 +50,6 @@ const AdminHome = () => {
                 <Route path='/schools/:idScuola' element={ 
                     <SchoolInfo school={school} setSchools={setSchools} schools={schools} /> } 
                 />
-
-                <Route path='/schools/materie' element = { 
-                    <GetSubjects /> }
-                />
                 
                 <Route path='/addSchool' element= { 
                     <SchoolForm schools={schools} setSchools={setSchools} /> } 
@@ -76,7 +72,15 @@ const AdminHome = () => {
                 />
 
                 <Route path='/schools/:idScuola/:idClasse/students/:idStudent' element= {
-                   <StudentInfo  studentId={studentId} schoolId={school?.id}/>  }
+                    <StudentInfo  studentId={studentId} schoolId={school?.id}/>  }
+                />
+
+                <Route path='/materie' element = { 
+                    <GetSubjects /> }
+                />
+
+                    <Route path='/docenti' element =
+                    { <GetTeachers /> }
                 />
                 
             </Routes>
