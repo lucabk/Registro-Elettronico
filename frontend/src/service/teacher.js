@@ -11,3 +11,7 @@ export const addTeacher = async (newTeacher) => {
     const res = await axios.post(API_DOCENTI, newTeacher)
     return res.data
 }
+
+export const deleteTeacher = async (id) => {
+    await axios.delete(`${API_DOCENTI}/${id}`)
+}
