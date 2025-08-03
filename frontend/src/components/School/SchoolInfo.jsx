@@ -63,11 +63,6 @@ const SchoolInfo = ({ school, setSchools, schools }) => {
                                     <button type="button" className="btn btn-outline-danger" onClick={handleDelete}>
                                         Elimina
                                     </button>
-                                    <Link to='materie'>
-                                        <button type="button" className="btn btn-outline-secondary" >
-                                            Insegnamenti
-                                        </button>
-                                    </Link>
                                 </div>
                             </div>
                             <div className="card-footer text-body-secondary">

@@ -51,7 +51,7 @@ const AdminHome = () => {
                     <SchoolInfo school={school} setSchools={setSchools} schools={schools} /> } 
                 />
 
-                <Route path='/schools/:idScuola/materie' element = { 
+                <Route path='/schools/materie' element = { 
                     <GetSubjects /> }
                 />
                 
