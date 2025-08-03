@@ -15,3 +15,8 @@ export const addTeacher = async (newTeacher) => {
 export const deleteTeacher = async (id) => {
     await axios.delete(`${API_DOCENTI}/${id}`)
 }
+
+export const updateTeacher = async (id, update) => {
+    const res = await axios.put(`${API_DOCENTI}/${id}`, update)
+    return res.data
+}

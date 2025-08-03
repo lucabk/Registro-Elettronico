@@ -1,7 +1,10 @@
+import { useState } from "react"
 import * as docenteService from "../../service/teacher"
 import { toast } from "react-toastify"
+import UpdadeTeacherForm from "../Teacher/UpdadeTeacherForm"
 
 const SingleTeacher = ({ teacher, setTeachers }) => {
+    const [showModal, setShowModal] = useState(false)
 
     const handleDelete = async (e) => {{
         e.preventDefault()
@@ -30,13 +33,34 @@ const SingleTeacher = ({ teacher, setTeachers }) => {
             <td className="text-center">{teacher.cap}</td>
             <td className="text-center">{teacher.istruzione}</td> 
             <td className="text-center">
-                <button type="button" className="btn btn-outline-secondary" >
+                <button type="button" className="btn btn-outline-secondary" onClick={() => setShowModal(true)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" fill="green" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"></path>
                         <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"></path>
                     </svg>
                     <span className="visually-hidden">Update Teacher</span>
                 </button>
+                {showModal && (
+                     <div className="modal show d-block" tabIndex="-1">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title fs-5">Aggiorna docente</h1>
+                                    <button 
+                                        type="button" className="btn-close" onClick={() => setShowModal(false)}>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <UpdadeTeacherForm
+                                        teacher = {teacher}
+                                        setTeachers = {setTeachers}
+                                        setShowModal = {setShowModal}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </td> 
             <td className="text-center">
                  <button type="button" className="btn" onClick={handleDelete}>

@@ -11,6 +11,7 @@ import ClassInfo from "./Class/ClassInfo"
 import Students from "./Student/Students"
 import StudentInfo from "./Student/StudentInfo"
 import GetSubjects from "./Subject/GetSubjects"
+import GetTeachers from "./Teacher/GetTeachers"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
