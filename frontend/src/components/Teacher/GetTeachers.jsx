@@ -4,6 +4,7 @@ import TopScetion from "../TopSection"
 import * as teacherService from "../../service/teacher"
 import { toast } from "react-toastify"
 import SingleTeacher from "../Subject/SingleTeacher"
+import AddTeacher from "./AddTeacher"
 
 const GetTeachers = () => {
 
@@ -57,6 +58,9 @@ const GetTeachers = () => {
                     </tbody>
                 </table>
             </div>
+
+            <AddTeacher setTeachers={setTeachers} />
+
             <Footer />
         </>
     )

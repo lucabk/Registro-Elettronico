@@ -6,3 +6,8 @@ export const getTeachers = async () => {
     const res = await axios.get(API_DOCENTI)
     return res.data
 }
+
+export const addTeacher = async (newTeacher) => {
+    const res = await axios.post(API_DOCENTI, newTeacher)
+    return res.data
+}
