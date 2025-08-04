@@ -12,6 +12,7 @@ import Students from "./Student/Students"
 import StudentInfo from "./Student/StudentInfo"
 import GetSubjects from "./Subject/GetSubjects"
 import GetTeachers from "./Teacher/GetTeachers"
+import Incarichi from "./Insegnamenti/Incarichi"
 
 const AdminHome = () => {
     const [schools, setSchools] = useState([])
@@ -66,6 +67,10 @@ const AdminHome = () => {
                 
                 <Route path='/schools/:idScuola/:idClasse' element = { 
                     <ClassInfo classId={classId} /> }
+                />
+
+                <Route path='/schools/:idScuola/:idClasse/insegnamenti' element = { 
+                    <Incarichi classId={classId} schoolId={school?.id} /> }      
                 />
 
                 <Route path='/schools/:idScuola/:idClasse/students' element = {

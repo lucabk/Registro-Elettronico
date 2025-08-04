@@ -3,7 +3,7 @@ import Footer from "../Footer"
 import TopScetion from "../TopSection"
 import * as teacherService from "../../service/teacher"
 import { toast } from "react-toastify"
-import SingleTeacher from "../Subject/SingleTeacher"
+import SingleTeacher from "./SingleTeacher"
 import AddTeacher from "./AddTeacher"
 
 const GetTeachers = () => {

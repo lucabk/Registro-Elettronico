@@ -10,6 +10,7 @@ import Students from "./Student/Students"
 import StudentInfo from "./Student/StudentInfo"
 import GetSubjects from "./Subject/GetSubjects"
 import GetTeachers from "./Teacher/GetTeachers"
+import Incarichi from "./Insegnamenti/Incarichi"
 
 const SegreteriaHome = () => {
     const [school, setSchool] = useState(null)
@@ -47,6 +48,11 @@ const SegreteriaHome = () => {
                 <Route path='/classi/:idClasse' element =
                     { <ClassInfo classId={classId} /> } 
                 />
+
+                <Route path='/classi/:idClasse/insegnamenti' element=
+                    { <Incarichi classId={classId} schoolId={school?.id} /> }
+                />
+
                 <Route path='/classi/:idClasse/students' element = 
                     { <Students classId={classId} schoolId={school?.id}/> }
                 />    

@@ -33,9 +33,9 @@ const ClassInfo = ({ classId }) => {
                                         Alunni
                                     </button>
                                 </Link>
-                                <Link to='#'>
+                                <Link to='insegnamenti'>
                                     <button type="button" className="btn btn-outline-primary" >
-                                        Docenti
+                                        Insegnamenti
                                     </button>
                                 </Link>
                             </div>
