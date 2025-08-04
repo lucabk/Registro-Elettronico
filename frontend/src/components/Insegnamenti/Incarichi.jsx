@@ -4,6 +4,7 @@ import TopScetion from "../TopSection"
 import SingleIncarico from "./SingleIncarico"
 import * as incaricoSerivce from "../../service/incarico"
 import { toast } from "react-toastify"
+import IncaricoForm from "./IncaricoForm"
 
 const Incarichi = ({ classId, schoolId }) => {
 
@@ -52,6 +53,12 @@ const Incarichi = ({ classId, schoolId }) => {
                     </tbody>
                 </table>
             </div>
+
+            <IncaricoForm 
+                classId={classId}
+                schoolId={schoolId}
+                setIncarichi={setIncarichi}
+            />
 
             <Footer />
         </>
