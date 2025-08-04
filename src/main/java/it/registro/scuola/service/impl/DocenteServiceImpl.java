@@ -16,6 +16,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -49,6 +50,15 @@ public class DocenteServiceImpl implements DocenteService {
         utenteService.addUtente(new Utente(d.getUsername(), d.getPassword(), Ruolo.DOC.toString(), saved.getId()));
 
         return DocenteMapper.toDTO(saved);
+    }
+
+    @Override
+    public List<DocenteDTO> addListaDocente(List<AddDocenteDTO> docenti) {
+        ArrayList<DocenteDTO> saved = new ArrayList<>();
+        for(AddDocenteDTO d : docenti){
+            saved.add(addDocente(d));
+        }
+        return  saved;
     }
 
     @Override

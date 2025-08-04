@@ -38,6 +38,12 @@ public class DocenteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(docenteService.addDocente(d));
     }
 
+    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @PostMapping("/lista")
+    public ResponseEntity<List<DocenteDTO>> addDocenteList(@RequestBody List<AddDocenteDTO> d){
+        return ResponseEntity.status(HttpStatus.CREATED).body(docenteService.addListaDocente(d));
+    }
+
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
     @PutMapping("{id}")
     public ResponseEntity<DocenteDTO> updateDocente(@Valid @RequestBody DocenteDTO d, @PathVariable("id") int id){
