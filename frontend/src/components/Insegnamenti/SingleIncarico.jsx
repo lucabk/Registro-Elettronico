@@ -1,11 +1,24 @@
 import { useState } from "react"
 import UpdateIncarico from "./UpdateIncarico"
+import * as incaricoService from "../../service/incarico"
+import { toast } from "react-toastify"
+
 
 const SingleIncarico = ({ incarico, setIncarichi }) => {
     const [showForm, setShowForm] = useState(false)
 
     const handleDelete = async (e) => {
         e.preventDefault()
+        if(window.confirm("Cancellare insegnamento?")){
+            try{
+                await incaricoService.deleteIncarico(incarico.id)
+                setIncarichi(prev => prev.filter(i => i.id !== incarico.id))
+                toast.success("Insegnamento eliminato correttamente")
+            }catch(e){
+                toast.error("Impossibile eliminare incarico")
+                console.error("Impossibile eliminare incarico: ", e)
+            }
+        }
     }
 
     return(

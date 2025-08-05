@@ -16,3 +16,7 @@ export const updateIncarico = async (id, newIncarico) => {
     const res = await axios.put(`${BASE_API}/${id}`, newIncarico)
     return res.data
 }
+
+export const deleteIncarico = async (id) => {
+    await axios.delete(`${BASE_API}/${id}`)
+}
