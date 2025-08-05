@@ -11,3 +11,8 @@ export const addIncarico = async (newIncarico) => {
     const res = await axios.post(BASE_API, newIncarico)
     return res.data
 }
+
+export const updateIncarico = async (id, newIncarico) => {
+    const res = await axios.put(`${BASE_API}/${id}`, newIncarico)
+    return res.data
+}

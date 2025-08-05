@@ -35,6 +35,8 @@ const Incarichi = ({ classId, schoolId }) => {
                             <th className="text-center">Docente</th>
                             <th className="text-center">Programma</th>
                             <th className="text-center">Anno Scolastico</th>
+                            <th className="text-center">Aggiorna Programma</th>
+                            <th className="text-center">Elimina Insegnamento</th>
                         </tr>
                     </thead>
                     <tbody className="table-group-divider">
@@ -45,7 +47,7 @@ const Incarichi = ({ classId, schoolId }) => {
                                     .sort((a, b) => a.materiaDTO.nome.localeCompare(b.materiaDTO.nome))
                                     .map( i => 
                                         <tr key={i.id}>
-                                            <SingleIncarico incarico={i}/>
+                                            <SingleIncarico incarico={i} setIncarichi={setIncarichi}/>
                                         </tr>
                                     )
                             )
