@@ -26,18 +26,21 @@ const SingleIncarico = ({ incarico, setIncarichi }) => {
             <td className="text-center">{incarico?.classeDTO.grado}{incarico?.classeDTO.lettera}</td>
             <td className="text-center">{incarico?.materiaDTO.nome}</td>
             <td className="text-center">{incarico?.docenteDTO.cognome} {incarico?.docenteDTO.nome}</td>
-            <td className="text-center">{incarico?.programma}</td>
+            <td className="text-center">
+                {showForm ? (
+                    <UpdateIncarico  
+                        setIncarichi={setIncarichi}
+                        incarico={incarico}
+                        setShowForm={setShowForm}
+                    />
+                ) : (
+                    incarico?.programma
+                )}
+            </td>
             <td className="text-center">{incarico?.classeDTO.annoScolastico}</td>
             <td className="text-center">
                 {showForm ? (
-                    <>
                         <button className="btn btn-dark" onClick={()=>setShowForm(false)}>Nascondi</button>
-                        <UpdateIncarico  
-                            setIncarichi={setIncarichi}
-                            incarico={incarico}
-                            setShowForm={setShowForm}
-                        />
-                    </>
                 ) : (
                     <button type="button" className="btn btn-outline-secondary" onClick={()=>setShowForm(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" fill="green" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
