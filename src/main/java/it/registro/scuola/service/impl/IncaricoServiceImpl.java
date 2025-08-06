@@ -28,6 +28,10 @@ public class IncaricoServiceImpl implements IncaricoService {
         return IncaricoMapper.toDTO(incaricoRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Incarico con id "+id+" non trovato")));
     }
 
+    public Incarico getIncaricoModel(int id) {
+        return incaricoRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Incarico con id "+id+" non trovato"));
+    }
+
     @Override
     public List<IncaricoDTO> getIncaricoByScuola(int idScuola) {
         return IncaricoMapper.toListDTO(incaricoRepository.findByScuolaId(idScuola));

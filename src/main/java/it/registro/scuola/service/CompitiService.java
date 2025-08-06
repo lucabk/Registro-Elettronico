@@ -7,4 +7,5 @@ import java.util.List;
 public interface CompitiService {
     CompitiDTO getCompito(int id);
     List<CompitiDTO> getCompitiByClasse(int idClasse);
+    CompitiDTO addCompiti(CompitiDTO c);
 }

@@ -1,7 +1,9 @@
 package it.registro.scuola.mapper;
 
 import it.registro.scuola.dto.CompitiDTO;
+import it.registro.scuola.dto.incarico.IncaricoDTO;
 import it.registro.scuola.model.Compiti;
+import it.registro.scuola.model.Incarico;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,5 +16,11 @@ public class CompitiMapper {
 
     public static List<CompitiDTO> toListDTO(List<Compiti> c) {
         return c.stream().map(CompitiMapper::toDTO).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static Compiti toEnitySave(CompitiDTO c, Incarico incarico) {
+        Compiti toSave = new Compiti(c.getEsercizi(), c.getDataConsegna());
+        toSave.setIncarico(incarico);
+        return toSave;
     }
 }
