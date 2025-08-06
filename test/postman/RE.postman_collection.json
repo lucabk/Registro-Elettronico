@@ -1238,6 +1238,46 @@
 					"response": []
 				},
 				{
+					"name": "addDocentiMultpli",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"nome\": \"Marco\",\r\n    \"cognome\": \"Milani\",\r\n    \"email\": \"marco.milani@example.com\",\r\n    \"numero\": \"3400001111\",\r\n    \"codiceFiscale\": \"MRCLNI85A01H501X\",\r\n    \"indirizzo\": \"Via Roma 12\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"istruzione\": \"LM Matematica\",\r\n    \"username\": \"D117\",\r\n    \"password\": \"milanimarco\"\r\n  },\r\n  {\r\n    \"nome\": \"Giulia\",\r\n    \"cognome\": \"Moretti\",\r\n    \"email\": \"giulia.moretti@example.com\",\r\n    \"numero\": \"3400002222\",\r\n    \"codiceFiscale\": \"GLMRTT89C41H501D\",\r\n    \"indirizzo\": \"Via Napoli 5\",\r\n    \"citta\": \"Roma\",\r\n    \"provincia\": \"RM\",\r\n    \"cap\": \"00100\",\r\n    \"istruzione\": \"LM Lettere\",\r\n    \"username\": \"D118\",\r\n    \"password\": \"morettigiulia\"\r\n  },\r\n  {\r\n    \"nome\": \"Elisa\",\r\n    \"cognome\": \"Martini\",\r\n    \"email\": \"elisa.martini@example.com\",\r\n    \"numero\": \"3400003333\",\r\n    \"codiceFiscale\": \"LSMRTN78A01H703L\",\r\n    \"indirizzo\": \"Via Torino 99\",\r\n    \"citta\": \"Torino\",\r\n    \"provincia\": \"TO\",\r\n    \"cap\": \"10100\",\r\n    \"istruzione\": \"LM Chimica\",\r\n    \"username\": \"D119\",\r\n    \"password\": \"martinielisa\"\r\n  },\r\n  {\r\n    \"nome\": \"Francesco\",\r\n    \"cognome\": \"Mancini\",\r\n    \"email\": \"francesco.mancini@example.com\",\r\n    \"numero\": \"3400004444\",\r\n    \"codiceFiscale\": \"FRNMNC75T12H501F\",\r\n    \"indirizzo\": \"Via Verdi 4\",\r\n    \"citta\": \"Bologna\",\r\n    \"provincia\": \"BO\",\r\n    \"cap\": \"40100\",\r\n    \"istruzione\": \"LM Fisica\",\r\n    \"username\": \"D120\",\r\n    \"password\": \"mancinifrancesco\"\r\n  },\r\n  {\r\n    \"nome\": \"Paolo\",\r\n    \"cognome\": \"Rossi\",\r\n    \"email\": \"paolo.rossi@example.com\",\r\n    \"numero\": \"3400005555\",\r\n    \"codiceFiscale\": \"PLRSSI80C20H501Z\",\r\n    \"indirizzo\": \"Piazza Libertà 6\",\r\n    \"citta\": \"Padova\",\r\n    \"provincia\": \"PD\",\r\n    \"cap\": \"35100\",\r\n    \"istruzione\": \"LM Filosofia\",\r\n    \"username\": \"D121\",\r\n    \"password\": \"rossipaolo\"\r\n  },\r\n  {\r\n    \"nome\": \"Chiara\",\r\n    \"cognome\": \"Viola\",\r\n    \"email\": \"chiara.viola@example.com\",\r\n    \"numero\": \"3400028888\",\r\n    \"codiceFiscale\": \"CHRVLL82D45H501A\",\r\n    \"indirizzo\": \"Via Monte Carlo 31\",\r\n    \"citta\": \"Napoli\",\r\n    \"provincia\": \"NP\",\r\n    \"cap\": \"91100\",\r\n    \"istruzione\": \"LM Biologia\",\r\n    \"username\": \"D122\",\r\n    \"password\": \"bianchichiara\"\r\n  },\r\n  {\r\n    \"nome\": \"Carlo\",\r\n    \"cognome\": \"Verdi\",\r\n    \"email\": \"carlo.verdi@example.com\",\r\n    \"numero\": \"3400347777\",\r\n    \"codiceFiscale\": \"CRLVRD79T13H501M\",\r\n    \"indirizzo\": \"Via Parigi 55\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"istruzione\": \"LM Architettura\",\r\n    \"username\": \"D123\",\r\n    \"password\": \"verdistefano\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/docente/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"docente",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "updateDocente",
 					"request": {
 						"auth": {
@@ -1254,7 +1294,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Susanna\",\r\n    \"cognome\": \"Verdoni\",\r\n    \"email\": \"susanna.arancioni@example.com\",\r\n    \"numero\": \"3887653241\",\r\n    \"codiceFiscale\": \"SSRNCD23B06H501G\",\r\n    \"indirizzo\": \"Via Molise 4\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"istruzione\" : \"LM Matematica\",\r\n    \"username\": \"D102\",\r\n    \"password\": \"password\"\r\n  }",
+							"raw": "{\r\n    \"nome\": \"Susanna\",\r\n    \"cognome\": \"Verdoni\",\r\n    \"email\": \"susanna.arancioni@example.com\",\r\n    \"numero\": \"3887653241\",\r\n    \"codiceFiscale\": \"SSRNCD23B06H501G\",\r\n    \"indirizzo\": \"Via Molise 4\",\r\n    \"citta\": \"Milano\",\r\n    \"provincia\": \"MI\",\r\n    \"cap\": \"20100\",\r\n    \"istruzione\" : \"LM Matematica\"\r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1586,7 +1626,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/incarico/classe?idClasse=2",
+							"raw": "http://localhost:8080/api/incarico/classe?idClasse=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1600,7 +1640,7 @@
 							"query": [
 								{
 									"key": "idClasse",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -1712,6 +1752,192 @@
 								"api",
 								"incarico",
 								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Compiti",
+			"item": [
+				{
+					"name": "getCompitiByID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/compiti/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compiti",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCompitiByClasse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/compiti?idClasse=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compiti"
+							],
+							"query": [
+								{
+									"key": "idClasse",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCompiti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"incaricoDTO\" : { \"id\" : 13 },\r\n    \"esercizi\" : \"Pag 42 n 12-13-14\",\r\n    \"dataConsegna\" : \"2025-09-22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/compiti",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compiti"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCompiti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"esercizi\" : \"Pag246 n34-35-36-37-44\",\r\n    \"dataConsegna\" : \"2025-09-07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/compiti/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compiti",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCompiti",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"esercizi\" : \"Pag246 n34-35-36-37-44\",\r\n    \"dataConsegna\" : \"2025-09-07\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/compiti/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compiti",
+								"6"
 							]
 						}
 					},
