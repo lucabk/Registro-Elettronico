@@ -2,7 +2,6 @@ package it.registro.scuola.model;
 
 import java.util.Date;
 import java.util.Set;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

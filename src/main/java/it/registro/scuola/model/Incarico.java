@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "incarico")
@@ -40,6 +40,9 @@ public class Incarico {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_materia", nullable = false)
     private Materia materia;
+
+    @OneToMany(mappedBy = "incarico")
+    private Set<Compiti> compiti;
 
     @Column(name = "programma")
     private String programma;
