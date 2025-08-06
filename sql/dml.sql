@@ -87,6 +87,29 @@ SELECT * FROM studente;
 INSERT INTO docente (nome, cognome, email, numero, codice_fiscale, indirizzo, citta, provincia, cap, istruzione)
 VALUES ('Luigi', 'Annibale', 'luigi.annibale@mail.com', '3404224169', 'LGNNBU01A01H503T', 'Via Rimini 43', 'Milano', 'MI', '20100', 'LM Storia Contemporanea');
 
+INSERT INTO docente (nome, cognome, email, numero, codice_fiscale, indirizzo, citta, provincia, cap, istruzione)
+VALUES
+('Giulia', 'Moretti', 'giulia.moretti@mail.com', '3451234567', 'GLMRTT89C41H501D', 'Via Napoli 12', 'Roma', 'RM', '00100', 'LM Lettere'),
+('Marco', 'Milani', 'marco.milani@mail.com', '3311122334', 'MRCLNN85D22H501K', 'Viale Italia 15', 'Firenze', 'FI', '50100', 'LM Matematica'),
+('Elisa', 'Martini', 'elisa.martini@mail.com', '3399988776', 'LSMRTN78A01H703L', 'Via Torino 99', 'Torino', 'TO', '10100', 'LM Chimica'),
+('Francesco', 'Mancini', 'francesco.mancini@mail.com', '3201234567', 'FRNMNC75T12H501F', 'Via Verdi 4', 'Bologna', 'BO', '40100', 'LM Fisica'),
+('Alessia', 'Marchetti', 'alessia.marchetti@mail.com', '3276543210', 'LSSMCH90B11H501J', 'Via Dante 17', 'Genova', 'GE', '16100', 'LM Scienze Naturali'),
+('Paolo', 'Rossi', 'paolo.rossi@mail.com', '3489998877', 'PLRSSI80C20H501Z', 'Piazza Libertà 6', 'Padova', 'PD', '35100', 'LM Filosofia'),
+('Chiara', 'Bianchi', 'chiara.bianchi@mail.com', '3498765432', 'CHRBNC82D45H501A', 'Via Roma 22', 'Trieste', 'TS', '34100', 'LM Biologia'),
+('Stefano', 'Verdi', 'stefano.verdi@mail.com', '3361112233', 'STFVRD79T13H501M', 'Via Milano 55', 'Milano', 'MI', '20100', 'LM Informatica'),
+('Marta', 'Conti', 'marta.conti@mail.com', '3334445566', 'MRTCNT88S21H501H', 'Via Venezia 8', 'Venezia', 'VE', '30100', 'LM Lingue'),
+('Luca', 'Gallo', 'luca.gallo@mail.com', '3345556677', 'LCGLLL81B15H501E', 'Via Po 1', 'Torino', 'TO', '10100', 'LM Matematica'),
+('Sara', 'Ferrari', 'sara.ferrari@mail.com', '3356667788', 'SRFRRR93R31H501Y', 'Viale Marconi 2', 'Roma', 'RM', '00100', 'LM Storia dell’Arte'),
+('Davide', 'Romano', 'davide.romano@mail.com', '3377778899', 'DVDRMN84L12H501S', 'Via Emilia 3', 'Parma', 'PR', '43100', 'LM Geografia'),
+('Angela', 'Testa', 'angela.testa@mail.com', '3218889990', 'NGLTST87T20H501Q', 'Via Garibaldi 77', 'Napoli', 'NA', '80100', 'LM Filosofia'),
+('Nicola', 'Ricci', 'nicola.ricci@mail.com', '3229990001', 'NCLRCC74H19H501G', 'Via Lecco 30', 'Lecco', 'LC', '23900', 'LM Fisica'),
+('Roberta', 'De Luca', 'roberta.deluca@mail.com', '3231112233', 'RBRDLC91C23H501W', 'Via Lazio 5', 'Latina', 'LT', '04100', 'LM Biotecnologie'),
+('Giovanni', 'Parisi', 'giovanni.parisi@mail.com', '3242223344', 'GVNPRS83A01H501R', 'Via Palermo 18', 'Palermo', 'PA', '90100', 'LM Matematica'),
+('Elena', 'Neri', 'elena.neri@mail.com', '3253334455', 'LNNNRI85F29H501X', 'Via Savona 10', 'Savona', 'SV', '17100', 'LM Fisica'),
+('Federico', 'Silvestri', 'federico.silvestri@mail.com', '3264445566', 'FDRSLV90G12H501V', 'Via Udine 7', 'Udine', 'UD', '33100', 'LM Lettere'),
+('Camilla', 'Gatti', 'camilla.gatti@mail.com', '3285556677', 'CMLGTT92L10H501C', 'Via Como 2', 'Como', 'CO', '22100', 'LM Scienze Naturali');
+
+
 # Account docenti
 SELECT d.id_docente, d.nome, d.cognome, u.id_utente, u.username, u.password, u.ruolo, u.riferimento_id 
 FROM docente d JOIN utente u ON d.id_docente= u.riferimento_id 
@@ -94,6 +117,8 @@ WHERE ruolo = 'DOC';
 
 SELECT * FROM docente;
 SELECT * FROM utente WHERE ruolo = 'DOC';
+SELECT COUNT(1) AS "Docenti nel db" FROM docente;
+SELECT COUNT(1) AS "Utenti docente nel db" FROM utente WHERE ruolo = 'DOC';
 
 # Materia
 INSERT INTO materia (nome, codice)
@@ -122,3 +147,9 @@ JOIN docente d ON d.id_docente = i.id_docente
 JOIN materia m ON m.id_materia = i.id_materia;
 #WHERE c.id_classe = 1;
 
+# Compiti
+INSERT INTO compiti (id_incarico, esercizi, data_consegna)
+VALUES (1, 'Pag246 n34-35-36-37-43', '2025-09-27');
+
+SELECT * FROM compiti;
+SELECT * FROM compiti_per_incarico;

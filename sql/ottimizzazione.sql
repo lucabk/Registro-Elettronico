@@ -28,6 +28,15 @@ FROM docente d JOIN incarico i ON d.id_docente = i.id_docente
 JOIN classe c ON c.id_classe = i.id_classe
 JOIN materia m ON i.id_materia = m.id_materia;
 
+CREATE VIEW compiti_per_incarico AS
+SELECT c.id_compito, m.nome materia, d.cognome docente,  c.esercizi, c.data_consegna, 
+s.nome scuola, concat(cl.grado, cl.lettera) classe, cl.anno_scolastico, i.id_incarico  
+FROM compiti c JOIN incarico i ON c.id_incarico = i.id_incarico
+JOIN scuola s ON s.id_scuola = i.id_scuola
+JOIN classe cl ON cl.id_classe = i.id_classe
+JOIN docente d ON d.id_docente = i.id_docente
+JOIN materia m ON m.id_materia = i.id_materia;
+
 /*
 CREATE VIEW voti_per_studente AS
 SELECT s.id_studente, sp.nome, sp.cognome, v.voto, v.tipo, v.data_valutazione, m.nome AS materia
@@ -49,6 +58,7 @@ CREATE INDEX idx_segreteria_id_scuola ON segreteria(id_scuola);
 CREATE INDEX idx_studente_id_classe ON studente(id_classe);
 CREATE INDEX idx_studente_id_scuola ON studente(id_scuola);
 CREATE INDEX idx_incarico_docente_classe_materia ON incarico(id_docente, id_classe, id_materia);
+CREATE INDEX idx_compiti_id_incarico ON compiti(id_incarico);
 #CREATE INDEX idx_valutazione_studente_materia ON valutazione(id_studente, id_materia);
 
 # Mostra indice per tabella
@@ -57,6 +67,7 @@ SHOW INDEXES FROM utente;
 SHOW INDEXES FROM segreteria;
 SHOW INDEXES FROM  studente;
 SHOW INDEXES FROM incarico;
+SHOW INDEXES FROM compiti;
 
 # Ottimizzazione delle query
 EXPLAIN SELECT * FROM classi_per_scuola;

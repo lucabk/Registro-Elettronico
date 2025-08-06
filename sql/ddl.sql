@@ -36,15 +36,13 @@ CREATE TABLE IF NOT EXISTS classe(
 
 CREATE TABLE IF NOT EXISTS compiti(
 	id_compito INT UNSIGNED AUTO_INCREMENT,
-    id_classe INT UNSIGNED,
-    id_materia INT UNSIGNED,
+    id_incarico INT UNSIGNED,
     esercizi TEXT NOT NULL,
 	data_consegna DATE NOT NULL,
 	data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_compito),
-    FOREIGN KEY (id_classe) REFERENCES classe(id_classe),
-    FOREIGN KEY (id_materia) REFERENCES materia(id_materia)
+    FOREIGN KEY (id_incarico) REFERENCES incarico(id_incarico)
 );
 
 CREATE TABLE IF NOT EXISTS verifica(
