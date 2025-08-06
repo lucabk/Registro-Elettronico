@@ -48,4 +48,10 @@ public class CompitiServiceImpl implements CompitiService {
     public CompitiDTO updateCompiti(CompitoUpdateDTO c, int idCompiti) {
         return CompitiMapper.toDTO(compitiRepository.save(CompitiMapper.toEnityUp(getCompito(idCompiti), c)));
     }
+
+    @Override
+    public void deleteCompiti(int id) {
+        getCompitoDTO(id);
+        compitiRepository.deleteById(id);
+    }
 }

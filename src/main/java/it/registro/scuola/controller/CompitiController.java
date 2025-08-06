@@ -42,4 +42,11 @@ public class CompitiController {
     public ResponseEntity<CompitiDTO> updateCompiti(@Valid @RequestBody CompitoUpdateDTO c, @PathVariable("id") int idCompiti){
         return ResponseEntity.ok(compitiService.updateCompiti(c, idCompiti));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteCompiti(@PathVariable("id") int idCompiti) {
+        compitiService.deleteCompiti(idCompiti);
+        return ResponseEntity.noContent().build();
+    }
 }

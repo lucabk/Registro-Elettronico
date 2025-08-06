@@ -10,4 +10,5 @@ public interface CompitiService {
     List<CompitiDTO> getCompitiByClasse(int idClasse);
     CompitiDTO addCompiti(CompitiDTO c);
     CompitiDTO updateCompiti(CompitoUpdateDTO c, int idCompiti);
+    void deleteCompiti(int id);
 }
