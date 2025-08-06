@@ -1,6 +1,7 @@
 package it.registro.scuola.controller;
 
-import it.registro.scuola.dto.CompitiDTO;
+import it.registro.scuola.dto.compiti.CompitiDTO;
+import it.registro.scuola.dto.compiti.CompitoUpdateDTO;
 import it.registro.scuola.service.impl.CompitiServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class CompitiController {
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC', 'STU')")
     @GetMapping("{id}")
     public ResponseEntity<CompitiDTO> getCompito(@PathVariable("id") int idCompito){
-        return ResponseEntity.ok(compitiService.getCompito(idCompito));
+        return ResponseEntity.ok(compitiService.getCompitoDTO(idCompito));
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC', 'STU')")
@@ -34,5 +35,11 @@ public class CompitiController {
     @PostMapping
     public ResponseEntity<CompitiDTO> addCompiti(@Valid @RequestBody CompitiDTO c){
         return ResponseEntity.status(HttpStatus.CREATED).body(compitiService.addCompiti(c));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PutMapping("{id}")
+    public ResponseEntity<CompitiDTO> updateCompiti(@Valid @RequestBody CompitoUpdateDTO c, @PathVariable("id") int idCompiti){
+        return ResponseEntity.ok(compitiService.updateCompiti(c, idCompiti));
     }
 }

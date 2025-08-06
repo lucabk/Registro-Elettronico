@@ -1,4 +1,4 @@
-package it.registro.scuola.dto;
+package it.registro.scuola.dto.compiti;
 
 import it.registro.scuola.dto.incarico.IncaricoDTO;
 import jakarta.validation.constraints.*;

@@ -1,7 +1,9 @@
 package it.registro.scuola.service.impl;
 
-import it.registro.scuola.dto.CompitiDTO;
+import it.registro.scuola.dto.compiti.CompitiDTO;
+import it.registro.scuola.dto.compiti.CompitoUpdateDTO;
 import it.registro.scuola.mapper.CompitiMapper;
+import it.registro.scuola.model.Compiti;
 import it.registro.scuola.repository.CompitiRepository;
 import it.registro.scuola.service.CompitiService;
 import jakarta.persistence.EntityNotFoundException;
@@ -20,9 +22,13 @@ public class CompitiServiceImpl implements CompitiService {
     private final IncaricoServiceImpl incaricoService;
 
     @Override
-    public CompitiDTO getCompito(int id) {
+    public CompitiDTO getCompitoDTO(int id) {
         return CompitiMapper.toDTO(compitiRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("Compito con id "+id+" non trovato")));
+    }
+    public Compiti getCompito(int id) {
+        return compitiRepository.findById(id)
+                .orElseThrow(()-> new EntityNotFoundException("Compito con id "+id+" non trovato"));
     }
 
     @Override
@@ -36,5 +42,10 @@ public class CompitiServiceImpl implements CompitiService {
             throw new IllegalArgumentException("E' obbligatorio specificare l'insegnamento a cui aggiungere i compiti");
         }
         return CompitiMapper.toDTO(compitiRepository.save(CompitiMapper.toEnitySave(c, incaricoService.getIncaricoModel(c.getIncaricoDTO().getId()))));
+    }
+
+    @Override
+    public CompitiDTO updateCompiti(CompitoUpdateDTO c, int idCompiti) {
+        return CompitiMapper.toDTO(compitiRepository.save(CompitiMapper.toEnityUp(getCompito(idCompiti), c)));
     }
 }

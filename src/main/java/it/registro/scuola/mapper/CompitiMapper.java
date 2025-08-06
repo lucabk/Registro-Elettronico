@@ -1,7 +1,7 @@
 package it.registro.scuola.mapper;
 
-import it.registro.scuola.dto.CompitiDTO;
-import it.registro.scuola.dto.incarico.IncaricoDTO;
+import it.registro.scuola.dto.compiti.CompitiDTO;
+import it.registro.scuola.dto.compiti.CompitoUpdateDTO;
 import it.registro.scuola.model.Compiti;
 import it.registro.scuola.model.Incarico;
 
@@ -22,5 +22,12 @@ public class CompitiMapper {
         Compiti toSave = new Compiti(c.getEsercizi(), c.getDataConsegna());
         toSave.setIncarico(incarico);
         return toSave;
+    }
+
+
+    public static Compiti toEnityUp(Compiti compitotoUp, CompitoUpdateDTO newCompito) {
+        compitotoUp.setEsercizi(newCompito.getEsercizi());
+        compitotoUp.setDataConsegna(newCompito.getDataConsegna());
+        return compitotoUp;
     }
 }
