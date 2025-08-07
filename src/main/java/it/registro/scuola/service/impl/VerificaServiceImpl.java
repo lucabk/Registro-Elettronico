@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -20,5 +22,10 @@ public class VerificaServiceImpl implements VerificaService {
     public VerificaDTO getVerificaDTO(int idVerifica) {
         return VerificaMapper.toDTO(verificaRepository.findById(idVerifica)
                 .orElseThrow(()->new EntityNotFoundException("Verifica con id "+idVerifica+" non trovata.")));
+    }
+
+    @Override
+    public List<VerificaDTO> getVerificheByClasseDTO(int idClasse) {
+        return VerificaMapper.toListDTO(verificaRepository.findVerificaByIncarico_Classe_Id(idClasse));
     }
 }
