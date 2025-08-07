@@ -47,4 +47,10 @@ public class VerificaServiceImpl implements VerificaService {
     public VerificaDTO updateVerificaDTO(VerificaDTO v, int idVerifica) {
         return VerificaMapper.toDTO(verificaRepository.save(VerificaMapper.toEntitUPdate(getVerifica(idVerifica), v)));
     }
+
+    @Override
+    public void deleteVerifica(int idVerifica) {
+        getVerifica(idVerifica);
+        verificaRepository.deleteById(idVerifica);
+    }
 }

@@ -42,4 +42,11 @@ public class VerificaController {
     public ResponseEntity<VerificaDTO> updateVerifica(@Valid @RequestBody VerificaDTO v, @PathVariable("id") int idVerifica){
         return ResponseEntity.ok(verificaService.updateVerificaDTO(v, idVerifica));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteVerifica(@PathVariable int id){
+        verificaService.deleteVerifica(id);
+        return ResponseEntity.noContent().build();
+    }
 }

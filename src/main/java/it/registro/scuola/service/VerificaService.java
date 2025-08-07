@@ -9,4 +9,5 @@ public interface VerificaService {
     List<VerificaDTO> getVerificheByClasseDTO(int idClasse);
     VerificaDTO addVerficaDTO(VerificaDTO v);
     VerificaDTO updateVerificaDTO(VerificaDTO v, int idVerifica);
+    void deleteVerifica(int idVerifica);
 }
