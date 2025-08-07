@@ -2,7 +2,9 @@ package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.verifica.VerificaDTO;
 import it.registro.scuola.service.impl.VerificaServiceImpl;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +28,12 @@ public class VerificaController {
     @GetMapping
     public ResponseEntity<List<VerificaDTO>> getVerificheByClasse(@RequestParam(required = true) Integer idClasse){
         return ResponseEntity.ok(verificaService.getVerificheByClasseDTO(idClasse));
+    }
+
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PostMapping
+    public ResponseEntity<VerificaDTO> addVerifica (@Valid @RequestBody VerificaDTO v){
+        return ResponseEntity.status(HttpStatus.CREATED).body(verificaService.addVerficaDTO(v));
     }
 }

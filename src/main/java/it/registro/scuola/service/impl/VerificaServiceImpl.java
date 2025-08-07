@@ -17,6 +17,7 @@ import java.util.List;
 public class VerificaServiceImpl implements VerificaService {
 
     private final VerificaRepository verificaRepository;
+    private final IncaricoServiceImpl incaricoService;
 
     @Override
     public VerificaDTO getVerificaDTO(int idVerifica) {
@@ -27,5 +28,13 @@ public class VerificaServiceImpl implements VerificaService {
     @Override
     public List<VerificaDTO> getVerificheByClasseDTO(int idClasse) {
         return VerificaMapper.toListDTO(verificaRepository.findVerificaByIncarico_Classe_Id(idClasse));
+    }
+
+    @Override
+    public VerificaDTO addVerficaDTO(VerificaDTO v) {
+        if(v.getIncaricoDTO() == null){
+            throw new IllegalArgumentException("E' obbligatorio specificare l'insegnamento a cui aggiungere i compiti");
+        }
+        return VerificaMapper.toDTO(verificaRepository.save(VerificaMapper.toEntity(v, incaricoService.getIncaricoModel(v.getIncaricoDTO().getId()))));
     }
 }

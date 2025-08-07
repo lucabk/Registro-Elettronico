@@ -7,4 +7,5 @@ import java.util.List;
 public interface VerificaService {
     VerificaDTO getVerificaDTO(int idVerifica);
     List<VerificaDTO> getVerificheByClasseDTO(int idClasse);
+    VerificaDTO addVerficaDTO(VerificaDTO v);
 }
