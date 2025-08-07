@@ -1944,6 +1944,192 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Verifica",
+			"item": [
+				{
+					"name": "getVerifica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/verifica/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"verifica",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getVerificheByClasse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/verifica?idClasse=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"verifica"
+							],
+							"query": [
+								{
+									"key": "idClasse",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addVerifica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\" : \"orale\",\r\n    \"argomenti\" : \"Elettromagnetismo\",\r\n    \"dataVerifica\" : \"2025-09-12\",\r\n    \"incaricoDTO\" : { \"id\" : 13 }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/verifica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"verifica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateVerifica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\" : \"orale\",\r\n    \"argomenti\" : \"Elettromagnetismo\",\r\n    \"dataVerifica\" : \"2025-09-19\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/verifica/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"verifica",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteVerifica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-SEG}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\" : \"orale\",\r\n    \"argomenti\" : \"Elettromagnetismo\",\r\n    \"dataVerifica\" : \"2025-09-12\",\r\n    \"incaricoDTO\" : { \"id\" : 13 }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/verifica/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"verifica",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
