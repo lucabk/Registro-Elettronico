@@ -2,6 +2,7 @@ package it.registro.scuola.service.impl;
 
 import it.registro.scuola.dto.verifica.VerificaDTO;
 import it.registro.scuola.mapper.VerificaMapper;
+import it.registro.scuola.model.Verifica;
 import it.registro.scuola.repository.VerificaRepository;
 import it.registro.scuola.service.VerificaService;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,6 +25,10 @@ public class VerificaServiceImpl implements VerificaService {
         return VerificaMapper.toDTO(verificaRepository.findById(idVerifica)
                 .orElseThrow(()->new EntityNotFoundException("Verifica con id "+idVerifica+" non trovata.")));
     }
+    public Verifica getVerifica(int idVerifica) {
+        return verificaRepository.findById(idVerifica)
+                .orElseThrow(()->new EntityNotFoundException("Verifica con id "+idVerifica+" non trovata."));
+    }
 
     @Override
     public List<VerificaDTO> getVerificheByClasseDTO(int idClasse) {
@@ -36,5 +41,10 @@ public class VerificaServiceImpl implements VerificaService {
             throw new IllegalArgumentException("E' obbligatorio specificare l'insegnamento a cui aggiungere i compiti");
         }
         return VerificaMapper.toDTO(verificaRepository.save(VerificaMapper.toEntity(v, incaricoService.getIncaricoModel(v.getIncaricoDTO().getId()))));
+    }
+
+    @Override
+    public VerificaDTO updateVerificaDTO(VerificaDTO v, int idVerifica) {
+        return VerificaMapper.toDTO(verificaRepository.save(VerificaMapper.toEntitUPdate(getVerifica(idVerifica), v)));
     }
 }

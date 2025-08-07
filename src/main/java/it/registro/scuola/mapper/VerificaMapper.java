@@ -21,4 +21,11 @@ public class VerificaMapper {
         entity.setIncarico(i);
         return entity;
     }
+
+    public static Verifica toEntitUPdate(Verifica originalEntity, VerificaDTO v) {
+        originalEntity.setArgomenti(v.getArgomenti());
+        originalEntity.setTipo(v.getTipo());
+        originalEntity.setDataVerifica(v.getDataVerifica());
+        return originalEntity;
+    }
 }

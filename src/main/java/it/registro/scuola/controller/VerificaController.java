@@ -36,4 +36,10 @@ public class VerificaController {
     public ResponseEntity<VerificaDTO> addVerifica (@Valid @RequestBody VerificaDTO v){
         return ResponseEntity.status(HttpStatus.CREATED).body(verificaService.addVerficaDTO(v));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PutMapping("{id}")
+    public ResponseEntity<VerificaDTO> updateVerifica(@Valid @RequestBody VerificaDTO v, @PathVariable("id") int idVerifica){
+        return ResponseEntity.ok(verificaService.updateVerificaDTO(v, idVerifica));
+    }
 }
