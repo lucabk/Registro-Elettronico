@@ -23,7 +23,7 @@ FROM docente d JOIN incarico i ON i.id_docente = d.id_docente
 JOIN scuola s ON i.id_scuola = s.id_scuola;
 
 CREATE VIEW insegnamento_docenti_per_classe AS 
-SELECT d.id_docente, d.nome, d.cognome, c.id_classe, c.grado, c.lettera, c.anno_scolastico, m.id_materia, m.nome AS materia 
+SELECT i.id_incarico, d.id_docente, d.nome, d.cognome, c.id_classe, c.grado, c.lettera, c.anno_scolastico, m.id_materia, m.nome AS materia 
 FROM docente d JOIN incarico i ON d.id_docente = i.id_docente
 JOIN classe c ON c.id_classe = i.id_classe
 JOIN materia m ON i.id_materia = m.id_materia;

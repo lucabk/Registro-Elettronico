@@ -48,15 +48,13 @@ CREATE TABLE IF NOT EXISTS compiti(
 CREATE TABLE IF NOT EXISTS verifica(
 	id_verifica INT UNSIGNED AUTO_INCREMENT,
     tipo ENUM('scritto', 'orale') NOT NULL,
-	id_classe INT UNSIGNED,
-    id_materia INT UNSIGNED,
+	id_incarico INT UNSIGNED,
     argomenti TEXT NOT NULL,
     data_verifica DATE NOT NULL,
 	data_inserimento TIMESTAMP DEFAULT NOW(),
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_verifica),
-    FOREIGN KEY (id_classe) REFERENCES classe(id_classe),
-    FOREIGN KEY (id_materia) REFERENCES materia(id_materia)
+    FOREIGN KEY (id_incarico) REFERENCES incarico(id_incarico)
 );
 
 CREATE TABLE studente(

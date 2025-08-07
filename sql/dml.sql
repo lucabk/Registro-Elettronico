@@ -149,7 +149,19 @@ JOIN materia m ON m.id_materia = i.id_materia;
 
 # Compiti
 INSERT INTO compiti (id_incarico, esercizi, data_consegna)
-VALUES (1, 'Pag246 n34-35-36-37-43', '2025-09-27');
+VALUES (9, 'Storia della II Guerra Mondiale, Pearson 2004', '2025-09-26');
 
 SELECT * FROM compiti;
-SELECT * FROM compiti_per_incarico;
+SELECT * FROM compiti_per_incarico ORDER BY id_compito ASC;
+
+# Verifiche 
+INSERT INTO verifica (tipo, id_incarico, argomenti, data_verifica)
+VALUES ('orale', 9, 'Interrogazioni II Guerra Mondiale', '2025-09-15');
+
+SELECT * FROM verifica;
+SELECT id_verifica, d.cognome docente, m.nome materia, v.tipo, v.argomenti, v.data_verifica, concat(c.grado, c.lettera) classe, s.nome scuola, s.citta, c.anno_scolastico 
+FROM verifica v JOIN incarico i ON v.id_incarico = i.id_incarico
+JOIN classe c ON c.id_classe = i.id_classe
+JOIN docente d ON d.id_docente = i.id_docente
+JOIN materia m ON m.id_materia = i.id_materia
+JOIN scuola s ON s.id_scuola = i.id_scuola;
