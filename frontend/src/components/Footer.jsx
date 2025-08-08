@@ -28,7 +28,15 @@ const Footer = () => {
             </footer>
             )
             break
-        
+            
+        case "ROLE_DOC":
+            content = (
+            <footer className="mt-2 mb-0 p-5 bg-primary">
+                {icon}
+            </footer>
+            )
+            break
+
         case "ROLE_GES":
             content = (
             <footer className="mt-2 mb-0 p-5 bg-secondary text-dark">

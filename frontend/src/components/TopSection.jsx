@@ -52,6 +52,14 @@ const TopScetion = ({ text, hp=true }) => {
             )
             break
 
+        case "ROLE_DOC":
+            content = (
+                <div className="container-fluid mt-0 p-5 bg-primary text-dark">
+                    {h1}
+                </div>
+            )
+            break
+
         case "ROLE_GES":
             content = (
                 <div className="container-fluid mt-0 p-5 bg-secondary ">

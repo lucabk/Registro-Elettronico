@@ -20,3 +20,8 @@ export const updateTeacher = async (id, update) => {
     const res = await axios.put(`${API_DOCENTI}/${id}`, update)
     return res.data
 }
+
+export const getTeacherByUsername = async (username) => {
+    const res = await axios.get(`${API_DOCENTI}/utente/${username}`)
+    return res.data
+}
