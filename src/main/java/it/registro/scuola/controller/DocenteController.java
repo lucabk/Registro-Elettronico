@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @AllArgsConstructor
@@ -62,6 +61,11 @@ public class DocenteController {
     public ResponseEntity<Void> deleteDocente(@PathVariable("id") int id) {
         docenteService.deleteDocente(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/utente/{username}")
+    public ResponseEntity<DocenteDTO> getDocenteByUsername (@PathVariable("username") String username) {
+        return ResponseEntity.ok((docenteService.getDocenteByUsername(username)));
     }
 
 }

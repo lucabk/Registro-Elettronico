@@ -15,4 +15,5 @@ public interface DocenteService {
     DocenteDTO updateDocente(DocenteDTO d, int id);
     void udpdatePswDocente(UpdateUtentePswDTO c, int id);
     void deleteDocente(int id);
+    DocenteDTO getDocenteByUsername(String username);
 }

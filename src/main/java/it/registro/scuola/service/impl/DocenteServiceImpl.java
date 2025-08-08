@@ -7,6 +7,7 @@ import it.registro.scuola.mapper.DocenteMapper;
 import it.registro.scuola.model.Docente;
 import it.registro.scuola.model.Utente;
 import it.registro.scuola.repository.DocenteRepository;
+import it.registro.scuola.repository.UtenteRepository;
 import it.registro.scuola.service.DocenteService;
 import it.registro.scuola.utilty.Ruolo;
 import it.registro.scuola.validation.DocenteInputValidation;
@@ -14,6 +15,7 @@ import it.registro.scuola.validation.UtenteInputValidation;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class DocenteServiceImpl implements DocenteService {
 
     private DocenteRepository docenteRepository;
     private UtenteServiceImpl utenteService;
+    private UtenteRepository utenteRepository;
 
     @Override
     public DocenteDTO getDocenteDTO(int id) {
@@ -80,5 +83,14 @@ public class DocenteServiceImpl implements DocenteService {
         getDocenteDTO(id);
         docenteRepository.deleteById(id);
         utenteService.deleteUtente(id);
+    }
+
+    @Override
+    public DocenteDTO getDocenteByUsername(String username) {
+        Utente u = utenteRepository.findByUsername(username);
+        if(u == null) {
+            throw new UsernameNotFoundException("Utente "+username+" non trovato");
+        }
+        return getDocenteDTO(u.getRiferimentoId());
     }
 }
