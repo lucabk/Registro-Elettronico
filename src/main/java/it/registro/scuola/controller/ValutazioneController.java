@@ -47,4 +47,11 @@ public class ValutazioneController {
     public ResponseEntity<ValutazioneDTO> updateValutazione(@RequestBody @Valid ValutazioneDTO v, @PathVariable("id") int idValutazione){
         return ResponseEntity.ok(valutazioneService.updateValutazione(v, idValutazione));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteValutazione(@PathVariable int id){
+        valutazioneService.deleteValutazione(id);
+        return ResponseEntity.noContent().build();
+    }
 }

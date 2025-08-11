@@ -56,4 +56,11 @@ public class ValutazioneServiceImpl implements ValutazioneService {
     public ValutazioneDTO updateValutazione(ValutazioneDTO v, int idValutazione) {
         return ValutazioneMapper.toDTO(valutazioneRepository.save(ValutazioneMapper.toEntityUpdate(getValutazioneById(idValutazione), v)));
     }
+
+    @Override
+    public void deleteValutazione(int id) {
+        getValutazioneByIdDTO(id);
+        valutazioneRepository.deleteById(id);
+    }
+
 }

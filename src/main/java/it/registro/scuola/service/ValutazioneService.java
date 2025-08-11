@@ -10,4 +10,5 @@ public interface ValutazioneService {
     List<ValutazioneDTO> getValutazioniByStudenteDTO(int idStudente);
     ValutazioneDTO addValutazione(ValutazioneDTO v);
     ValutazioneDTO updateValutazione(ValutazioneDTO v, int idValutazione);
+    void deleteValutazione(int id);
 }
