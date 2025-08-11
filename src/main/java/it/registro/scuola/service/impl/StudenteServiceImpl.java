@@ -33,6 +33,9 @@ public class StudenteServiceImpl implements StudenteService {
     public StudenteDTO getStudente(int id) {
         return StudenteMapper.toDTO(studenteRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Studente con id "+id+" non trovato")));
     }
+    public Studente getStudenteModel(int id) {
+        return studenteRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Studente con id "+id+" non trovato"));
+    }
 
     @Override
     public List<StudenteDTO> getStudentiByScuola(int idScuola) {

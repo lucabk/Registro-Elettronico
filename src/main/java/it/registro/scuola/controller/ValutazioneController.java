@@ -2,7 +2,9 @@ package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.valutazione.ValutazioneDTO;
 import it.registro.scuola.service.impl.ValutazioneServiceImpl;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +34,11 @@ public class ValutazioneController {
     @GetMapping
     public ResponseEntity<List<ValutazioneDTO>> getValutazioneByStudente(@RequestParam(required = false) int idStudente){
         return ResponseEntity.ok(valutazioneService.getValutazioniByStudenteDTO(idStudente));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PostMapping
+    public ResponseEntity<ValutazioneDTO> addValutazione(@RequestBody @Valid ValutazioneDTO v){
+        return ResponseEntity.status(HttpStatus.CREATED).body(valutazioneService.addValutazione(v));
     }
 }

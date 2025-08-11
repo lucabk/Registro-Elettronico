@@ -4,11 +4,11 @@ import it.registro.scuola.dto.valutazione.ValutazioneDTO;
 import it.registro.scuola.mapper.ValutazioneMapper;
 import it.registro.scuola.repository.ValutazioneRepository;
 import it.registro.scuola.service.ValutazioneService;
+import it.registro.scuola.validation.ValutazioneValidation;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
@@ -17,6 +17,8 @@ import java.util.List;
 public class ValutazioneServiceImpl implements ValutazioneService {
 
     private final ValutazioneRepository valutazioneRepository;
+    private final IncaricoServiceImpl incaricoService;
+    private final StudenteServiceImpl studenteService;
 
     @Override
     public ValutazioneDTO getValutazioneByIdDTO(int id) {
@@ -32,5 +34,15 @@ public class ValutazioneServiceImpl implements ValutazioneService {
     @Override
     public List<ValutazioneDTO> getValutazioniByStudenteDTO(int idStudente) {
         return ValutazioneMapper.toListDTO(valutazioneRepository.findValutazioneByStudente_Id(idStudente));
+    }
+
+    @Override
+    public ValutazioneDTO addValutazione(ValutazioneDTO v) {
+        ValutazioneValidation.addValutazioneDTOValidation(v);
+        return ValutazioneMapper.toDTO(valutazioneRepository.save(ValutazioneMapper.toEntitySave(
+                incaricoService.getIncaricoModel(v.getIncaricoDTO().getId()),
+                studenteService.getStudenteModel(v.getStudenteDTO().getId()),
+                v
+        )));
     }
 }

@@ -1,8 +1,9 @@
 package it.registro.scuola.mapper;
 
 import it.registro.scuola.dto.valutazione.ValutazioneDTO;
+import it.registro.scuola.model.Incarico;
+import it.registro.scuola.model.Studente;
 import it.registro.scuola.model.Valutazione;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,5 +17,12 @@ public class ValutazioneMapper {
 
     public static List<ValutazioneDTO> toListDTO(List<Valutazione> v) {
         return v.stream().map(ValutazioneMapper::toDTO).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static Valutazione toEntitySave(Incarico incaricoModel, Studente studenteModel, ValutazioneDTO v) {
+        Valutazione toSave = new Valutazione(v.getVoto(), v.getTipo());
+        toSave.setIncarico(incaricoModel);
+        toSave.setStudente(studenteModel);
+        return toSave;
     }
 }
