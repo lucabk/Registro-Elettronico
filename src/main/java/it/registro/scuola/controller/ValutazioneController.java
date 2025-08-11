@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/valutazione")
@@ -21,5 +23,11 @@ public class ValutazioneController {
     @GetMapping("{id}")
     public ResponseEntity<ValutazioneDTO> getValutazione(@PathVariable("id") int idValutazione){
         return ResponseEntity.ok(valutazioneService.getValutazioneByIdDTO(idValutazione));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @GetMapping("/classe/{id}")
+    public ResponseEntity<List<ValutazioneDTO>> getValutazioniByClasse(@PathVariable("id") int idClasse){
+        return ResponseEntity.ok(valutazioneService.getValutazioniByClasseDTO(idClasse));
     }
 }
