@@ -37,13 +37,16 @@ JOIN classe cl ON cl.id_classe = i.id_classe
 JOIN docente d ON d.id_docente = i.id_docente
 JOIN materia m ON m.id_materia = i.id_materia;
 
-/*
-CREATE VIEW voti_per_studente AS
-SELECT s.id_studente, sp.nome, sp.cognome, v.voto, v.tipo, v.data_valutazione, m.nome AS materia
-FROM studente s JOIN profilo_studente ps ON s.id_studente = sp.id_studente
-JOIN valutazione v ON v.id_studente = s.id_studente
-JOIN materia m ON  v.id_materia = m.id_materia;
-*/
+CREATE VIEW voti_studenti_per_scuola_e_classe AS
+SELECT id_valutazione, sc.nome scuola, concat(c.grado, c.lettera) classe, c.anno_scolastico, m.nome materia, d.cognome docente, v.voto,
+ v.tipo, concat(s.cognome, ' ', s.nome) studente, v.data_valutazione, c.id_classe, sc.id_scuola, d.id_docente, m.id_materia
+FROM valutazione v JOIN studente s ON v.id_studente = s.id_studente
+JOIN incarico i ON v.id_incarico = i.id_incarico
+JOIN classe c ON c.id_classe = s.id_classe
+JOIN scuola sc ON sc.id_scuola = s.id_scuola
+JOIN docente d ON d.id_docente = i.id_docente
+JOIN materia m ON m.id_materia = i.id_materia;
+
 
 # Mostra tutte le viste del db
 SHOW FULL TABLES IN re WHERE TABLE_TYPE LIKE 'VIEW';
@@ -59,7 +62,7 @@ CREATE INDEX idx_studente_id_classe ON studente(id_classe);
 CREATE INDEX idx_studente_id_scuola ON studente(id_scuola);
 CREATE INDEX idx_incarico_docente_classe_materia ON incarico(id_docente, id_classe, id_materia);
 CREATE INDEX idx_compiti_id_incarico ON compiti(id_incarico);
-#CREATE INDEX idx_valutazione_studente_materia ON valutazione(id_studente, id_materia);
+CREATE INDEX idx_valutazione_studente ON valutazione(id_studente);
 
 # Mostra indice per tabella
 SHOW INDEXES FROM classe;

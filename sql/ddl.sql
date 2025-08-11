@@ -83,17 +83,16 @@ CREATE TABLE studente(
 CREATE TABLE IF NOT EXISTS valutazione(
 	id_valutazione INT UNSIGNED AUTO_INCREMENT,
     id_studente INT UNSIGNED,
-    id_materia INT UNSIGNED,
+    id_incarico INT UNSIGNED,
     voto TINYINT(2) UNSIGNED NOT NULL,
-    tipo VARCHAR(19) NOT NULL,
+    tipo ENUM('scritto', 'orale') NOT NULL,
     data_valutazione DATE NOT NULL,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_valutazione),
     FOREIGN KEY (id_studente) REFERENCES studente(id_studente),
-    FOREIGN KEY (id_materia) REFERENCES materia(id_materia), 
-    CHECK (voto >= 0 AND voto <= 10),
-    CHECK (tipo in ('scritto', 'orale'))
+    FOREIGN KEY (id_incarico) REFERENCES incarico(id_incarico),
+    CHECK (voto >= 0 AND voto <= 10)
 );
 
 CREATE TABLE IF NOT EXISTS nota(

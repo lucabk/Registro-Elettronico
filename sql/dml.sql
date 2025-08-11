@@ -144,8 +144,8 @@ SELECT i.id_incarico, s.id_scuola, s.nome, c.id_classe, c.grado, c.lettera, c.an
 FROM incarico i JOIN scuola s ON s.id_scuola = i.id_scuola 
 JOIN classe c ON c.id_classe = i.id_classe
 JOIN docente d ON d.id_docente = i.id_docente
-JOIN materia m ON m.id_materia = i.id_materia;
-#WHERE c.id_classe = 1;
+JOIN materia m ON m.id_materia = i.id_materia
+WHERE c.id_classe = 1;
 
 # Compiti
 INSERT INTO compiti (id_incarico, esercizi, data_consegna)
@@ -159,9 +159,18 @@ INSERT INTO verifica (tipo, id_incarico, argomenti, data_verifica)
 VALUES ('orale', 9, 'Interrogazioni II Guerra Mondiale', '2025-09-15');
 
 SELECT * FROM verifica;
-SELECT id_verifica, d.cognome docente, m.nome materia, v.tipo, v.argomenti, v.data_verifica, concat(c.grado, c.lettera) classe, s.nome scuola, s.citta, c.anno_scolastico 
+SELECT id_verifica, d.cognome docente, m.nome materia, v.tipo, v.argomenti, v.data_verifica, c.id_classe, 
+concat(c.grado, c.lettera) classe, s.nome scuola, s.citta, c.anno_scolastico 
 FROM verifica v JOIN incarico i ON v.id_incarico = i.id_incarico
 JOIN classe c ON c.id_classe = i.id_classe
 JOIN docente d ON d.id_docente = i.id_docente
 JOIN materia m ON m.id_materia = i.id_materia
-JOIN scuola s ON s.id_scuola = i.id_scuola;
+JOIN scuola s ON s.id_scuola = i.id_scuola
+WHERE c.id_classe = 1;
+
+# Valutazione
+INSERT INTO valutazione (id_studente, id_incarico, voto, tipo, data_valutazione)
+VALUES (5, 9, 7, 'scritto', '2025-09-27');
+
+SELECT * FROM valutazione;
+SELECT * FROM voti_studenti_per_scuola_e_classe ;
