@@ -25,4 +25,10 @@ public class ValutazioneMapper {
         toSave.setStudente(studenteModel);
         return toSave;
     }
+
+    public static Valutazione toEntityUpdate(Valutazione originalEntity, ValutazioneDTO v) {
+        originalEntity.setTipo(v.getTipo());
+        originalEntity.setVoto(v.getVoto());
+        return originalEntity;
+    }
 }

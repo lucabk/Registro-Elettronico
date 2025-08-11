@@ -41,4 +41,10 @@ public class ValutazioneController {
     public ResponseEntity<ValutazioneDTO> addValutazione(@RequestBody @Valid ValutazioneDTO v){
         return ResponseEntity.status(HttpStatus.CREATED).body(valutazioneService.addValutazione(v));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PutMapping("{id}")
+    public ResponseEntity<ValutazioneDTO> updateValutazione(@RequestBody @Valid ValutazioneDTO v, @PathVariable("id") int idValutazione){
+        return ResponseEntity.ok(valutazioneService.updateValutazione(v, idValutazione));
+    }
 }
