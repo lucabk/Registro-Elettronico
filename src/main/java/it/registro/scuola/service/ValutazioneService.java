@@ -7,4 +7,5 @@ import java.util.List;
 public interface ValutazioneService {
     ValutazioneDTO getValutazioneByIdDTO(int id);
     List<ValutazioneDTO> getValutazioniByClasseDTO(int idClasse);
+    List<ValutazioneDTO> getValutazioniByStudenteDTO(int idStudente);
 }

@@ -5,10 +5,7 @@ import it.registro.scuola.service.impl.ValutazioneServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,11 @@ public class ValutazioneController {
     @GetMapping("/classe/{id}")
     public ResponseEntity<List<ValutazioneDTO>> getValutazioniByClasse(@PathVariable("id") int idClasse){
         return ResponseEntity.ok(valutazioneService.getValutazioniByClasseDTO(idClasse));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC', 'STU')")
+    @GetMapping
+    public ResponseEntity<List<ValutazioneDTO>> getValutazioneByStudente(@RequestParam(required = false) int idStudente){
+        return ResponseEntity.ok(valutazioneService.getValutazioniByStudenteDTO(idStudente));
     }
 }

@@ -28,4 +28,9 @@ public class ValutazioneServiceImpl implements ValutazioneService {
     public List<ValutazioneDTO> getValutazioniByClasseDTO(int idClasse) {
         return ValutazioneMapper.toListDTO(valutazioneRepository.findValutazioneByIncarico_Classe_Id(idClasse));
     }
+
+    @Override
+    public List<ValutazioneDTO> getValutazioniByStudenteDTO(int idStudente) {
+        return ValutazioneMapper.toListDTO(valutazioneRepository.findValutazioneByStudente_Id(idStudente));
+    }
 }
