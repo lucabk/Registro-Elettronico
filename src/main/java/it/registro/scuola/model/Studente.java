@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "studente")
@@ -58,6 +59,9 @@ public class Studente {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_classe", nullable = false)
     private Classe classe;
+
+    @OneToMany(mappedBy = "studente")
+    private Set<Valutazione> valutazioni;
 
     public Studente(String nome, String cognome, String email, String numero, String codiceFiscale, String indirizzo, String citta, String provincia, String cap, Scuola scuola, Classe classe) {
         this.nome = nome;

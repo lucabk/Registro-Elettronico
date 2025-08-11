@@ -47,6 +47,9 @@ public class Incarico {
     @OneToMany(mappedBy = "incarico")
     private Set<Verifica> verifiche;
 
+    @OneToMany(mappedBy = "incarico")
+    private Set<Valutazione> valutazioni;
+
     @Column(name = "programma")
     private String programma;
 }

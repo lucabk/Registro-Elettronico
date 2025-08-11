@@ -86,7 +86,6 @@ CREATE TABLE IF NOT EXISTS valutazione(
     id_incarico INT UNSIGNED,
     voto TINYINT(2) UNSIGNED NOT NULL,
     tipo ENUM('scritto', 'orale') NOT NULL,
-    data_valutazione DATE NOT NULL,
     data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id_valutazione),

@@ -4,28 +4,26 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "verifica")
+@Table(name = "valutazione")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Verifica {
+public class Valutazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_verifica")
+    @Column(name = "id_valutazione")
     private int id;
+
+    @Column(name = "voto")
+    private int voto;
 
     @Column(name = "tipo")
     private String tipo;
-
-    @Column(name = "argomenti")
-    private String argomenti;
-
-    @Column(name = "data_verifica")
-    private LocalDate dataVerifica;
 
     @Column(name = "data_inserimento", insertable = false, updatable = false)
     private Date dataInserimento;
@@ -34,12 +32,15 @@ public class Verifica {
     private Date dataAggiornamento;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_studente", nullable = false)
+    private Studente studente;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_incarico", nullable = false)
     private Incarico incarico;
 
-    public Verifica(String tipo, LocalDate dataVerifica, String argomenti) {
+    public Valutazione(int voto, String tipo) {
+        this.voto = voto;
         this.tipo = tipo;
-        this.dataVerifica = dataVerifica;
-        this.argomenti = argomenti;
     }
 }

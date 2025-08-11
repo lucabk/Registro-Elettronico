@@ -169,8 +169,8 @@ JOIN scuola s ON s.id_scuola = i.id_scuola
 WHERE c.id_classe = 1;
 
 # Valutazione
-INSERT INTO valutazione (id_studente, id_incarico, voto, tipo, data_valutazione)
-VALUES (5, 9, 7, 'scritto', '2025-09-27');
+INSERT INTO valutazione (id_studente, id_incarico, voto, tipo)
+VALUES (5, 1, 7, 'scritto');
 
 SELECT * FROM valutazione;
 SELECT * FROM voti_studenti_per_scuola_e_classe ;
