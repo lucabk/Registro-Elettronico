@@ -34,4 +34,11 @@ public class AssenzaController {
     public ResponseEntity<AssenzaDTO> giustificaAssenza(@RequestBody @Valid AssenzaDTO a, @PathVariable("id") int idAssenza){
         return ResponseEntity.ok(assenzaService.giustificaAssenza(a, idAssenza));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> cancellaAssenza(@PathVariable int id){
+        assenzaService.cancellaAssenza(id);
+        return ResponseEntity.noContent().build();
+    }
 }

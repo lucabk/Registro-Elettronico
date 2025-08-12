@@ -7,4 +7,5 @@ public interface AssenzaService {
     List<AssenzaDTO> getAssenzeByStudente(int idStudente);
     AssenzaDTO addAssenza(AssenzaDTO a);
     AssenzaDTO giustificaAssenza(AssenzaDTO a, int idAssenza);
+    void cancellaAssenza(int id);
 }

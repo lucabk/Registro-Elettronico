@@ -41,4 +41,10 @@ public class AssenzaServiceImpl implements AssenzaService {
     public AssenzaDTO giustificaAssenza(AssenzaDTO a, int idAssenza) {
         return AssenzaMapper.toDTO(assenzaRepository.save(AssenzaMapper.toEnityUp(a,getAssenza(idAssenza))));
     }
+
+    @Override
+    public void cancellaAssenza(int id) {
+        getAssenza(id);
+        assenzaRepository.deleteById(id);
+    }
 }
