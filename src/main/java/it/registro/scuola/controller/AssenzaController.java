@@ -2,13 +2,12 @@ package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.assenza.AssenzaDTO;
 import it.registro.scuola.service.impl.AssenzaServiceImpl;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +23,9 @@ public class AssenzaController {
         return ResponseEntity.ok(assenzaService.getAssenzeByStudente(idStudente));
     }
 
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PostMapping
+    public ResponseEntity<AssenzaDTO> addAssenza(@RequestBody @Valid AssenzaDTO a){
+        return ResponseEntity.status(HttpStatus.CREATED).body(assenzaService.addAssenza(a));
+    }
 }
