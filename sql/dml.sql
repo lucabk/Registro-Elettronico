@@ -73,7 +73,7 @@ JOIN scuola sc ON s.id_scuola = sc.id_scuola
 WHERE sc.id_scuola=1;
 
 # Studenti per classe definita
-SELECT * FROM studenti_per_classe WHERE id_classe=1;
+SELECT * FROM studenti_per_classe WHERE id_classe=36;
 
 # Account studenti
 SELECT s.id_studente, s.id_classe, s.id_scuola, s.nome, s.cognome, u.id_utente, u.username, u.password, u.ruolo, u.riferimento_id 
@@ -144,8 +144,8 @@ SELECT i.id_incarico, s.id_scuola, s.nome, c.id_classe, c.grado, c.lettera, c.an
 FROM incarico i JOIN scuola s ON s.id_scuola = i.id_scuola 
 JOIN classe c ON c.id_classe = i.id_classe
 JOIN docente d ON d.id_docente = i.id_docente
-JOIN materia m ON m.id_materia = i.id_materia
-WHERE c.id_classe = 1;
+JOIN materia m ON m.id_materia = i.id_materia;
+#WHERE c.id_classe = 1;
 
 # Compiti
 INSERT INTO compiti (id_incarico, esercizi, data_consegna)
@@ -170,7 +170,16 @@ WHERE c.id_classe = 1;
 
 # Valutazione
 INSERT INTO valutazione (id_studente, id_incarico, voto, tipo)
-VALUES (5, 1, 7, 'scritto');
+VALUES (7, 3, 10, 'scritto');
 
 SELECT * FROM valutazione;
-SELECT * FROM voti_studenti_per_scuola_e_classe ;
+SELECT * FROM voti_studenti_per_scuola_e_classe ORDER BY studente ASC;
+
+
+# Assenza
+INSERT INTO assenza (id_studente) VALUES (5);
+
+SELECT a.id_assenza, a.giustificata, a.tipo, a.data_inserimento, s.cognome, s.nome, concat(c.grado, c.lettera) classe, sc.nome scuola, sc.citta
+FROM assenza a JOIN studente s ON a.id_studente = s.id_studente
+JOIN classe c ON c.id_classe = s.id_classe
+JOIN scuola sc ON sc.id_scuola = s.id_scuola;

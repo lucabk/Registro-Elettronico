@@ -94,20 +94,9 @@ CREATE TABLE IF NOT EXISTS valutazione(
     CHECK (voto >= 0 AND voto <= 10)
 );
 
-CREATE TABLE IF NOT EXISTS nota(
-	id_nota INT UNSIGNED AUTO_INCREMENT,
-    id_studente INT UNSIGNED,
-    testo VARCHAR(255) NOT NULL, 
-    data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_nota),
-    FOREIGN KEY (id_studente) REFERENCES studente(id_studente)
-);
-
 CREATE TABLE IF NOT EXISTS assenza(
 	id_assenza INT UNSIGNED AUTO_INCREMENT,
     id_studente INT UNSIGNED,
-    data_assenza DATE NOT NULL,
     giustificata BOOLEAN DEFAULT FALSE,
     tipo ENUM('parziale', 'intera') DEFAULT 'intera',
 	data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

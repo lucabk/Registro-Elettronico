@@ -39,7 +39,7 @@ JOIN materia m ON m.id_materia = i.id_materia;
 
 CREATE VIEW voti_studenti_per_scuola_e_classe AS
 SELECT id_valutazione, sc.nome scuola, concat(c.grado, c.lettera) classe, c.anno_scolastico, m.nome materia, d.cognome docente, v.voto,
- v.tipo, concat(s.cognome, ' ', s.nome) studente, c.id_classe, sc.id_scuola, d.id_docente, m.id_materia
+ v.tipo, concat(s.cognome, ' ', s.nome) studente, s.id_studente, c.id_classe, sc.id_scuola, d.id_docente, m.id_materia
 FROM valutazione v JOIN studente s ON v.id_studente = s.id_studente
 JOIN incarico i ON v.id_incarico = i.id_incarico
 JOIN classe c ON c.id_classe = s.id_classe
