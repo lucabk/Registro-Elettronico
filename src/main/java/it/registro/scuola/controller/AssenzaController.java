@@ -28,4 +28,10 @@ public class AssenzaController {
     public ResponseEntity<AssenzaDTO> addAssenza(@RequestBody @Valid AssenzaDTO a){
         return ResponseEntity.status(HttpStatus.CREATED).body(assenzaService.addAssenza(a));
     }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @PutMapping("{id}")
+    public ResponseEntity<AssenzaDTO> giustificaAssenza(@RequestBody @Valid AssenzaDTO a, @PathVariable("id") int idAssenza){
+        return ResponseEntity.ok(assenzaService.giustificaAssenza(a, idAssenza));
+    }
 }

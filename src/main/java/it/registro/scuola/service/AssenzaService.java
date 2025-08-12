@@ -6,4 +6,5 @@ import java.util.List;
 public interface AssenzaService {
     List<AssenzaDTO> getAssenzeByStudente(int idStudente);
     AssenzaDTO addAssenza(AssenzaDTO a);
+    AssenzaDTO giustificaAssenza(AssenzaDTO a, int idAssenza);
 }

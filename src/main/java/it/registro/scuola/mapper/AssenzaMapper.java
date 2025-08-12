@@ -22,4 +22,9 @@ public class AssenzaMapper {
         entity.setStudente(studenteModel);
         return entity;
     }
+
+    public static Assenza toEnityUp(AssenzaDTO a, Assenza originalEntity) {
+        originalEntity.setGiustificata(a.getGiustificata());
+        return originalEntity;
+    }
 }
