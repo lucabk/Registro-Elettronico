@@ -7,4 +7,5 @@ import java.util.List;
 public interface IncaricoRepository extends JpaRepository<Incarico, Integer> {
     List<Incarico> findByScuolaId(Integer idScuola);
     List<Incarico> findByClasseId(Integer idClasse);
+    List<Incarico> findByDocenteId(Integer idDocente);
 }

@@ -35,6 +35,12 @@ public class IncaricoController {
         return ResponseEntity.ok(incaricoService.getIncaricoByClasse(idClasse));
     }
 
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @GetMapping("/docente")
+    ResponseEntity<List<IncaricoDTO>> getIncaricoByDocente(@RequestParam(required = true) Integer idDocente){
+        return ResponseEntity.ok(incaricoService.getIncaricoByDocente(idDocente));
+    }
+
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
     @PostMapping
     ResponseEntity<IncaricoDTO> addIncarico(@Valid @RequestBody IncaricoDTO i){

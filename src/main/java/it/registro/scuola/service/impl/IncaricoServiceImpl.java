@@ -43,6 +43,11 @@ public class IncaricoServiceImpl implements IncaricoService {
     }
 
     @Override
+    public List<IncaricoDTO> getIncaricoByDocente(int idDocente) {
+        return IncaricoMapper.toListDTO(incaricoRepository.findByDocenteId(idDocente));
+    }
+
+    @Override
     public IncaricoDTO addIncarico(IncaricoDTO i) {
         Dati dati = getDati(i);
         return IncaricoMapper.toDTO(incaricoRepository.save(IncaricoMapper.toEnity(dati.s(), dati.c(), dati.d(), dati.m(), i.getProgramma())));

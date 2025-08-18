@@ -34,29 +34,6 @@ CREATE TABLE IF NOT EXISTS classe(
     CHECK (grado IN (1, 2, 3, 4, 5))
 );
 
-CREATE TABLE IF NOT EXISTS compiti(
-	id_compito INT UNSIGNED AUTO_INCREMENT,
-    id_incarico INT UNSIGNED,
-    esercizi TEXT NOT NULL,
-	data_consegna DATE NOT NULL,
-	data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_compito),
-    FOREIGN KEY (id_incarico) REFERENCES incarico(id_incarico)
-);
-
-CREATE TABLE IF NOT EXISTS verifica(
-	id_verifica INT UNSIGNED AUTO_INCREMENT,
-    tipo ENUM('scritto', 'orale') NOT NULL,
-	id_incarico INT UNSIGNED,
-    argomenti TEXT NOT NULL,
-    data_verifica DATE NOT NULL,
-	data_inserimento TIMESTAMP DEFAULT NOW(),
-    data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id_verifica),
-    FOREIGN KEY (id_incarico) REFERENCES incarico(id_incarico)
-);
-
 CREATE TABLE studente(
 	id_studente INT UNSIGNED AUTO_INCREMENT,
     id_classe INT UNSIGNED,
@@ -149,6 +126,29 @@ CREATE TABLE IF NOT EXISTS incarico(
     FOREIGN KEY (id_docente) REFERENCES docente(id_docente),
     FOREIGN KEY (id_materia) REFERENCES materia(id_materia),
     UNIQUE(id_scuola, id_classe, id_materia)
+);
+
+CREATE TABLE IF NOT EXISTS compiti(
+	id_compito INT UNSIGNED AUTO_INCREMENT,
+    id_incarico INT UNSIGNED,
+    esercizi TEXT NOT NULL,
+	data_consegna DATE NOT NULL,
+	data_inserimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_compito),
+    FOREIGN KEY (id_incarico) REFERENCES incarico(id_incarico)
+);
+
+CREATE TABLE IF NOT EXISTS verifica(
+	id_verifica INT UNSIGNED AUTO_INCREMENT,
+    tipo ENUM('scritto', 'orale') NOT NULL,
+	id_incarico INT UNSIGNED,
+    argomenti TEXT NOT NULL,
+    data_verifica DATE NOT NULL,
+	data_inserimento TIMESTAMP DEFAULT NOW(),
+    data_aggiornamento TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_verifica),
+    FOREIGN KEY (id_incarico) REFERENCES incarico(id_incarico)
 );
 
 CREATE TABLE IF NOT EXISTS segreteria(
