@@ -4,6 +4,7 @@ import { useUser } from "./context/userContext"
 import { useEffect, useState } from "react"
 import * as teacherService from "../service/teacher"
 import { toast } from "react-toastify"
+import TeacherSchool from "./Teacher/TeacherSchool"
 
 const TeacherHome = () => {
     const user = useUser()
@@ -21,9 +22,8 @@ const TeacherHome = () => {
     return(
         <>
             <Routes>
-                <Route path='/' element = 
-                { <TeacherProfile teacher={teacher} />}
-                />
+                <Route path="/" element = { teacher && <TeacherSchool teacherId={teacher?.id} />} />
+                <Route path='/profile' element = { <TeacherProfile teacher={teacher} />} />
             </Routes>
         </>
     )

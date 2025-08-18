@@ -20,3 +20,8 @@ export const updateIncarico = async (id, newIncarico) => {
 export const deleteIncarico = async (id) => {
     await axios.delete(`${BASE_API}/${id}`)
 }
+
+export const getIncaricoByDocente = async (idDocente) => {
+    const res = await axios.get(`${BASE_API}/docente?idDocente=${idDocente}`)
+    return res.data
+}
