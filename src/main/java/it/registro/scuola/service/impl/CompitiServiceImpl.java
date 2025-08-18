@@ -37,6 +37,12 @@ public class CompitiServiceImpl implements CompitiService {
     }
 
     @Override
+    public List<CompitiDTO> getCompitiByDocente(int idDocente) {
+        return CompitiMapper.toListDTO(compitiRepository.findCompitiByIncarico_Docente_Id(idDocente));
+    }
+
+
+    @Override
     public CompitiDTO addCompiti(CompitiDTO c) {
         if(c.getIncaricoDTO() == null){
             throw new IllegalArgumentException("E' obbligatorio specificare l'insegnamento a cui aggiungere i compiti");

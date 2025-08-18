@@ -26,9 +26,15 @@ public class CompitiController {
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC', 'STU')")
-    @GetMapping
+    @GetMapping("/classe")
     public ResponseEntity<List<CompitiDTO>> getCompitiByClasse(@RequestParam(required = true) Integer idClasse){
         return ResponseEntity.ok(compitiService.getCompitiByClasse(idClasse));
+    }
+
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
+    @GetMapping("/docente")
+    public ResponseEntity<List<CompitiDTO>> getCompitiByDocente(@RequestParam Integer idDocente){
+        return ResponseEntity.ok(compitiService.getCompitiByDocente(idDocente));
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
