@@ -4,9 +4,10 @@ import TopScetion from "../TopSection"
 import * as assignmentsService from "../../service/assignements"
 import { toast } from "react-toastify"
 import Calendar from 'react-calendar';
+import AddAssignement from "./AddAssignement"
 
 const Compiti = ({ classeId, incarichi }) => {
-    const [compiti, setCompiti] = useState(null)
+    const [compiti, setCompiti] = useState([])
     const [selectedDate, setSelectedDate] = useState(null)
     let insegnamento
 
@@ -24,7 +25,7 @@ const Compiti = ({ classeId, incarichi }) => {
     }
 
     const tileContent = ({ date, view }) => {
-        if (view === 'month') {
+        if (view === 'month' && compiti) {
             const found = compiti.find(c => c.dataConsegna === formatDate(date))
             if (found) {
                 return (
@@ -47,13 +48,12 @@ const Compiti = ({ classeId, incarichi }) => {
         : []
 
     console.log("compiti: ", compiti)
-    console.log("insegnamento: ", insegnamento)
 
     return(
         <>
             <TopScetion text={"Esercizi per casa"} />
                 <div className="container bg-light p-5">
-                    <h2 className="mt-3 mb-3 text-center fs-2">Compiti per la classe</h2>
+                    <h2 className="mt-3 mb-3 text-center fs-2">Calendario dei compiti</h2>
                     <Calendar 
                         onChange={setSelectedDate}
                         value={selectedDate}
@@ -77,6 +77,7 @@ const Compiti = ({ classeId, incarichi }) => {
                         </div>    
                     )}
                 </div >
+                {insegnamento && <AddAssignement setCompiti={setCompiti} insegnamenti={insegnamento}/>}
             <Footer />
         </>
     )

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import * as teacherService from "../service/teacher"
 import { toast } from "react-toastify"
 import TeacherSchool from "./Teacher/TeacherSchool"
-import Compiti from "./Teacher/Compiti"
+import Compiti from "./Assignements/Compiti"
 import Verifiche from "./Teacher/Verifiche"
 import * as incaricoService from "../service/incarico"
 
