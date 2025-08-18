@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react"
 import Footer from "../Footer"
 import TopScetion from "../TopSection"
-import * as incaricoService from "../../service/incarico"
-import { toast } from "react-toastify"
 import SingleIncarico from "../Insegnamenti/SingleIncarico"
+import { Link } from "react-router-dom"
 
-const TeacherSchool = ({ teacherId }) => {
-    const [incarico, setIncarico] = useState(null)
-
-    useEffect(()=>{
-        incaricoService.getIncaricoByDocente(teacherId)
-            .then(res => setIncarico(res))
-            .catch(e => {
-                toast.error("Impossibile recuperare incarico docente")
-                console.error("Impossibile recuperare incarico docente: ", e)
-            })
-    }, [])
-
-    console.log("incarico: ", incarico)
+const TeacherSchool = ({ teacherId, incarichi, setIncarichi }) => {
 
     return(
         <>
             <TopScetion text={"Home Page"} />
-            {incarico && (
+            {incarichi && (
                 <div className="container bg-light p-5">
                     <h2 className="mt-3 mb-3 text-center fs-2">Sedi scolastiche ed insegnamenti</h2>
                     <div className="container bg-light d-flex justify-content-center ">
@@ -39,15 +25,27 @@ const TeacherSchool = ({ teacherId }) => {
                                     <th className="text-center">Anno Scolastico</th>
                                     <th className="text-center">Aggiorna Programma</th>
                                     <th className="text-center">Elimina Insegnamento</th>
+                                    <th className="text-center">Esercizi</th>
+                                    <th className="text-center">Verifiche</th>
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider">
-                            {incarico
+                            {incarichi
                                 .map(i => 
                                     <tr key={i.id}>
-                                        <td>{i.scuolaDTO.nome}</td>
-                                        <td>{i.scuolaDTO.citta}</td>
-                                        <SingleIncarico incarico={i} setIncarichi={setIncarico} />
+                                        <td className="text-center">{i.scuolaDTO.nome}</td>
+                                        <td className="text-center">{i.scuolaDTO.citta}</td>
+                                        <SingleIncarico incarico={i} setIncarichi={setIncarichi} />
+                                        <td className="text-center">
+                                            <Link to={`${i.classeDTO.id}/esercizi`}>
+                                                Esercizi
+                                            </Link>
+                                        </td>
+                                        <td className="text-center">
+                                            <Link to={`${i.classeDTO.id}/verifiche`}>
+                                                Verifiche
+                                            </Link>
+                                        </td>
                                     </tr>
                             )}
                             </tbody>
