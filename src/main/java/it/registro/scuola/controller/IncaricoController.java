@@ -47,13 +47,13 @@ public class IncaricoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(incaricoService.addIncarico(i));
     }
 
-    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
     @PutMapping("{id}")
     ResponseEntity<IncaricoDTO> updateIncarico(@Valid @RequestBody IncaricoDTO i, @PathVariable int id){
         return ResponseEntity.ok(incaricoService.updateIncarico(i, id));
     }
 
-    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
     @DeleteMapping("{id}")
     ResponseEntity<Void> deleteIncatico(@PathVariable("id") int id){
         incaricoService.deleteIncarico(id);
