@@ -65,7 +65,7 @@ const TeacherHome = () => {
                     element = { incarichi && <TeacherStudents incarichi={incarichi} classeId={classeId}/>} 
                 />
                 <Route path='/:idClasse/studenti/:idStudente' 
-                    element = { incarichi && <ManageStudent classId={classeId} studentId={studentId} incarichi={incarichi} />} 
+                    element = { incarichi && teacher && <ManageStudent classId={classeId} studentId={studentId} incarichi={incarichi} teacher={teacher}/>} 
                 />
             </Routes>
         </>

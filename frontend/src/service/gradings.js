@@ -11,3 +11,7 @@ export const addValutazione = async (newValutazione) => {
     const res = await axios.post(BASE_API, newValutazione)
     return res.data
 }
+
+export const deleteValutazione = async (id) => {
+    await axios.delete(`${BASE_API}/${id}`)
+}
