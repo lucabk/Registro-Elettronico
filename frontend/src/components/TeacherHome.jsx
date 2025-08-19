@@ -6,7 +6,7 @@ import * as teacherService from "../service/teacher"
 import { toast } from "react-toastify"
 import TeacherSchool from "./Teacher/TeacherSchool"
 import Compiti from "./Assignements/Compiti"
-import Verifiche from "./Teacher/Verifiche"
+import Verifiche from "./Assignements/Verifiche"
 import * as incaricoService from "../service/incarico"
 
 const TeacherHome = () => {
@@ -53,7 +53,7 @@ const TeacherHome = () => {
                     element = { teacher && <Compiti incarichi={incarichi} classeId={classeId} teacher={teacher}/>} 
                 />
                 <Route path='/:idClasse/verifiche' 
-                    element = { teacher && <Verifiche  incarichi={incarichi} classeId={classeId} />} 
+                    element = { teacher && <Verifiche incarichi={incarichi} classeId={classeId} teacher={teacher}/>} 
                 />
             </Routes>
         </>
