@@ -10,6 +10,7 @@ import Verifiche from "./Assignements/Verifiche"
 import * as incaricoService from "../service/incarico"
 import TeacherStudents from "./Teacher/TeacherStudents"
 import ManageStudent from "./Teacher/ManageStudent"
+import Assenza from "./Assenze/Assenza"
 
 const TeacherHome = () => {
     const user = useUser()
@@ -66,6 +67,9 @@ const TeacherHome = () => {
                 />
                 <Route path='/:idClasse/studenti/:idStudente' 
                     element = { incarichi && teacher && <ManageStudent classId={classeId} studentId={studentId} incarichi={incarichi} teacher={teacher}/>} 
+                />
+                <Route path='/:idClasse/studenti/:idStudente/profilo' 
+                    element = { <Assenza studentId={studentId} />} 
                 />
             </Routes>
         </>

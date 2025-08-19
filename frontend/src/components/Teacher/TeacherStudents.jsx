@@ -27,7 +27,7 @@ const TeacherStudents = ({ classeId }) => {
                             <th className="text-center">Cognome</th>
                             <th className="text-center">Nome</th>
                             <th className="text-center">Voti</th>
-                            <th className="text-center">Assenze</th>
+                            <th className="text-center">Profilo</th>
                         </tr>
                     </thead>
                     <tbody className="table-group-divider">
