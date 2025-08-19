@@ -3,6 +3,7 @@ import Footer from "../Footer"
 import TopScetion from "../TopSection"
 import * as gradingService from "../../service/gradings"
 import { toast } from "react-toastify"
+import AddVoto from "../Gradings/AddVoto"
 
 const ManageStudent = ({ studentId, incarichi, classId }) => {
     const [valutazioni, setValutazioni] = useState([])
@@ -32,16 +33,13 @@ const ManageStudent = ({ studentId, incarichi, classId }) => {
         });
     }
 
-    console.log("ManageStudent insegnamentiClasse: ", insegnamentiClasse)
-    console.log("Valutazioni: ", valutazioni)
-
     return(
         <>
             <TopScetion text={"Valutazioni studente"} />
                 <div className="container-fluid bg-light p-5">
                     { valutazioni && valutazioni.length > 0 ? (
                         <>
-                            <h2 className="mt-2 text-center fs-2">{`${valutazioni[0].studenteDTO.cognome} ${valutazioni[0].studenteDTO.nome}`}</h2>
+                            <h2 className="mt-2 text-center fs-2">{`Voti di ${valutazioni[0].studenteDTO.cognome} ${valutazioni[0].studenteDTO.nome}`}</h2>
                             <div className="row">
                                 {
                                     Object.entries(valutazioniPerMateria).map(([materia, voti]) => (
@@ -63,6 +61,7 @@ const ManageStudent = ({ studentId, incarichi, classId }) => {
                         <p>Nessuna valutazione disponibile.</p>
                     )}
                 </div>
+                < AddVoto studentId={studentId} insegnamentiClasse={insegnamentiClasse} setValutazioni={setValutazioni} />
             <Footer />
         </>
     )
