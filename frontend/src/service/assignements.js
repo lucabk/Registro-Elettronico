@@ -16,3 +16,7 @@ export const addCompiti = async (obj) => {
     const res = await axios.post(BASE_API, obj)
     return res.data
 }
+
+export const deleteCompiti = async (id) => {
+    await axios.delete(`${BASE_API}/${id}`)
+}

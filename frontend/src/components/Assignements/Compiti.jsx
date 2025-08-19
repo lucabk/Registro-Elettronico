@@ -6,7 +6,7 @@ import { toast } from "react-toastify"
 import Calendar from 'react-calendar';
 import AddAssignement from "./AddAssignement"
 
-const Compiti = ({ classeId, incarichi }) => {
+const Compiti = ({ classeId, incarichi, teacher }) => {
     const [compiti, setCompiti] = useState([])
     const [selectedDate, setSelectedDate] = useState(null)
     let insegnamento
@@ -59,6 +59,20 @@ const Compiti = ({ classeId, incarichi }) => {
 
     //console.log("compiti: ", compiti)
 
+    const handleDelete = (c) => async (e) => {
+        e.preventDefault()
+        if(c.incaricoDTO.docenteDTO.id === teacher.id && window.confirm("Cancellare esercizi per casa?")){
+            try{
+                await assignmentsService.deleteCompiti(c.id)
+                setCompiti(prev => prev.filter(ex => ex.id !== c.id))
+                toast.success("Esercizi per casa cancellati")
+            }catch(e){
+                toast.error("Impossibile cancellare esercizi")
+                console.error("Impossibile cancellare esercizi: ", e)
+            }
+        }
+    }
+
     return(
         <>
             <TopScetion text={"Esercizi per casa"} />
@@ -80,6 +94,14 @@ const Compiti = ({ classeId, incarichi }) => {
                                         <li key={c.id}>
                                             <b>{c.incaricoDTO.materiaDTO.nome}.</b> {c.esercizi} <br />
                                             Docente: <i>{c.incaricoDTO.docenteDTO.cognome} {c.incaricoDTO.docenteDTO.nome}</i>
+                                            {teacher?.id === c.incaricoDTO.docenteDTO.id  && (
+                                                <button type="button" onClick={handleDelete(c)} className="btn">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" fill="red" className="bi bi-x" viewBox="0 0 16 16">
+                                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
+                                                    </svg>
+                                                    <span className="visually-hidden">Delete assignment</span>
+                                                </button>
+                                            )}
                                         </li>
                                     ))}
                                 </ul>
