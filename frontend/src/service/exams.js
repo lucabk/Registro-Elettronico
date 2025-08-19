@@ -11,3 +11,7 @@ export const addVerifica = async (newVerifica) => {
     const res = await axios.post(BASE_API, newVerifica)
     return res.data
 }
+
+export const deleteVerifica = async (idVerifica) => {
+    await axios.delete(`${BASE_API}/${idVerifica}`)
+}
