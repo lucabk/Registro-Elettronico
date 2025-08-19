@@ -1,6 +1,7 @@
 package it.registro.scuola.mapper;
 
 import it.registro.scuola.dto.assenza.AssenzaDTO;
+import it.registro.scuola.dto.assenza.AssenzaResDTO;
 import it.registro.scuola.model.Assenza;
 import it.registro.scuola.model.Studente;
 
@@ -13,8 +14,16 @@ public class AssenzaMapper {
         return new AssenzaDTO(a.getId(), a.isGiustificata(), a.getTipo(), StudenteMapper.toDTO(a.getStudente()));
     }
 
+    public static AssenzaResDTO toResDTO(Assenza a){
+        return new AssenzaResDTO(a.getId(), a.isGiustificata(), a.getTipo(), StudenteMapper.toDTO(a.getStudente()), a.getDataInserimento());
+    }
+
     public static List<AssenzaDTO> toListDTO(List<Assenza> a) {
         return a.stream().map(AssenzaMapper::toDTO).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static List<AssenzaResDTO> toListResDTO(List<Assenza> a) {
+        return a.stream().map(AssenzaMapper::toResDTO).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public static Assenza toEntity(AssenzaDTO a, Studente studenteModel) {

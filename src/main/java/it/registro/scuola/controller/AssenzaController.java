@@ -1,6 +1,7 @@
 package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.assenza.AssenzaDTO;
+import it.registro.scuola.dto.assenza.AssenzaResDTO;
 import it.registro.scuola.service.impl.AssenzaServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class AssenzaController {
 
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC', 'STU')")
     @GetMapping("{id}")
-    public ResponseEntity<List<AssenzaDTO>> getAssenzeByStudente(@PathVariable("id") int idStudente){
+    public ResponseEntity<List<AssenzaResDTO>> getAssenzeByStudente(@PathVariable("id") int idStudente){
         return ResponseEntity.ok(assenzaService.getAssenzeByStudente(idStudente));
     }
 

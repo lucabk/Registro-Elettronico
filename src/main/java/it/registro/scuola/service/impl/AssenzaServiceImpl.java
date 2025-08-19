@@ -1,6 +1,7 @@
 package it.registro.scuola.service.impl;
 
 import it.registro.scuola.dto.assenza.AssenzaDTO;
+import it.registro.scuola.dto.assenza.AssenzaResDTO;
 import it.registro.scuola.mapper.AssenzaMapper;
 import it.registro.scuola.model.Assenza;
 import it.registro.scuola.repository.AssenzaRepository;
@@ -24,8 +25,8 @@ public class AssenzaServiceImpl implements AssenzaService {
     }
 
     @Override
-    public List<AssenzaDTO> getAssenzeByStudente(int idStudente) {
-        return AssenzaMapper.toListDTO(assenzaRepository.findAssenzasByStudente_Id(idStudente));
+    public List<AssenzaResDTO> getAssenzeByStudente(int idStudente) {
+        return AssenzaMapper.toListResDTO(assenzaRepository.findAssenzasByStudente_Id(idStudente));
     }
 
     @Override
