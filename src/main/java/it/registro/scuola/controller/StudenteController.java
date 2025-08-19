@@ -31,7 +31,7 @@ public class StudenteController {
         return ResponseEntity.ok(studenteService.getStudentiByScuola(idScuola));
     }
 
-    @PreAuthorize("hasAnyRole('GES', 'SEG')")
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'DOC')")
     @GetMapping("/byClasse")
     public ResponseEntity<List<StudenteDTO>> getStudentiByClasse(@RequestParam Integer idClasse) {
         return ResponseEntity.ok(studenteService.getStudentiByClasse(idClasse));
