@@ -41,7 +41,6 @@ const TopScetion = ({ text, hp=true }) => {
                 <span className="visually-hidden">Home Page link</span>
             </Link>
             <Link className="nav-link text-dark" to='/docente/profile'>Profilo</Link>
-            <Link className="nav-link text-dark" to='/docente/esercizi'>Alunni</Link>
         </nav>
     )
     

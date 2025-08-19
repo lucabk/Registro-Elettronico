@@ -8,6 +8,8 @@ import TeacherSchool from "./Teacher/TeacherSchool"
 import Compiti from "./Assignements/Compiti"
 import Verifiche from "./Assignements/Verifiche"
 import * as incaricoService from "../service/incarico"
+import TeacherStudents from "./Teacher/TeacherStudents"
+import ManageStudent from "./Teacher/ManageStudent"
 
 const TeacherHome = () => {
     const user = useUser()
@@ -39,12 +41,16 @@ const TeacherHome = () => {
         ? Number(matchClasseId.params.idClasse) 
         : null
 
+    const matchStudentId = useMatch('/docente/:idClasse/studenti/:idStudente/*')
+    const studentId = matchStudentId 
+        ? Number(matchStudentId.params.idStudente)
+        : null
+
     return(
         <>
             <Routes>
                 <Route path="/" 
-                    element = { teacher && <TeacherSchool 
-                        teacherId={teacher?.id} incarichi={incarichi} setIncarichi={setIncarichi}/>} 
+                    element = { teacher && <TeacherSchool incarichi={incarichi} setIncarichi={setIncarichi}/>} 
                 />
                 <Route path='/profile' 
                     element = { <TeacherProfile teacher={teacher} />} 
@@ -54,6 +60,12 @@ const TeacherHome = () => {
                 />
                 <Route path='/:idClasse/verifiche' 
                     element = { teacher && <Verifiche incarichi={incarichi} classeId={classeId} teacher={teacher}/>} 
+                />
+                <Route path='/:idClasse/studenti' 
+                    element = { incarichi && <TeacherStudents incarichi={incarichi} classeId={classeId}/>} 
+                />
+                <Route path='/:idClasse/studenti/:idStudente' 
+                    element = { incarichi && <ManageStudent classId={classeId} studentId={studentId} incarichi={incarichi} />} 
                 />
             </Routes>
         </>
