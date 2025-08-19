@@ -25,3 +25,8 @@ export const getTeacherByUsername = async (username) => {
     const res = await axios.get(`${API_DOCENTI}/utente/${username}`)
     return res.data
 }
+
+export const updatePassword = async (newPassword, id) => {
+    const res = await axios.put(`${API_DOCENTI}/u${id}`, newPassword)
+    return res.data
+}
