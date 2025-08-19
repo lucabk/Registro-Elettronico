@@ -4,6 +4,7 @@ import TopScetion from "../TopSection"
 import { useEffect, useState } from "react"
 import * as examService from "../../service/exams"
 import { toast } from "react-toastify"
+import AddExam from "./AddExam"
 
 const Verifiche = ({ teacher, incarichi, classeId}) => {
     const [verifiche, setVerifiche] = useState([])
@@ -86,6 +87,7 @@ const Verifiche = ({ teacher, incarichi, classeId}) => {
                     </div>
                 )}
             </div>
+            {insegnamento && <AddExam setVerifiche={setVerifiche} insegnamenti={insegnamento}/>}
             <Footer />
         </>
     )
