@@ -20,7 +20,7 @@ public class StudenteController {
     private StudenteServiceImpl studenteService;
 
     @GetMapping("{id}")
-    @PreAuthorize("hasAnyRole('GES', 'SEG', 'STU')")
+    @PreAuthorize("hasAnyRole('GES', 'SEG', 'STU', 'DOC')")
     public ResponseEntity<StudenteDTO> getStudente(@PathVariable("id") int id) {
         return ResponseEntity.ok(studenteService.getStudente(id));
     }
