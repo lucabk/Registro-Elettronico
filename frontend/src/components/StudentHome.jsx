@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import * as studenService from "../service/student"
 import { toast } from "react-toastify"
 import Compiti from "./Assignements/Compiti"
+import Verifiche from "./Assignements/Verifiche"
 
 const StudentHome = () => {
     const [studentInfo, setStudentInfo] = useState(null)
@@ -26,6 +27,7 @@ const StudentHome = () => {
                 <Route path='/' element = {studentInfo && <ManageStudent studentId={studentInfo.idStudente} />}/>
                 <Route path='/profilo' element = { <StudentInfo studentId={studentInfo?.idStudente} />} />
                 <Route path='/compiti' element = { <Compiti classeId={studentInfo?.idClasse}/>} />
+                <Route path='/verifiche' element = { <Verifiche classeId={studentInfo?.idClasse}/>} />
             </Routes>
         </>
     )
