@@ -173,11 +173,13 @@ INSERT INTO valutazione (id_studente, id_incarico, voto, tipo)
 VALUES (7, 3, 10, 'scritto');
 
 SELECT * FROM valutazione;
-SELECT * FROM voti_studenti_per_scuola_e_classe ORDER BY studente ASC;
+SELECT * FROM voti_studenti_per_scuola_e_classe 
+WHERE id_studente = 5
+ORDER BY studente ASC;
 
 
 # Assenza
-INSERT INTO assenza (id_studente) VALUES (5);
+INSERT INTO assenza (id_studente) VALUES (6);
 
 SELECT a.id_assenza, a.giustificata, a.tipo, a.data_inserimento, s.cognome, s.nome, concat(c.grado, c.lettera) classe, sc.nome scuola, sc.citta
 FROM assenza a JOIN studente s ON a.id_studente = s.id_studente
