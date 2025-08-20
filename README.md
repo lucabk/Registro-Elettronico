@@ -117,10 +117,11 @@ npm install
 ```
 
 # Demo
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lo9Po2Kzl3c?si=ZyrX0hINrruGHXWg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Link: 
 
 # Vulnerabilità
 ## Broken Access Control - Horizontal Privilage escalation
+Link: https://youtu.be/lo9Po2Kzl3c
 
 #### Riferimenti
 - <a href="https://www.youtube.com/watch?v=Kq-DRboTVrc">Spring Boot</a>
