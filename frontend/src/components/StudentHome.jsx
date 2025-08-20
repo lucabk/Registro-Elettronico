@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import MyHome from "./Student/MyHome"
+import ManageStudent from "./Teacher/ManageStudent"
 import StudentInfo from "./Student/StudentInfo"
 import { useUser } from "./context/userContext"
 import { useEffect, useState } from "react"
@@ -22,7 +22,7 @@ const StudentHome = () => {
     return(
         <>
             <Routes>
-                <Route path='/' element = { <MyHome />} />
+                <Route path='/' element = {studentId && <ManageStudent studentId={studentId} />}/>
                 <Route path='/profilo' element = { <StudentInfo studentId={studentId} />} />
             </Routes>
         </>

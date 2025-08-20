@@ -4,9 +4,11 @@ import TopScetion from "../TopSection"
 import * as gradingService from "../../service/gradings"
 import { toast } from "react-toastify"
 import AddVoto from "../Gradings/AddVoto"
+import { useUser } from "../context/userContext"
 
 const ManageStudent = ({ studentId, incarichi, classId, teacher }) => {
     const [valutazioni, setValutazioni] = useState([])
+    const user = useUser()
 
     useEffect(()=>{
         gradingService.getValutazioneByStudente(studentId)
@@ -83,7 +85,7 @@ const ManageStudent = ({ studentId, incarichi, classId, teacher }) => {
                         <p>Nessuna valutazione disponibile.</p>
                     )}
                 </div>
-                < AddVoto studentId={studentId} insegnamentiClasse={insegnamentiClasse} setValutazioni={setValutazioni} />
+                {user.role === 'ROLE_DOC' && < AddVoto studentId={studentId} insegnamentiClasse={insegnamentiClasse} setValutazioni={setValutazioni} />}
             <Footer />
         </>
     )
