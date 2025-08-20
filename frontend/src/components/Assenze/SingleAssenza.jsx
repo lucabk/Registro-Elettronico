@@ -1,19 +1,19 @@
 import { useState } from "react"
 
-const SingleAssenza = ({ a }) => {
+const SingleAssenza = ({ a, deleteAssenzaMutation }) => {
     const [gestisci, setGestisci] = useState('')
 
     const handleGiustifica = (e) => {
         e.preventDefault()
-        if(gestisci.localeCompare("Giustifica")){
-
+        if(gestisci.localeCompare("Giustifica") === 0 && window.confirm(`Giustificare assenza del ${a.dataInserimento.split("T")[0]}?`)){
+            console.log()
         }
     }
 
     const handleCancella = (e) => {
         e.preventDefault()
-        if(gestisci.localeCompare("Cancella")){
-
+        if(gestisci.localeCompare("Cancella") === 0 && window.confirm(`Cancellare assenza del ${a.dataInserimento.split("T")[0]}?`)){
+            deleteAssenzaMutation.mutate(a.id)
         }
     }
 
@@ -25,7 +25,7 @@ const SingleAssenza = ({ a }) => {
             <td className="text-center">
                 <select value={gestisci} onChange={e => setGestisci(e.target.value)} required name="gestisci">
                     <option>Operazione</option>
-                    <option>Giustifica</option>
+                    {!a.giustificata && <option>Giustifica</option>}
                     <option>Cancella</option>
                 </select>
                 { gestisci.localeCompare("Giustifica") === 0 && !a.giustificata && (

@@ -37,6 +37,18 @@ const Assenza = ({ studentId }) => {
         }
     })
 
+    const deleteAssenzaMutation = useMutation({
+        mutationFn : assenzaService.deleteAssenza,
+        onSuccess : () => {
+            queryClient.invalidateQueries({ queryKey : ['assenze'] })
+            toast.success("Assenza cancellata")
+        },
+        onError : (e) => {
+            toast.error("Errore cancellazione assenza")
+            console.error("Errore cancellazione assenza: ", e)
+        }
+    })
+
     return(
         <>
             <TopScetion text={"Profilo studente"} />
@@ -82,7 +94,7 @@ const Assenza = ({ studentId }) => {
                                     <tbody className="table-group-divider">
                                         {assenze.data && assenze.data.map( a => (
                                             <tr key={a.id}>
-                                                <SingleAssenza a={a}/>
+                                                <SingleAssenza a={a} deleteAssenzaMutation={deleteAssenzaMutation}/>
                                             </tr>
                                         ))}
                                     </tbody>

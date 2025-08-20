@@ -16,3 +16,7 @@ export const segnaAssenza = async (payload) => {
     const res = await axios.post(BASE_API, payload)
     return res.data
 }
+
+export const deleteAssenza = async (id) => {
+    await axios.delete(`${BASE_API}/${id}`)
+}
