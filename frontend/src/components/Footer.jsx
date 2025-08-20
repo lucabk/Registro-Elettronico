@@ -15,7 +15,7 @@ const Footer = () => {
 
         case "ROLE_STU":
             content = (
-            <footer className="mt-2 mb-0 p-5 bg-success text-dark">
+            <footer className="mt-2 mb-0 p-5 bg-success text-dark fixed-bottom">
                 {icon}
             </footer>
             )
@@ -23,7 +23,7 @@ const Footer = () => {
         
         case "ROLE_SEG":
             content = (
-            <footer className="mt-2 mb-0 p-5 bg-info">
+            <footer className="mt-2 mb-0 p-5 bg-info fixed-bottom">
                 {icon}
             </footer>
             )
@@ -31,7 +31,7 @@ const Footer = () => {
             
         case "ROLE_DOC":
             content = (
-            <footer className="mt-2 mb-0 p-5 bg-primary">
+            <footer className="mt-2 mb-0 p-5 bg-primary fixed-bottom">
                 {icon}
             </footer>
             )
@@ -39,7 +39,7 @@ const Footer = () => {
 
         case "ROLE_GES":
             content = (
-            <footer className="mt-2 mb-0 p-5 bg-secondary text-dark">
+            <footer className="mt-2 mb-0 p-5 bg-secondary text-dark fixed-bottom">
                 {icon}
             </footer>
             )

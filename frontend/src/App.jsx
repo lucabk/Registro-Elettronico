@@ -34,7 +34,7 @@ const App = () => {
     }
   }, [])
 
-  console.log("user:", user)
+  //console.log("user:", user)
 
   return (
     <>
