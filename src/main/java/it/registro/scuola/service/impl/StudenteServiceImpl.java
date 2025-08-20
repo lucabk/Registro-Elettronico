@@ -57,7 +57,8 @@ public class StudenteServiceImpl implements StudenteService {
         if(u == null) {
             throw new UsernameNotFoundException("Utente "+username+" non trovato");
         }
-        return new StudentIdDTO( u.getRiferimentoId());
+        StudenteDTO s = getStudente(u.getRiferimentoId());
+        return new StudentIdDTO(s.getId(), s.getClasseDTO().getId());
     }
 
     @Override

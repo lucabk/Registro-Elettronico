@@ -11,4 +11,5 @@ import lombok.Setter;
 @Setter
 public class StudentIdDTO {
     private int idStudente;
+    private int idClasse;
 }
