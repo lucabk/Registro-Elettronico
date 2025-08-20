@@ -1,6 +1,7 @@
 package it.registro.scuola.service.impl;
 
 import it.registro.scuola.dto.Studente.AddStudenteDTO;
+import it.registro.scuola.dto.Studente.StudentIdDTO;
 import it.registro.scuola.dto.Studente.StudenteDTO;
 import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.mapper.StudenteMapper;
@@ -9,6 +10,7 @@ import it.registro.scuola.model.Scuola;
 import it.registro.scuola.model.Studente;
 import it.registro.scuola.model.Utente;
 import it.registro.scuola.repository.StudenteRepository;
+import it.registro.scuola.repository.UtenteRepository;
 import it.registro.scuola.service.StudenteService;
 import it.registro.scuola.utilty.Ruolo;
 import it.registro.scuola.validation.StudenteInputValidation;
@@ -16,6 +18,7 @@ import it.registro.scuola.validation.UtenteInputValidation;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -28,6 +31,7 @@ public class StudenteServiceImpl implements StudenteService {
     private ScuolaServiceImpl scuolaService;
     private ClasseServiceImpl classeService;
     private UtenteServiceImpl utenteService;
+    private UtenteRepository utenteRepository;
 
     @Override
     public StudenteDTO getStudente(int id) {
@@ -45,6 +49,15 @@ public class StudenteServiceImpl implements StudenteService {
     @Override
     public List<StudenteDTO> getStudentiByClasse(int idClasse) {
         return StudenteMapper.toListDTO(studenteRepository.findByClasseId(idClasse));
+    }
+
+    @Override
+    public StudentIdDTO getIdStudenteByUsername(String username) {
+        Utente u = utenteRepository.findByUsername(username);
+        if(u == null) {
+            throw new UsernameNotFoundException("Utente "+username+" non trovato");
+        }
+        return new StudentIdDTO( u.getRiferimentoId());
     }
 
     @Override

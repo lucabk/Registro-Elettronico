@@ -1,6 +1,7 @@
 package it.registro.scuola.controller;
 
 import it.registro.scuola.dto.Studente.AddStudenteDTO;
+import it.registro.scuola.dto.Studente.StudentIdDTO;
 import it.registro.scuola.dto.Studente.StudenteDTO;
 import it.registro.scuola.dto.utente.UpdateUtentePswDTO;
 import it.registro.scuola.service.impl.StudenteServiceImpl;
@@ -23,6 +24,12 @@ public class StudenteController {
     @PreAuthorize("hasAnyRole('GES', 'SEG', 'STU', 'DOC')")
     public ResponseEntity<StudenteDTO> getStudente(@PathVariable("id") int id) {
         return ResponseEntity.ok(studenteService.getStudente(id));
+    }
+
+    @PreAuthorize("hasAnyRole('STU')")
+    @GetMapping("/byUsername")
+    public ResponseEntity<StudentIdDTO> getIdStudenteByUsername(@RequestParam String username){
+        return ResponseEntity.ok(studenteService.getIdStudenteByUsername(username));
     }
 
     @PreAuthorize("hasAnyRole('GES', 'SEG')")
