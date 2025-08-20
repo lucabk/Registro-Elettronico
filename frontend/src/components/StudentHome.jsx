@@ -7,6 +7,7 @@ import * as studenService from "../service/student"
 import { toast } from "react-toastify"
 import Compiti from "./Assignements/Compiti"
 import Verifiche from "./Assignements/Verifiche"
+import SingleStudentAssenza from "./Assenze/SingleStudentAssenza"
 
 const StudentHome = () => {
     const [studentInfo, setStudentInfo] = useState(null)
@@ -28,6 +29,7 @@ const StudentHome = () => {
                 <Route path='/profilo' element = { <StudentInfo studentId={studentInfo?.idStudente} />} />
                 <Route path='/compiti' element = { <Compiti classeId={studentInfo?.idClasse}/>} />
                 <Route path='/verifiche' element = { <Verifiche classeId={studentInfo?.idClasse}/>} />
+                <Route path='/assenze' element = { <SingleStudentAssenza studentId={studentInfo?.idStudente}/>} />
             </Routes>
         </>
     )
