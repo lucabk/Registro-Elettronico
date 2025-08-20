@@ -25,3 +25,8 @@ export const addStudente = async (newStudent) => {
 export const deleteStudente = async (id) => {
    await axios.delete(`${API_STUDENTI}/${id}`)
 }
+
+export const getIdStudenteByUsername = async (username) => {
+    const res = await axios.get(`${API_STUDENTI}/byUsername?username=${username}`)
+    return res.data
+}

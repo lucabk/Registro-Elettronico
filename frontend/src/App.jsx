@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom"
 import SegreteriaHome from './components/SegreteriaHome'
 import { getRedirectPath } from './util/getPath'
 import TeacherHome from './components/TeacherHome'
+import StudentHome from './components/StudentHome'
 
 const App = () => {
   const [user, userDispatcher] = useContext(UserContext)
@@ -56,6 +57,11 @@ const App = () => {
         <Route path='/docente/*' element={
           user?.role === "ROLE_DOC" ?
           <TeacherHome /> :
+          <Login />
+        } />
+        <Route path='/studente/*' element={
+          user?.role === "ROLE_STU" ?
+          <StudentHome /> :
           <Login />
         } />
       </Routes>
