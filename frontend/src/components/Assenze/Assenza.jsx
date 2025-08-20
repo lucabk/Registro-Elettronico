@@ -49,6 +49,18 @@ const Assenza = ({ studentId }) => {
         }
     })
 
+    const giustifaAssenzaMutation = useMutation({
+        mutationFn : assenzaService.giustificaAssenza,
+        onSuccess : () => {
+            queryClient.invalidateQueries({ queryKey : ['assenze'] })
+            toast.success("Assenza giustificata")
+        },
+        onError : (e) => {
+            toast.error("Errore giustificazione assenza")
+            console.error("Errore giustificazione assenza: ", e)
+        }
+    })
+
     return(
         <>
             <TopScetion text={"Profilo studente"} />
@@ -94,14 +106,21 @@ const Assenza = ({ studentId }) => {
                                     <tbody className="table-group-divider">
                                         {assenze.data && assenze.data.map( a => (
                                             <tr key={a.id}>
-                                                <SingleAssenza a={a} deleteAssenzaMutation={deleteAssenzaMutation}/>
+                                                <SingleAssenza 
+                                                    a={a} 
+                                                    deleteAssenzaMutation={deleteAssenzaMutation}
+                                                    giustifaAssenzaMutation={giustifaAssenzaMutation}
+                                                />
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                                 <div className="p-3 mt-5">
                                     <h3 className="fs-3">Aggiungi assenza</h3>
-                                    <AddAssenza addAssenzaMutation={addAssenzaMutation} studentId={studentId}/>
+                                    <AddAssenza 
+                                        addAssenzaMutation={addAssenzaMutation} 
+                                        studentId={studentId}
+                                    />
                                 </div>
                             </div>
                         )}

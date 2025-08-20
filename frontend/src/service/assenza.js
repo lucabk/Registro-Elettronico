@@ -7,8 +7,8 @@ export const getAssenzeByStudente = async (id) => {
     return res.data
 }
 
-export const giustificaAssenza = async (id, payload) => {
-    const res = await axios.put(`${BASE_API}/${id}`, payload)
+export const giustificaAssenza = async (obj) => {
+    const res = await axios.put(`${BASE_API}/${obj.id}`, { giustificata : true })
     return res.data
 }
 

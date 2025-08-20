@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-const SingleAssenza = ({ a, deleteAssenzaMutation }) => {
+const SingleAssenza = ({ a, deleteAssenzaMutation, giustifaAssenzaMutation }) => {
     const [gestisci, setGestisci] = useState('')
 
     const handleGiustifica = (e) => {
         e.preventDefault()
         if(gestisci.localeCompare("Giustifica") === 0 && window.confirm(`Giustificare assenza del ${a.dataInserimento.split("T")[0]}?`)){
-            console.log()
+            const obj = { id : a.id }
+            giustifaAssenzaMutation.mutate(obj)
         }
     }
 
