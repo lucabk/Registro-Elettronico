@@ -27,31 +27,17 @@ Le tecnologie usate sono:
 - Backend: Java Spring Boot
 - Frontend: React.js
 
-## Casi d'uso
-Il sistema prevde 4 tipi di utenti. La tabella "utente" ha un riferimento ad ogni tabella dello specifico utente; la gestione delle relazioni e del ruolo è svolta a livello applicativo. 
-
-### Gestore
-
-### Segreteria
-
-### Docente
-
-### Studente
+## Autenticazione ed Autorizzazione
+L'autenticazione è svolta mediante JWT.
+Il sistema prevde 4 tipi di utenti. 
+La tabella "utente" ha un riferimento ad ogni tabella dello specifico utente; la gestione delle relazioni e del ruolo è svolta a livello applicativo. 
+I ruoli, in ordine decrescente di privilegi sono: gestore, segreteria, docente e studente.
 
 ## SQL
 Vi è una cartella sql dedicata contenente i file per la creazione, gestione e ottimizzazione della base dati in MySQL.
 
-### Relazioni
-
-
-### Tabelle
-
-#### Scuola
-#### Classe
-#### Segreteria
-
-#### Procedure
-### Inserimento utente gestore
+### Procedure
+#### Inserimento utente gestore
 Si è creata una procedura per l'inserimento dei valori associati alla tabella ```utente``` con il ruolo di ```GES``` (gestore).
 La password può essere generata usando vari <a href="https://bcrypt-generator.com/">modelli online</a> di Bcrypt a 12 rounds. 
 Gli utenti, invece, come docente, segreteria e studente sono aggiunti direttamente tramite REST API con autenticazione.
@@ -66,7 +52,6 @@ Si aggiungno le dipendenze per JAXB, WSDL e spring-boot-starter-web-services; ov
 ### REST
 Per il front-end + test con Postman. 
 Nello sviluppo back-end si è seguito il pattern MVC: model, repository, dto, mapper, interfaccia service, service e rest controller.
-
 
 ### Spring Security
 L'applicazione prevede autenticazione tramite username e password. Le credenziali sono fornite in anticipo agli utenti. 
@@ -112,8 +97,6 @@ Il payload del JWT decodificato:
   "exp": 1752332593
 }
 ```
-
-
 #### Ruoli
 Nell'applicazione si prevedono 4 tipi di ruoli, da cui dipendono diverse tipi di autorizzazioni:
 - Gestore (admin)
@@ -133,12 +116,11 @@ cd frontend
 npm install
 ```
 
-### Components
-#### Admin
-Per l'interazione con il backend si usano useState e useEffect
+# Demo
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lo9Po2Kzl3c?si=ZyrX0hINrruGHXWg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-#### Student - Teacher
-Per l'interazione con il backend si usano react-query e useReducer
+# Vulnerabilità
+## Broken Access Control - Horizontal Privilage escalation
 
 #### Riferimenti
 - <a href="https://www.youtube.com/watch?v=Kq-DRboTVrc">Spring Boot</a>
