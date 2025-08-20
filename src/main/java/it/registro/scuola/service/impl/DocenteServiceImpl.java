@@ -82,7 +82,7 @@ public class DocenteServiceImpl implements DocenteService {
     public void deleteDocente(int id) {
         getDocenteDTO(id);
         docenteRepository.deleteById(id);
-        utenteService.deleteUtente(id);
+        utenteService.deleteUtente(id, "DOC");
     }
 
     @Override

@@ -50,6 +50,7 @@ SELECT * FROM classi_per_scuola;
 INSERT INTO segreteria (id_scuola, nome) VALUES (4, "Segreteria 1"), (4, "Segreteria 2"), (13, "Segreteria 1"), (13, "Segreteria 2");
 
 SELECT * FROM segreteria;
+SELECT * FROM utente WHERE ruolo = 'SEG';
 
 # Inserimento dei gestori nelle procedure o tramite API
 SELECT * FROM utente;

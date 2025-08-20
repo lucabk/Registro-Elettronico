@@ -37,7 +37,7 @@ public class UtenteServiceImpl implements UtenteService {
 
     @Override
     public void upUtentePsw(int riferimentoId, UpdateUtentePswDTO credentials) {
-        Utente utenteToUp = utenteRepository.findByRiferimentoId(riferimentoId);
+        Utente utenteToUp = utenteRepository.findByRiferimentoIdAndRuolo(riferimentoId, "SEG");
         if(utenteToUp == null){
             throw new EntityNotFoundException("Utente con riferimento id "+riferimentoId+ " non trovato");
         }
@@ -49,8 +49,8 @@ public class UtenteServiceImpl implements UtenteService {
     }
 
     @Override
-    public void deleteUtente(int idRiferimento) {
-        Utente u = utenteRepository.findByRiferimentoId(idRiferimento);
+    public void deleteUtente(int idRiferimento, String ruolo) {
+        Utente u = utenteRepository.findByRiferimentoIdAndRuolo(idRiferimento, ruolo);
         if(u != null){
             utenteRepository.deleteById(u.getId());
         }

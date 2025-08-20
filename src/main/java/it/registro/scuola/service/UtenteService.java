@@ -10,7 +10,7 @@ public interface UtenteService {
 
     void upUtentePsw(int idRiferimento, UpdateUtentePswDTO credentials);
 
-    void deleteUtente(int idRiferimento);
+    void deleteUtente(int idRiferimento, String ruolo);
 
     TokenDTO verify(UtenteDTO utente);
 }

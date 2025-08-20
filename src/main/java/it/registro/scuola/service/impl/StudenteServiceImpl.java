@@ -98,6 +98,6 @@ public class StudenteServiceImpl implements StudenteService {
     public void deleteStudente(int id) {
         getStudente(id);
         studenteRepository.deleteById(id);
-        utenteService.deleteUtente(id);
+        utenteService.deleteUtente(id, "STU");
     }
 }

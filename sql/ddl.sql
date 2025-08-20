@@ -174,3 +174,5 @@ CREATE TABLE IF NOT EXISTS utente(
     PRIMARY KEY (id_utente),
     UNIQUE (ruolo, riferimento_id)
 );
+
+ALTER TABLE utente DROP INDEX riferimento_id;
