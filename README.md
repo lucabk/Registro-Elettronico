@@ -117,10 +117,11 @@ npm install
 ```
 
 # Demo
-Link: 
+Link: https://youtu.be/IHWsxygOwdQ
 
 # Vulnerabilità
 ## Broken Access Control - Horizontal Privilage escalation
+Link: https://youtu.be/lo9Po2Kzl3c 
 
 #### Riferimenti
 - <a href="https://www.youtube.com/watch?v=Kq-DRboTVrc">Spring Boot</a>
