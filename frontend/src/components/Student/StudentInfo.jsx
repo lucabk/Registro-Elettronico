@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { toast } from "react-toastify"
 import { useState } from "react"
 import UpdateStudentForm from "./UpdateStudentForm"
+import { useEffect } from "react"
 
 const StudentInfo = ({ studentId }) => {
     const [showForm, setShowForm] = useState(false)
@@ -27,12 +28,16 @@ const StudentInfo = ({ studentId }) => {
         }
     })
 
+    useEffect(() => {
+        if (error) {
+            toast.error("Errore caricamento studente")
+        }
+    }, [error])
+
     return(
         <>
         <TopScetion text={"Dettagli dello studente"} />
         {isPending && <span>Caricamento studente in corso...</span>}
-        {error && toast.error("Errore caricamento studente")}
-
         { data && (
             <div className="container bg-light d-flex justify-content-center p-3">
                 <div className="card m-4 fs-5" style={{width: "18rem"}}>

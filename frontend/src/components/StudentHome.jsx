@@ -5,14 +5,15 @@ import { useUser } from "./context/userContext"
 import { useEffect, useState } from "react"
 import * as studenService from "../service/student"
 import { toast } from "react-toastify"
+import Compiti from "./Assignements/Compiti"
 
 const StudentHome = () => {
-    const [studentId, setStudentId] = useState(null)
+    const [studentInfo, setStudentInfo] = useState(null)
     const user = useUser()
 
     useEffect(()=>{
         studenService.getIdStudenteByUsername(user.username)
-            .then(res => setStudentId(res.idStudente))
+            .then(res => setStudentInfo(res))
             .catch(e => {
                 toast.error("Impossibile recuperare id Studente")
                 console.error("Impossibile recuperare id Studente: ", e)
@@ -22,8 +23,9 @@ const StudentHome = () => {
     return(
         <>
             <Routes>
-                <Route path='/' element = {studentId && <ManageStudent studentId={studentId} />}/>
-                <Route path='/profilo' element = { <StudentInfo studentId={studentId} />} />
+                <Route path='/' element = {studentInfo && <ManageStudent studentId={studentInfo.idStudente} />}/>
+                <Route path='/profilo' element = { <StudentInfo studentId={studentInfo?.idStudente} />} />
+                <Route path='/compiti' element = { <Compiti classeId={studentInfo?.idClasse}/>} />
             </Routes>
         </>
     )
