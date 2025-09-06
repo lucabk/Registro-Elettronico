@@ -36,6 +36,9 @@ I ruoli, in ordine decrescente di privilegi sono: gestore, segreteria, docente e
 ## SQL
 Vi è una cartella sql dedicata contenente i file per la creazione, gestione e ottimizzazione della base dati in MySQL.
 
+
+<img width="1494" height="1266" alt="er" src="https://github.com/user-attachments/assets/e529b69b-8502-4793-a33b-d25f34f18d97" />
+
 ### Procedure
 #### Inserimento utente gestore
 Si è creata una procedura per l'inserimento dei valori associati alla tabella ```utente``` con il ruolo di ```GES``` (gestore).
